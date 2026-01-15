@@ -1,0 +1,141 @@
+/* 自訂樣式 */
+
+/* Grid 佈局 */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.grid-item {
+  background: #f8f9fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.grid-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.grid-item h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  color: #0366d6;
+}
+
+.grid-item p {
+  margin: 0.5rem 0;
+}
+
+/* 特色功能區塊 */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.feature {
+  text-align: center;
+  padding: 1rem;
+}
+
+.feature .icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.feature h4 {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+/* CTA 按鈕區塊 */
+.footer-cta, .cta-box {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.footer-cta h2, .cta-box h3 {
+  color: white;
+  margin-top: 0;
+}
+
+.footer-cta .btn, .cta-box .btn {
+  background: white;
+  color: #667eea;
+  border: none;
+}
+
+.footer-cta .btn:hover, .cta-box .btn:hover {
+  background: #f8f9fa;
+  transform: scale(1.05);
+}
+
+/* 標籤樣式 */
+.label {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.label-yellow {
+  background: #ffd700;
+  color: #000;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .grid-container, .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 程式碼區塊優化 */
+.highlighter-rouge {
+  background: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  padding: 0.2rem 0.4rem;
+  font-size: 85%;
+}
+
+/* 警告/提示框 */
+.note, .warning, .important, .highlight {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-left: 4px solid;
+  border-radius: 4px;
+}
+
+.note {
+  background: #e7f2fa;
+  border-color: #2188ff;
+}
+
+.warning {
+  background: #fffbdd;
+  border-color: #f9c513;
+}
+
+.important {
+  background: #ffe3e6;
+  border-color: #d73a49;
+}
+
+.highlight {
+  background: #d4f4dd;
+  border-color: #22863a;
+}

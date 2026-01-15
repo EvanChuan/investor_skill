@@ -1,0 +1,64 @@
+# 網站基本資訊
+title: 專業投資人分析框架
+description: 系統化的七階段投資研究框架,將30年經驗轉化為可執行流程
+author: Evan
+email: [email protected]
+
+# GitHub 資訊
+github_username: EvanChuan
+repository: EvanChuan/professional-investor
+
+# URL 設定
+baseurl: "/professional-investor" # 如果使用專案網站
+url: "https://evanchuan.github.io" # 你的 GitHub Pages URL
+
+# 主題設定 (推薦使用 Just the Docs 主題)
+theme: just-the-docs
+# remote_theme: just-the-docs/just-the-docs # 如果使用遠端主題
+
+# 主題配置
+color_scheme: light
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+
+# 導航設定
+aux_links:
+  "GitHub Repository":
+    - "//github.com/EvanChuan/professional-investor"
+  "快速開始":
+    - "/docs/getting-started"
+
+# Footer
+footer_content: "Copyright &copy; 2026 Evan. 本框架僅供教育用途,不構成投資建議。"
+
+# 啟用功能
+heading_anchors: true
+back_to_top: true
+back_to_top_text: "回到頂部"
+
+# Google Analytics (選用)
+# ga_tracking: UA-XXXXXXXXX-X
+
+# 語言設定
+lang: zh-TW
+
+# 排除不需要的檔案
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/
+  - .sass-cache/
+  - .jekyll-cache/
+  - README.md
+
+# Markdown 設定
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge

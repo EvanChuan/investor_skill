@@ -191,7 +191,7 @@ permalink: /docs/faq
 - Microsoft (MSFT)
 - Google (GOOGL)
 
-框架：https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/equity-fundamental-analysis/SKILL.md
+框架：https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/equity-fundamental-analysis/SKILL.md
 
 請產出比較表，包含：
 1. 基本面評分
@@ -355,7 +355,7 @@ permalink: /docs/faq
 
 1. [查看 GitHub Discussions](https://github.com/EvanChuan/investor_skill/discussions) - 社群討論
 2. [提交 Issue](https://github.com/EvanChuan/investor_skill/issues) - 報告問題或建議
-3. [查看完整文檔](https://github.com/EvanChuan/investor_skill/blob/main/skills/professional-investor/FRAMEWORK.md)
+3. [查看完整文檔](https://github.com/EvanChuan/investor_skill/blob/main/skills/FRAMEWORK.md)
 
 ---
 

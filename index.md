@@ -15,7 +15,7 @@ layout: default
 ### 1️⃣ 複製框架連結
 
 ```
-https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK.md
 ```
 
 ### 2️⃣ 打開你的 AI 助理
@@ -30,7 +30,7 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professio
 
 ```
 請讀取這份投資分析框架：
-https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK.md
 ```
 
 ---
@@ -56,7 +56,7 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professio
 | 6 | 技術分析 | 優化進出場時機（開發中）|
 | 7 | 風險管理 | 執行紀律與部位（開發中）|
 
-[查看詳細框架 →](https://github.com/EvanChuan/investor_skill/blob/main/skills/professional-investor/FRAMEWORK.md)
+[查看詳細框架 →](https://github.com/EvanChuan/investor_skill/blob/main/skills/FRAMEWORK.md)
 
 ---
 
@@ -75,14 +75,14 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professio
 
 ```
 請依照此框架，完整分析 Tesla (TSLA)：
-https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK.md
 ```
 
 ### 研究產業機會
 
 ```
 請分析半導體產業的投資機會：
-https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/industry-research/SKILL.md
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/industry-research/SKILL.md
 ```
 
 ---

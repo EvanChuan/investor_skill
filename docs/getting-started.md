@@ -29,19 +29,19 @@ description: "如何快速開始使用投資分析框架"
 #### 完整框架 (推薦首次使用)
 
 ```
-https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK.md
 ```
 
-[📋 點此複製](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md)
+[📋 點此複製](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK.md)
 
 #### 各階段連結
 
 | 階段 | 連結 |
 |:---:|------|
-| 1 | [總體經濟分析](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/macro-market-analysis/SKILL.md) |
-| 2 | [產業研究](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/industry-research/SKILL.md) |
-| 3 | [個股基本面](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/equity-fundamental-analysis/SKILL.md) |
-| 4 | [估值分析](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/valuation-analysis/SKILL.md) |
+| 1 | [總體經濟分析](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/macro-market-analysis/SKILL.md) |
+| 2 | [產業研究](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/industry-research/SKILL.md) |
+| 3 | [個股基本面](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/equity-fundamental-analysis/SKILL.md) |
+| 4 | [估值分析](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/valuation-analysis/SKILL.md) |
 
 ---
 
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professio
 
 ```
 請讀取這份投資框架:
-https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK.md
 
 我想對 Tesla (TSLA) 進行完整的七階段投資分析。
 請從第一階段(總體經濟)開始,使用最新的 2026 年 1 月數據。
@@ -128,7 +128,7 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professio
 
 ```
 依照此框架,幫我分析半導體產業:
-https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/industry-research/SKILL.md
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/industry-research/SKILL.md
 
 重點請放在:
 1. 產業生命週期位置
@@ -143,7 +143,7 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professio
 
 ```
 請使用框架評估當前美股投資環境:
-https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/macro-market-analysis/SKILL.md
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/macro-market-analysis/SKILL.md
 
 請分析:
 - 當前市場風險等級
@@ -242,7 +242,7 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professio
 我想對 Apple (AAPL) 進行完整分析:
 
 第一步 - 載入框架:
-https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK.md
 
 第二步 - 逐步執行:
 請先完成階段一(總體經濟),用最新數據。
@@ -257,7 +257,7 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professio
 - Microsoft (MSFT)
 - Google (GOOGL)
 
-框架: https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/equity-fundamental-analysis/SKILL.md
+框架: https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/equity-fundamental-analysis/SKILL.md
 
 產出比較表,包含: 基本面評分、財務健康度、競爭優勢
 ```
@@ -267,9 +267,9 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professio
 ```
 請用框架篩選科技股中最值得投資的前 5 家:
 
-產業框架: https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/industry-research/SKILL.md
+產業框架: https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/industry-research/SKILL.md
 
-個股框架: https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/equity-fundamental-analysis/SKILL.md
+個股框架: https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/equity-fundamental-analysis/SKILL.md
 
 標準: 產業領先、財務健康、成長性佳、估值合理
 ```

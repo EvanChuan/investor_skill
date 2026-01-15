@@ -53,7 +53,7 @@ permalink: /docs/framework
 - 建議股票部位比例（0-100%）
 - 產業輪動建議
 
-**詳細文檔：** [總體經濟分析 SKILL.md](https://github.com/EvanChuan/investor_skill/blob/main/skills/professional-investor/macro-market-analysis/SKILL.md)
+**詳細文檔：** [總體經濟分析 SKILL.md](https://github.com/EvanChuan/investor_skill/blob/main/skills/macro-market-analysis/SKILL.md)
 
 ---
 
@@ -70,7 +70,7 @@ permalink: /docs/framework
 - 產業配置建議（超配/標配/低配）
 - 重點公司清單
 
-**詳細文檔：** [產業研究 SKILL.md](https://github.com/EvanChuan/investor_skill/blob/main/skills/professional-investor/industry-research/SKILL.md)
+**詳細文檔：** [產業研究 SKILL.md](https://github.com/EvanChuan/investor_skill/blob/main/skills/industry-research/SKILL.md)
 
 ---
 
@@ -89,7 +89,7 @@ permalink: /docs/framework
 - SWOT 分析
 - 關鍵風險提示
 
-**詳細文檔：** [個股基本面分析 SKILL.md](https://github.com/EvanChuan/investor_skill/blob/main/skills/professional-investor/equity-fundamental-analysis/SKILL.md)
+**詳細文檔：** [個股基本面分析 SKILL.md](https://github.com/EvanChuan/investor_skill/blob/main/skills/equity-fundamental-analysis/SKILL.md)
 
 ---
 
@@ -111,7 +111,7 @@ permalink: /docs/framework
 - 當前價格評級（低估/合理/高估）
 - 建議操作（買進/持有/賣出）
 
-**詳細文檔：** [估值分析 SKILL.md](https://github.com/EvanChuan/investor_skill/blob/main/skills/professional-investor/valuation-analysis/SKILL.md)
+**詳細文檔：** [估值分析 SKILL.md](https://github.com/EvanChuan/investor_skill/blob/main/skills/valuation-analysis/SKILL.md)
 
 ---
 
@@ -247,7 +247,7 @@ permalink: /docs/framework
 
 - [快速開始指南](./getting-started.md)
 - [常見問題](./faq.md)
-- [完整框架文檔](https://github.com/EvanChuan/investor_skill/blob/main/skills/professional-investor/FRAMEWORK.md)
+- [完整框架文檔](https://github.com/EvanChuan/investor_skill/blob/main/skills/FRAMEWORK.md)
 - [GitHub Repository](https://github.com/EvanChuan/investor_skill)
 
 ---

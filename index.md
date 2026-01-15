@@ -1,41 +1,30 @@
 ---
-layout: home
-title: 首頁
-nav_order: 1
-description: "專業投資人分析框架 - 系統化的七階段投資研究方法"
-permalink: /
+layout: default
 ---
 
 # 專業投資人分析框架 📊
 
-{: .fs-9 }
-
-將 30 年投資經驗轉化為可重複執行的七階段分析流程
-
-{: .fs-6 .fw-300 }
-
-[快速開始](#快速開始){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[查看 GitHub](https://github.com/EvanChuan/professional-investor){: .btn .fs-5 .mb-4 .mb-md-0 }
+> 將 30 年投資經驗轉化為可重複執行的七階段分析流程
 
 ---
 
-## 🎯 快速開始
+## 🚀 快速開始
 
-只需三個步驟,立即開始專業級投資分析:
+只需三個步驟，立即開始專業級投資分析：
 
 ### 1️⃣ 複製框架連結
 
 ```
 
-https://raw.githubusercontent.com/EvanChuan/professional-investor/main/skills/professional-investor/FRAMEWORK.md
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md
 
 ```
 
 ### 2️⃣ 打開你的 AI 助理
 
-支援平台:
-- ✅ Perplexity AI (推薦)
-- ✅ Claude.ai (深度分析)
+支援平台：
+- ✅ Perplexity AI（推薦）
+- ✅ Claude.ai（深度分析）
 - ✅ ChatGPT Plus
 - ✅ Google Gemini
 
@@ -43,97 +32,43 @@ https://raw.githubusercontent.com/EvanChuan/professional-investor/main/skills/pr
 
 ```
 
-請讀取這份投資分析框架:
-https://raw.githubusercontent.com/...FRAMEWORK.md
+請讀取這份投資分析框架：
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md
 
 ```
 
-[詳細使用教學 →]({{ site.baseurl }}/docs/getting-started)
+---
+
+## 📚 完整文檔
+
+- [快速開始指南](./docs/getting-started.md)
+- [框架概覽](./docs/framework.md)
+- [常見問題](./docs/faq.md)
 
 ---
 
-## 📚 七階段分析架構
+## 📊 七階段分析架構
 
-<div class="grid-container">
-  <div class="grid-item">
-    <h3>🌍 階段一</h3>
-    <p><strong>總體經濟分析</strong></p>
-    <p>判斷市場大環境與風險</p>
-    <a href="{{ site.baseurl }}/docs/stage1-macro">了解更多 →</a>
-  </div>
+| 階段 | 名稱 | 說明 |
+|:---:|-----|------|
+| 1 | 總體經濟分析 | 判斷市場大環境與風險 |
+| 2 | 產業研究 | 識別產業景氣與輪動 |
+| 3 | 個股基本面 | 深度評估公司價值 |
+| 4 | 估值分析 | 判斷合理價格區間 |
+| 5 | 市場情緒 | 追蹤籌碼與情緒（開發中）|
+| 6 | 技術分析 | 優化進出場時機（開發中）|
+| 7 | 風險管理 | 執行紀律與部位（開發中）|
 
-  <div class="grid-item">
-    <h3>🏭 階段二</h3>
-    <p><strong>產業研究</strong></p>
-    <p>識別產業景氣與輪動</p>
-    <a href="{{ site.baseurl }}/docs/stage2-industry">了解更多 →</a>
-  </div>
-
-  <div class="grid-item">
-    <h3>📈 階段三</h3>
-    <p><strong>個股基本面</strong></p>
-    <p>深度評估公司價值</p>
-    <a href="{{ site.baseurl }}/docs/stage3-fundamental">了解更多 →</a>
-  </div>
-
-  <div class="grid-item">
-    <h3>💰 階段四</h3>
-    <p><strong>估值分析</strong></p>
-    <p>判斷合理價格區間</p>
-    <a href="{{ site.baseurl }}/docs/stage4-valuation">了解更多 →</a>
-  </div>
-
-  <div class="grid-item">
-    <h3>📊 階段五</h3>
-    <p><strong>市場情緒</strong></p>
-    <p>追蹤籌碼與情緒</p>
-    <span class="label label-yellow">開發中</span>
-  </div>
-
-  <div class="grid-item">
-    <h3>📉 階段六</h3>
-    <p><strong>技術分析</strong></p>
-    <p>優化進出場時機</p>
-    <span class="label label-yellow">開發中</span>
-  </div>
-
-  <div class="grid-item">
-    <h3>🛡️ 階段七</h3>
-    <p><strong>風險管理</strong></p>
-    <p>執行紀律與部位</p>
-    <span class="label label-yellow">開發中</span>
-  </div>
-</div>
+[查看詳細說明 →](./docs/framework.md)
 
 ---
 
 ## 🌟 核心特色
 
-<div class="feature-grid">
-  <div class="feature">
-    <span class="icon">✅</span>
-    <h4>系統化流程</h4>
-    <p>七階段完整覆蓋投資決策所需面向</p>
-  </div>
-
-  <div class="feature">
-    <span class="icon">🚀</span>
-    <h4>即學即用</h4>
-    <p>無需技術背景,複製連結即可使用</p>
-  </div>
-
-  <div class="feature">
-    <span class="icon">🔄</span>
-    <h4>多平台支援</h4>
-    <p>適用於主流 AI 助理平台</p>
-  </div>
-
-  <div class="feature">
-    <span class="icon">📖</span>
-    <h4>開源免費</h4>
-    <p>個人投資研究完全免費使用</p>
-  </div>
-</div>
+- ✅ **系統化流程** - 七階段完整覆蓋投資決策
+- ✅ **即學即用** - 無需技術背景，複製連結即可
+- ✅ **多平台支援** - 適用於主流 AI 助理
+- ✅ **開源免費** - 個人投資研究完全免費
 
 ---
 
@@ -143,8 +78,8 @@ https://raw.githubusercontent.com/...FRAMEWORK.md
 
 ```
 
-請依照此框架,完整分析 Tesla (TSLA):
-https://raw.githubusercontent.com/.../FRAMEWORK.md
+請依照此框架，完整分析 Tesla (TSLA)：
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md
 
 ```
 
@@ -152,43 +87,141 @@ https://raw.githubusercontent.com/.../FRAMEWORK.md
 
 ```
 
-請分析半導體產業的投資機會:
-https://raw.githubusercontent.com/.../industry-research/SKILL.md
+請分析半導體產業的投資機會：
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/industry-research/SKILL.md
 
 ```
-
-### 評估市場環境
-
-```
-
-請分析當前美股的投資環境:
-https://raw.githubusercontent.com/.../macro-market-analysis/SKILL.md
-
-```
-
-[查看更多範例 →]({{ site.baseurl }}/docs/getting-started#使用範例)
 
 ---
 
 ## ⚖️ 免責聲明
 
-{: .warning }
-本框架僅供教育與研究用途,所有分析不構成專業投資建議。投資有風險,決策需謹慎。使用者應自行承擔所有投資決策的責任。
+本框架僅供教育與研究用途，所有分析不構成專業投資建議。投資有風險，決策需謹慎。
 
 ---
 
 ## 🤝 貢獻與支持
 
-這是一個持續改進的開源專案:
-
-- 📧 [提交 Issue](https://github.com/EvanChuan/professional-investor/issues)
-- 💬 [參與討論](https://github.com/EvanChuan/professional-investor/discussions)
-- ⭐ [給個 Star](https://github.com/EvanChuan/professional-investor)
+- [GitHub Repository](https://github.com/EvanChuan/investor_skill)
+- [提交 Issue](https://github.com/EvanChuan/investor_skill/issues)
+- [參與討論](https://github.com/EvanChuan/investor_skill/discussions)
 
 ---
 
-<div class="footer-cta">
-  <h2>準備開始了嗎?</h2>
-  <p>複製框架連結,貼到你的 AI 助理,立即開始專業級投資分析!</p>
-  <a href="{{ site.baseurl }}/docs/getting-started" class="btn btn-primary btn-lg">開始使用 →</a>
-</div>
+**版本：** v1.0.0 | **維護者：** Evan | **更新日期：** 2026-01-15
+```
+
+
+#### 步驟 3：簡化 `docs/getting-started.md`
+
+```markdown
+---
+layout: default
+title: 快速開始
+---
+
+# 快速開始指南
+
+[返回首頁](../)
+
+---
+
+## 🎯 三步驟開始使用
+
+### 步驟 1：複製框架連結
+
+```
+
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md
+
+```
+
+### 步驟 2：選擇 AI 平台
+
+#### ⭐ Perplexity AI（強烈推薦）
+
+**優勢：**
+- 自動搜尋最新財務數據
+- 即時引用可驗證來源
+- 特別適合需要即時資訊的分析
+
+**開始使用：** [perplexity.ai](https://www.perplexity.ai)
+
+#### 💡 Claude.ai（深度分析推薦）
+
+**優勢：**
+- 深度邏輯推理
+- 完整結構化報告
+- 適合複雜財務分析
+
+**開始使用：** [claude.ai](https://claude.ai)
+
+#### 其他平台
+
+- ChatGPT Plus：[chatgpt.com](https://chatgpt.com)
+- Google Gemini：[gemini.google.com](https://gemini.google.com)
+
+### 步驟 3：貼上並開始
+
+在 AI 對話框中輸入：
+
+```
+
+請詳細閱讀這份投資分析框架：
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md
+
+我想分析 [公司名稱/產業/市場]
+
+```
+
+---
+
+## 💬 對話範本
+
+### 範本 1：完整股票分析
+
+```
+
+請讀取這份投資框架：
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md
+
+我想對 Tesla (TSLA) 進行完整的七階段投資分析。
+
+```
+
+### 範本 2：快速產業研究
+
+```
+
+依照此框架，幫我分析半導體產業：
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/industry-research/SKILL.md
+
+```
+
+---
+
+## ❓ 常見問題
+
+### Q：AI 說無法讀取連結？
+
+試試明確指令：
+
+```
+
+請存取並完整讀取以下 GitHub 檔案：
+[貼上連結]
+
+```
+
+### Q：需要每次都貼連結嗎？
+
+- 同一對話串：不需要
+- 新對話串：需要重新載入
+
+### Q：免費版 AI 夠用嗎？
+
+免費版完全夠用！付費版體驗更好但非必須。
+
+---
+
+[返回首頁](../) | [查看 FAQ](./faq.md)

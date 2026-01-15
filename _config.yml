@@ -6,14 +6,14 @@ email: [email protected]
 
 # GitHub 資訊
 github_username: EvanChuan
-repository: EvanChuan/professional-investor
+repository: EvanChuan/investor_skill
 
 # URL 設定
-baseurl: "/professional-investor" # 如果使用專案網站
-url: "https://evanchuan.github.io" # 你的 GitHub Pages URL
+baseurl: "/investor_skill"
+repository: EvanChuan/investor_skill
 
 # 主題設定 (推薦使用 Just the Docs 主題)
-theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs
 # remote_theme: just-the-docs/just-the-docs # 如果使用遠端主題
 
 # 主題配置
@@ -28,7 +28,7 @@ search:
 # 導航設定
 aux_links:
   "GitHub Repository":
-    - "//github.com/EvanChuan/professional-investor"
+    - "//github.com/EvanChuan/investor_skill"
   "快速開始":
     - "/docs/getting-started"
 

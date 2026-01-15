@@ -1,10 +1,8 @@
 source "https://rubygems.org"
 
 gem "github-pages", group: :jekyll_plugins
-gem "jekyll-include-cache", group: :jekyll_plugins
-
-# 如果使用 Just the Docs 主題
-gem "just-the-docs"
+gem "jekyll-remote-theme"
+gem "jekyll-seo-tag"
 
 # Windows 平台
 platforms :mingw, :x64_mingw, :mswin, :jruby do

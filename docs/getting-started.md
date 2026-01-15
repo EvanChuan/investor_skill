@@ -26,21 +26,19 @@ permalink: /docs/getting-started
 #### 完整框架 (推薦首次使用)
 
 ```
-
-https://raw.githubusercontent.com/EvanChuan/professional-investor/main/skills/professional-investor/FRAMEWORK.md
-
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md
 ```
 
-[📋 點此複製](https://raw.githubusercontent.com/EvanChuan/professional-investor/main/skills/professional-investor/FRAMEWORK.md){: .btn .btn-blue }
+[📋 點此複製](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md)
 
 #### 各階段連結
 
-| 階段 | 連結 | 操作 |
-|:---:|------|:----:|
-| 1 | 總體經濟分析 | [複製](https://raw.githubusercontent.com/.../macro-market-analysis/SKILL.md){: .btn .btn-sm } |
-| 2 | 產業研究 | [複製](https://raw.githubusercontent.com/.../industry-research/SKILL.md){: .btn .btn-sm } |
-| 3 | 個股基本面 | [複製](https://raw.githubusercontent.com/.../equity-fundamental-analysis/SKILL.md){: .btn .btn-sm } |
-| 4 | 估值分析 | [複製](https://raw.githubusercontent.com/.../valuation-analysis/SKILL.md){: .btn .btn-sm } |
+| 階段 | 連結 |
+|:---:|------|
+| 1 | [總體經濟分析](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/macro-market-analysis/SKILL.md) |
+| 2 | [產業研究](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/industry-research/SKILL.md) |
+| 3 | [個股基本面](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/equity-fundamental-analysis/SKILL.md) |
+| 4 | [估值分析](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/valuation-analysis/SKILL.md) |
 
 ---
 
@@ -50,7 +48,6 @@ https://raw.githubusercontent.com/EvanChuan/professional-investor/main/skills/pr
 
 #### ⭐ Perplexity AI (強烈推薦)
 
-{: .highlight }
 **最佳選擇 for 投資分析**
 
 **優勢:**
@@ -100,15 +97,12 @@ https://raw.githubusercontent.com/EvanChuan/professional-investor/main/skills/pr
 在 AI 對話框中輸入:
 
 ```
-
 請詳細閱讀這份投資分析框架,並準備協助我進行專業級的投資研究:
 [貼上你複製的連結]
 
 我想分析 [公司名稱/產業/市場]
-
 ```
 
-{: .new }
 > 💡 **小提示:** 明確告訴 AI 你的分析目標,可以獲得更精準的回應!
 
 ---
@@ -118,13 +112,11 @@ https://raw.githubusercontent.com/EvanChuan/professional-investor/main/skills/pr
 ### 範本 1: 完整股票分析
 
 ```
-
 請讀取這份投資框架:
-https://raw.githubusercontent.com/.../FRAMEWORK.md
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md
 
 我想對 Tesla (TSLA) 進行完整的七階段投資分析。
 請從第一階段(總體經濟)開始,使用最新的 2026 年 1 月數據。
-
 ```
 
 ---
@@ -132,12 +124,10 @@ https://raw.githubusercontent.com/.../FRAMEWORK.md
 ### 範本 2: 快速產業研究
 
 ```
-
 依照此框架,幫我分析半導體產業:
-https://raw.githubusercontent.com/.../industry-research/SKILL.md
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/industry-research/SKILL.md
 
 重點請放在:
-
 1. 產業生命週期位置
 2. 供需分析
 3. 重點公司推薦
@@ -149,16 +139,13 @@ https://raw.githubusercontent.com/.../industry-research/SKILL.md
 ### 範本 3: 市場環境評估
 
 ```
-
 請使用框架評估當前美股投資環境:
-https://raw.githubusercontent.com/.../macro-market-analysis/SKILL.md
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/macro-market-analysis/SKILL.md
 
 請分析:
-
 - 當前市場風險等級
 - 建議股票部位比例
 - 適合佈局的產業板塊
-
 ```
 
 ---
@@ -185,16 +172,13 @@ https://raw.githubusercontent.com/.../macro-market-analysis/SKILL.md
 
 ### Q: AI 說無法讀取連結?
 
-{: .warning }
 某些 AI 可能需要明確指令。試試:
 
 ```
-
 請存取並完整讀取以下 GitHub 檔案:
 [貼上連結]
 
 讀取完成後,請確認你已理解框架內容。
-
 ```
 
 如果還是不行:
@@ -206,7 +190,6 @@ https://raw.githubusercontent.com/.../macro-market-analysis/SKILL.md
 
 ### Q: 需要每次都貼連結嗎?
 
-{: .note }
 **同一對話串**: 不需要,AI 會記住  
 **新對話串**: 需要重新載入
 
@@ -219,7 +202,6 @@ https://raw.githubusercontent.com/.../macro-market-analysis/SKILL.md
 
 ### Q: 免費版 AI 夠用嗎?
 
-{: .highlight }
 免費版完全夠用!但付費版體驗更好:
 
 | 平台 | 免費版 | 付費版 ($20/月) |
@@ -234,7 +216,6 @@ https://raw.githubusercontent.com/.../macro-market-analysis/SKILL.md
 
 ### Q: 如何驗證 AI 的分析?
 
-{: .important }
 **務必交叉驗證!**
 
 **數據來源:**
@@ -255,80 +236,50 @@ https://raw.githubusercontent.com/.../macro-market-analysis/SKILL.md
 ### 技巧 1: 分階段深入
 
 ```
-
 我想對 Apple (AAPL) 進行完整分析:
 
 第一步 - 載入框架:
-https://raw.githubusercontent.com/.../FRAMEWORK.md
+https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/FRAMEWORK.md
 
 第二步 - 逐步執行:
 請先完成階段一(總體經濟),用最新數據。
 完成後我再請你繼續。
-
 ```
 
 ### 技巧 2: 比較多支股票
 
 ```
-
 請用此框架比較:
-
 - Apple (AAPL)
 - Microsoft (MSFT)
 - Google (GOOGL)
 
-框架: https://raw.githubusercontent.com/.../SKILL.md
+框架: https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/equity-fundamental-analysis/SKILL.md
 
 產出比較表,包含: 基本面評分、財務健康度、競爭優勢
-
 ```
 
 ### 技巧 3: 建立觀察清單
 
 ```
-
 請用框架篩選科技股中最值得投資的前 5 家:
 
-產業框架: [連結 1]
-個股框架: [連結 2]
+產業框架: https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/industry-research/SKILL.md
+
+個股框架: https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professional-investor/equity-fundamental-analysis/SKILL.md
 
 標準: 產業領先、財務健康、成長性佳、估值合理
-
 ```
 
 ---
 
-## 📚 下一步
+## 📚 相關連結
 
-準備好開始了嗎? 選擇你的路徑:
-
-<div class="code-example" markdown="1">
-
-### 新手投資者
-1. 先閱讀 [框架概覽]({{ site.baseurl }}/docs/framework)
-2. 從 [總體經濟分析]({{ site.baseurl }}/docs/stage1-macro) 開始學
-3. 搭配實際案例練習
-
-### 有經驗投資者
-1. 直接使用需要的階段
-2. 整合到現有投資流程
-3. 建立個人檢查清單
-
-### 專業分析師
-1. 作為結構化分析工具
-2. 確保不遺漏關鍵面向
-3. 用於團隊協作報告
-
-</div>
+- [返回首頁](../)
+- [查看完整框架](https://github.com/EvanChuan/investor_skill/blob/main/skills/professional-investor/FRAMEWORK.md)
+- [GitHub Repository](https://github.com/EvanChuan/investor_skill)
+- [提交 Issue](https://github.com/EvanChuan/investor_skill/issues)
 
 ---
 
-<div class="cta-box">
-  <h3>🚀 立即開始你的第一次分析!</h3>
-  <p>複製框架連結,選擇 AI 平台,開始專業級投資研究</p>
-  <a href="https://raw.githubusercontent.com/EvanChuan/professional-investor/main/skills/professional-investor/FRAMEWORK.md" class="btn btn-primary">複製完整框架連結</a>
-</div>
-
----
-
-需要幫助? [查看 FAQ]({{ site.baseurl }}/docs/faq) | [提交問題](https://github.com/EvanChuan/professional-investor/issues)
+需要幫助? [提交問題](https://github.com/EvanChuan/investor_skill/issues)

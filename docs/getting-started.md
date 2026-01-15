@@ -1,19 +1,22 @@
 ---
 layout: default
 title: 快速開始
-nav_order: 2
 description: "如何快速開始使用投資分析框架"
-permalink: /docs/getting-started
 ---
 
 # 快速開始指南
-{: .no_toc }
+
+[返回首頁](../)
+
+---
 
 ## 目錄
-{: .no_toc .text-delta }
 
-1. TOC
-{:toc}
+- [三步驟開始使用](#三步驟開始使用)
+- [對話範本](#對話範本)
+- [裝置使用指南](#裝置使用指南)
+- [常見問題](#常見問題)
+- [進階使用](#進階使用)
 
 ---
 
@@ -44,7 +47,7 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professio
 
 ### 步驟 2: 選擇 AI 平台
 
-本框架支援以下 AI 助理:
+本框架支持以下 AI 助理:
 
 #### ⭐ Perplexity AI (強烈推薦)
 
@@ -276,10 +279,11 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professio
 ## 📚 相關連結
 
 - [返回首頁](../)
-- [查看完整框架](https://github.com/EvanChuan/investor_skill/blob/main/skills/professional-investor/FRAMEWORK.md)
+- [查看完整框架](./framework.md)
+- [常見問題](./faq.md)
 - [GitHub Repository](https://github.com/EvanChuan/investor_skill)
 - [提交 Issue](https://github.com/EvanChuan/investor_skill/issues)
 
 ---
 
-需要幫助? [提交問題](https://github.com/EvanChuan/investor_skill/issues)
+需要幫助? [查看 FAQ](./faq.md) | [提交問題](https://github.com/EvanChuan/investor_skill/issues)

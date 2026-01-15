@@ -37,7 +37,9 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/professio
 
 ## 📚 完整文檔
 
-- [快速開始指南](./docs/getting-started.md)
+- [快速開始指南](docs/getting-started.html)
+- [框架概覽](docs/framework.html)
+- [常見問題](docs/faq.html)
 - [GitHub Repository](https://github.com/EvanChuan/investor_skill)
 
 ---

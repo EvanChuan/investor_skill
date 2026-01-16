@@ -1,6 +1,18 @@
 ---
+language: en
+output_language: zh-TW
+---
+
+<!-- CRITICAL INSTRUCTION -->
+**IMPORTANT: When using this skill, you MUST generate ALL responses in Traditional Chinese (繁體中文).**
+
+This English documentation serves as a reference framework for the AI model.
+However, all analysis outputs, reports, and recommendations must be written in Traditional Chinese.
+<!-- END INSTRUCTION -->
+
+---
 name: equity-fundamental-analysis
-description: 深度評估個別公司的投資價值。透過系統化分析企業營業項目、客戶基礎、商業模式、競爭優勢、財務體質、管理層能力、產品發展與經營風險，產出結構化的基本面評分與投資建議。適用於中長期投資決策前的完整公司研究。
+description: In-depth evaluation of individual company investment value. Through systematic analysis of business operations, customer base, business model, competitive advantages, financial health, management quality, product development, and operational risks, produce structured fundamental analysis scores and investment recommendations. Suitable for comprehensive company research before medium to long-term investment decisions.
 version: 1.0.0
 license: Proprietary
 author: Evan
@@ -12,259 +24,259 @@ tags:
   - investment-research
 ---
 
-# 個股基本面分析 (Equity Fundamental Analysis)
+# Equity Fundamental Analysis
 
-## 概述
+## Overview
 
-本技能協助投資人系統化評估單一公司的投資價值，透過七大分析維度深入研究企業營運本質、競爭地位、財務健康度、管理層能力與潛在風險，最終產出量化評分與具體投資建議。
+This skill assists investors in systematically evaluating the investment value of individual companies through seven core analytical dimensions, conducting in-depth research on business fundamentals, competitive positioning, financial health, management capabilities, and potential risks, ultimately producing quantitative scores and specific investment recommendations.
 
-**核心價值：**
-將資深投資人的公司研究方法論轉化為可重複執行的分析流程，確保每次評估都涵蓋關鍵要素，避免遺漏重要風險或機會。
+**Core Value:**
+Transform senior investors' company research methodology into a repeatable analytical process, ensuring each evaluation covers critical elements and avoids missing important risks or opportunities.
 
-**適用情境：**
-- 需要對特定股票進行深度研究（買入前/持有檢視/賣出評估）
-- 需要標準化的公司分析報告
-- 需要比較同產業不同公司的基本面優劣
-- 需要識別公司的關鍵風險與成長驅動因素
+**Applicable Scenarios:**
+- Need for in-depth research on specific stocks (pre-purchase / holding review / selling evaluation)
+- Need for standardized company analysis reports
+- Need to compare fundamental strengths of different companies in the same industry
+- Need to identify key risks and growth drivers of a company
 
-**不適用情境：**
-- 短線交易（本分析偏重中長期價值評估）
-- 純技術面交易決策
-- 缺乏公開財務資訊的非上市公司
-
----
-
-## 分析架構
-
-本技能採用七大核心分析維度，依序漸進評估：
-
-### 1. 企業營業項目分析 (Business Understanding)
-
-**目標：** 清楚理解公司在做什麼、賣給誰、如何賺錢
-
-**核心問題：**
-- 這家公司是在做什麼？能用一句話解釋嗎？
-- 營業項目有哪些？各佔營收比例多少？
-- 產品/服務的功能是什麼？市場有真實需求嗎？
-- 主要客戶是誰？有知名大客戶或政府訂單嗎？
-- 客戶需求是真實的還是囤貨行為？
-
-**分析方法：**
-- 瀏覽公司官網確認營業項目與產品線
-- 檢視最新年報/季報/法說會資料了解營收結構
-- 識別主要客戶群與市場定位
-- 評估產品市場需求真實性與持續性
-
-**輸出內容：**
-- 業務描述（1-2 段落，清晰易懂）
-- 產品/服務矩陣（產品名稱、功能、目標客戶、營收佔比）
-- 主要客戶清單與訂單性質
-- 業務理解評分（1-10 分）
-
-> **詳細說明：** 參考 `references/business-understanding-guide.md`
+**Not Applicable Scenarios:**
+- Short-term trading (this analysis focuses on medium to long-term value assessment)
+- Pure technical analysis trading decisions
+- Non-listed companies lacking public financial information
 
 ---
 
-### 2. 商業模式與競爭優勢分析 (Competitive Position)
+## Analytical Framework
 
-**目標：** 評估公司的盈利模式、護城河與競爭地位
+This skill employs seven core analytical dimensions for progressive evaluation:
 
-**核心問題：**
-- 公司的商業模式是什麼？如何賺錢？
-- 競爭優勢在哪？是否有護城河（經濟護城河）？
-- 是否擁有關鍵技術、專利或獨特資源？
-- 與競爭對手相比表現如何？誰更賺錢？誰更受政府/市場青睞？
+### 1. Business Understanding Analysis
 
-**分析內容：**
-- 商業模式拆解（收入來源、成本結構、毛利率水平）
-- 護城河評估（網路效應、轉換成本、成本優勢、無形資產、規模優勢）
-- 競爭對手財務比較（營收、獲利、ROE、市場份額）
-- 競爭地位定位（龍頭/挑戰者/追隨者/利基玩家）
+**Objective:** Clearly understand what the company does, who they sell to, and how they make money
 
-**輸出內容：**
-- 商業模式圖（收入來源與成本結構）
-- 護城河評分（1-10 分）與類型說明
-- 競爭對手比較表
-- 競爭優勢評分（1-10 分）
+**Core Questions:**
+- What does this company do? Can it be explained in one sentence?
+- What are the business segments? What percentage of revenue does each account for?
+- What is the function of the products/services? Is there genuine market demand?
+- Who are the main customers? Are there well-known major clients or government contracts?
+- Is customer demand real or inventory stockpiling behavior?
 
-> **詳細說明：** 參考 `references/moat-analysis-framework.md`
+**Analytical Methods:**
+- Browse company website to confirm business operations and product lines
+- Review latest annual/quarterly reports and earnings calls to understand revenue structure
+- Identify main customer groups and market positioning
+- Evaluate authenticity and sustainability of product market demand
 
----
+**Output Content:**
+- Business description (1-2 paragraphs, clear and understandable)
+- Product/service matrix (product name, function, target customers, revenue share)
+- Major customer list and order nature
+- Business understanding score (1-10 points)
 
-### 3. 財務體質分析 (Financial Health)
-
-**目標：** 評估公司財務健康度、獲利品質與成長性
-
-**核心問題：**
-- 公司的財務體質健康嗎？
-- 獲利穩定嗎？成長性如何？
-- 現金流量充足嗎？營收含金量高嗎？
-- 應收帳款、存貨品質如何？
-
-**分析框架：**
-
-#### 3.1 損益表分析
-- 營收成長率（YoY、QoQ、3 年 CAGR）
-- 毛利率、營業利益率、淨利率趨勢
-- EPS 成長性與業外損益佔比
-
-#### 3.2 資產負債表分析
-- 流動比率、速動比率（短期償債能力）
-- 負債比率（財務槓桿風險）
-- ROE、ROA（資本運用效率）
-
-#### 3.3 現金流量表分析
-- 營業現金流（正數且持續成長）
-- 自由現金流（FCF = 營業現金流 - 資本支出）
-- 營收含金量（營業現金流 / 營收）
-
-#### 3.4 獲利品質評估
-- 應收帳款週轉率（是否有假營收風險）
-- 存貨週轉率（是否有存貨跌價風險）
-- 三表勾稽（損益表、資產負債表、現金流量表一致性）
-
-**輸出內容：**
-- 財務指標摘要表（近 3-5 年趨勢）
-- 獲利品質評分（1-10 分）
-- 財務健康度評級（優/良/中/差）
-- 關鍵財務風險提示
-
-> **詳細說明：** 參考 `references/financial-analysis-metrics.md`
+> **Detailed Guide:** Reference `references/business-understanding-guide.md`
 
 ---
 
-### 4. 管理層與公司治理 (Management Quality)
+### 2. Business Model and Competitive Advantage Analysis
 
-**目標：** 評估管理層能力、誠信與公司治理水平
+**Objective:** Evaluate the company's profit model, moat, and competitive position
 
-**核心問題：**
-- 管理層能力與誠信如何？
-- 領導者在業界有影響力嗎？
-- 公司治理完善嗎？資訊透明嗎？
-- 如何追蹤管理層動態？哪些社群可以關注？
+**Core Questions:**
+- What is the company's business model? How do they make money?
+- Where are the competitive advantages? Is there an economic moat?
+- Does the company possess key technologies, patents, or unique resources?
+- How does it perform compared to competitors? Who is more profitable? Who is more favored by government/market?
 
-**評估維度：**
-- 領導者背景與能力（教育背景、產業經驗、業界聲譽）
-- 公司治理結構（董事會組成、股權結構、關係人交易）
-- 資訊透明度（法說會品質、年報詳細度）
-- 追蹤管道（社群媒體、產業訪談、投資人關係頁面）
+**Analytical Content:**
+- Business model breakdown (revenue sources, cost structure, gross margin levels)
+- Moat assessment (network effects, switching costs, cost advantages, intangible assets, scale advantages)
+- Competitor financial comparison (revenue, profitability, ROE, market share)
+- Competitive position (leader / challenger / follower / niche player)
 
-**輸出內容：**
-- 管理層能力評分（1-10 分）
-- 公司治理評級（優/良/中/差）
-- 關鍵人物介紹
-- 追蹤建議（法說會日期、社群帳號、產業大會）
+**Output Content:**
+- Business model diagram (revenue sources and cost structure)
+- Moat score (1-10 points) and type description
+- Competitor comparison table
+- Competitive advantage score (1-10 points)
 
-> **詳細說明：** 參考 `references/management-evaluation-guide.md`
-
----
-
-### 5. 產品發展與未來路線圖 (Product Development)
-
-**目標：** 了解產品生命週期、技術突破與未來成長潛力
-
-**核心問題：**
-- 產品處於什麼生命週期階段？
-- 是否有新產品或技術突破？
-- 下一個新產品是什麼？何時推出？
-- 消費者/市場對產品評價如何？
-
-**追蹤內容：**
-- 現有產品成熟度（導入/成長/成熟/衰退）
-- 新產品開發進度與市場潛力
-- 技術突破、專利申請與研發投入
-- 消費者評價與市場反應（評論、銷售數據）
-
-**輸出內容：**
-- 產品生命週期定位
-- 產品發展評分（1-10 分）
-- 未來產品路線圖
-- 技術競爭力評估
-
-> **詳細說明：** 參考 `references/product-lifecycle-analysis.md`
+> **Detailed Guide:** Reference `references/moat-analysis-framework.md`
 
 ---
 
-### 6. 事件驅動因素追蹤 (Event-Driven Factors)
+### 3. Financial Health Analysis
 
-**目標：** 識別可能影響股價的關鍵事件與投資機會
+**Objective:** Evaluate company's financial health, profitability quality, and growth potential
 
-**核心問題：**
-- 近期有哪些重要事件可能影響公司表現？
-- 財報發布日何時？業績預期如何？
-- 是否有併購、產能擴張、新廠建設等重大投資？
-- 是否有風險報酬不對等的投資機會？
+**Core Questions:**
+- Is the company's financial health sound?
+- Is profitability stable? How is the growth?
+- Is cash flow sufficient? Is revenue quality high?
+- What is the quality of accounts receivable and inventory?
 
-**重點追蹤事件：**
-- 財報發布日（季報、年報、法說會）
-- 股東大會（策略揭露、股東提問）
-- 新產品發表會（技術突破、市場反應）
-- 生產擴張/新工廠建設進度（影響未來產能）
-- 產業大會/龍頭公司重大發表
-- 併購整合、法規變動、訴訟爭議
+**Analytical Framework:**
 
-**輸出內容：**
-- 近期關鍵事件行事曆（含日期與潛在影響）
-- 事件驅動投資機會識別
-- 風險/報酬評估
+#### 3.1 Income Statement Analysis
+- Revenue growth rate (YoY, QoQ, 3-year CAGR)
+- Gross margin, operating margin, net margin trends
+- EPS growth and non-operating income proportion
 
-> **詳細說明：** 參考 `references/event-driven-checklist.md`
+#### 3.2 Balance Sheet Analysis
+- Current ratio, quick ratio (short-term solvency)
+- Debt ratio (financial leverage risk)
+- ROE, ROA (capital utilization efficiency)
 
----
+#### 3.3 Cash Flow Statement Analysis
+- Operating cash flow (positive and continuously growing)
+- Free cash flow (FCF = Operating Cash Flow - Capital Expenditure)
+- Revenue cash content (Operating Cash Flow / Revenue)
 
-### 7. 經營風險評估 (Risk Assessment)
+#### 3.4 Profitability Quality Assessment
+- Accounts receivable turnover rate (risk of false revenue)
+- Inventory turnover rate (risk of inventory impairment)
+- Three-statement reconciliation (consistency of income statement, balance sheet, cash flow statement)
 
-**目標：** 識別公司面臨的主要風險與應對策略
+**Output Content:**
+- Financial indicators summary table (3-5 year trends)
+- Profitability quality score (1-10 points)
+- Financial health rating (Excellent / Good / Fair / Poor)
+- Key financial risk alerts
 
-**核心問題：**
-- 公司面臨哪些主要風險？
-- 這些風險發生的機率與影響程度？
-- 是否有無法承受的致命風險？
-- 風險是否已反映在股價中？
-
-**風險分類：**
-
-#### 7.1 營運風險
-- 客戶集中度風險（前五大客戶佔比 >50%）
-- 供應鏈中斷風險
-- 產能不足或過剩
-- 技術落後或被顛覆
-
-#### 7.2 財務風險
-- 負債過高（負債比 >70%）
-- 利率風險、匯率風險
-- 流動性風險（短期償債能力）
-
-#### 7.3 產業風險
-- 產業景氣循環
-- 技術變革衝擊
-- 競爭加劇、價格戰
-
-#### 7.4 總體與治理風險
-- 政策法規變動
-- 地緣政治風險
-- 公司治理問題（關係人交易、財報不實）
-
-**輸出內容：**
-- 風險評級（低/中/高）
-- 主要風險清單（前 5 項）
-- 風險矩陣圖（機率 × 衝擊）
-- 風險應對建議
-
-> **詳細說明：** 參考 `references/risk-assessment-matrix.md`
+> **Detailed Guide:** Reference `references/financial-analysis-metrics.md`
 
 ---
 
-## 使用方式
+### 4. Management and Corporate Governance Analysis
 
-### 輸入格式
+**Objective:** Evaluate management capabilities, integrity, and corporate governance standards
+
+**Core Questions:**
+- How are management capabilities and integrity?
+- Does the leader have industry influence?
+- Is corporate governance sound? Is information transparent?
+- How to track management dynamics? Which social media to follow?
+
+**Evaluation Dimensions:**
+- Leader background and capabilities (educational background, industry experience, industry reputation)
+- Corporate governance structure (board composition, ownership structure, related party transactions)
+- Information transparency (earnings call quality, annual report detail)
+- Tracking channels (social media, industry interviews, investor relations page)
+
+**Output Content:**
+- Management capability score (1-10 points)
+- Corporate governance rating (Excellent / Good / Fair / Poor)
+- Key personnel introduction
+- Tracking recommendations (earnings call dates, social media accounts, industry conferences)
+
+> **Detailed Guide:** Reference `references/management-evaluation-guide.md`
+
+---
+
+### 5. Product Development and Future Roadmap Analysis
+
+**Objective:** Understand product lifecycle, technological breakthroughs, and future growth potential
+
+**Core Questions:**
+- What lifecycle stage is the product at?
+- Are there new products or technological breakthroughs?
+- What is the next new product? When will it be launched?
+- How do consumers/market evaluate the product?
+
+**Tracking Content:**
+- Existing product maturity (introduction / growth / maturity / decline)
+- New product development progress and market potential
+- Technological breakthroughs, patent applications, and R&D investment
+- Consumer reviews and market response (reviews, sales data)
+
+**Output Content:**
+- Product lifecycle positioning
+- Product development score (1-10 points)
+- Future product roadmap
+- Technological competitiveness assessment
+
+> **Detailed Guide:** Reference `references/product-lifecycle-analysis.md`
+
+---
+
+### 6. Event-Driven Factors Tracking
+
+**Objective:** Identify key events that may affect stock price and investment opportunities
+
+**Core Questions:**
+- What important events might affect company performance recently?
+- When is the earnings release date? What are the earnings expectations?
+- Are there major investments such as M&A, capacity expansion, or new factory construction?
+- Are there investment opportunities with asymmetric risk-return?
+
+**Key Tracking Events:**
+- Earnings release dates (quarterly reports, annual reports, earnings calls)
+- Shareholder meetings (strategy disclosure, shareholder Q&A)
+- New product launches (technological breakthroughs, market response)
+- Production expansion / new factory construction progress (affecting future capacity)
+- Industry conferences / major announcements by leading companies
+- M&A integration, regulatory changes, litigation disputes
+
+**Output Content:**
+- Recent key event calendar (including dates and potential impacts)
+- Event-driven investment opportunity identification
+- Risk/reward assessment
+
+> **Detailed Guide:** Reference `references/event-driven-checklist.md`
+
+---
+
+### 7. Operational Risk Assessment
+
+**Objective:** Identify main risks faced by the company and response strategies
+
+**Core Questions:**
+- What are the main risks faced by the company?
+- What is the probability and impact of these risks?
+- Are there any fatal risks that cannot be tolerated?
+- Are risks already reflected in the stock price?
+
+**Risk Categories:**
+
+#### 7.1 Operational Risks
+- Customer concentration risk (top 5 customers account for >50%)
+- Supply chain disruption risk
+- Insufficient or excess capacity
+- Technological lag or disruption
+
+#### 7.2 Financial Risks
+- Excessive debt (debt ratio >70%)
+- Interest rate risk, exchange rate risk
+- Liquidity risk (short-term solvency)
+
+#### 7.3 Industry Risks
+- Industry business cycle
+- Technological revolution impact
+- Intensified competition, price wars
+
+#### 7.4 Macro and Governance Risks
+- Policy and regulatory changes
+- Geopolitical risks
+- Corporate governance issues (related party transactions, financial fraud)
+
+**Output Content:**
+- Risk rating (Low / Medium / High)
+- Main risk list (top 5 items)
+- Risk matrix diagram (probability × impact)
+- Risk response recommendations
+
+> **Detailed Guide:** Reference `references/risk-assessment-matrix.md`
+
+---
+
+## Usage
+
+### Input Format
 
 ```json
 {
   "analysis_type": "fundamental_analysis",
   "ticker": "2330.TW",
-  "company_name": "台積電",
-  "analysis_date": "2026-01-14",
+  "company_name": "台積電 (TSMC)",
+  "analysis_date": "2026-01-16",
   "language": "zh-TW",
   "depth": "comprehensive",
   "compare_peers": true,
@@ -272,265 +284,263 @@ tags:
 }
 ```
 
-**參數說明：**
+**Parameter Descriptions:**
 
-- `ticker`: 股票代碼（必填）
-- `company_name`: 公司名稱（選填，方便搜尋）
-- `depth`: 分析深度（`basic` / `comprehensive`）
-- `compare_peers`: 是否進行同業比較（`true` / `false`）
-- `peer_tickers`: 競爭對手股票代碼（若 compare_peers = true）
+- `ticker`: Stock ticker (required)
+- `company_name`: Company name (optional, for search convenience)
+- `depth`: Analysis depth (`basic` / `comprehensive`)
+- `compare_peers`: Whether to perform peer comparison (`true` / `false`)
+- `peer_tickers`: Competitor stock tickers (if compare_peers = true)
 
 ---
 
-## 輸出格式
+## Output Format
 
-### 完整分析報告結構
+### Complete Analysis Report Structure
 
 ```markdown
-# [公司名稱] 基本面分析報告
+# [Company Name] Fundamental Analysis Report
 
-**分析日期：** YYYY-MM-DD  
-**股票代碼：** XXXX  
-**產業分類：** XXXX  
-**分析師：** 資深投資人 AI
-
-***
-
-## 執行摘要
-
-[3-5 句話總結投資價值與關鍵發現]
-
-- **基本面評分：** X/10
-- **投資建議：** 買進 / 持有 / 觀望 / 賣出
-- **關鍵優勢：** [1-2 項]
-- **主要風險：** [1-2 項]
-- **目標價區間：** XXX - XXX 元（參考用）
+**Analysis Date:** YYYY-MM-DD  
+**Stock Ticker:** XXXX  
+**Industry Classification:** XXXX  
+**Analyst:** Senior Investor AI
 
 ***
 
-## 1. 企業營業項目
+## Executive Summary
 
-### 1.1 業務描述
-[用淺顯語言說明公司在做什麼]
+[3-5 sentences summarizing investment value and key findings]
 
-### 1.2 產品/服務矩陣
-| 產品名稱 | 功能 | 目標客戶 | 營收佔比 |
-|---------|------|----------|---------|
-| ...     | ...  | ...      | ...     |
-
-### 1.3 主要客戶與訂單
-- 知名客戶：[清單]
-- 政府訂單：[有/無，金額規模]
-- 客戶需求評估：[真實需求 / 囤貨行為]
-
-**業務理解評分：** X/10
+- **Fundamental Score:** X/10
+- **Investment Recommendation:** Buy / Hold / Watch / Sell
+- **Key Strengths:** [1-2 items]
+- **Main Risks:** [1-2 items]
+- **Target Price Range:** XXX - XXX (reference only)
 
 ***
 
-## 2. 商業模式與競爭優勢
+## 1. Business Operations
 
-### 2.1 商業模式
-[收入來源、成本結構、毛利率水平]
+### 1.1 Business Description
+[Explain what the company does in plain language]
 
-### 2.2 護城河評估
-- **護城河類型：** [網路效應 / 轉換成本 / 成本優勢 / 無形資產 / 規模優勢]
-- **護城河強度：** X/10
-- **說明：** [為什麼有護城河]
+### 1.2 Product/Service Matrix
+| Product Name | Function | Target Customers | Revenue Share |
+|--------------|----------|------------------|---------------|
+| ...          | ...      | ...              | ...           |
 
-### 2.3 競爭對手比較
-| 公司 | 營收(億) | 毛利率 | 淨利率 | ROE | 市場份額 |
-|------|---------|--------|--------|-----|---------|
-| 本公司 | ... | ... | ... | ... | ... |
-| 競爭者A | ... | ... | ... | ... | ... |
-| 競爭者B | ... | ... | ... | ... | ... |
+### 1.3 Major Customers and Orders
+- Notable clients: [list]
+- Government contracts: [yes/no, scale]
+- Customer demand assessment: [genuine demand / stockpiling behavior]
 
-**競爭地位：** [龍頭 / 挑戰者 / 追隨者 / 利基]  
-**競爭優勢評分：** X/10
+**Business Understanding Score:** X/10
 
 ***
 
-## 3. 財務體質分析
+## 2. Business Model and Competitive Advantage
 
-### 3.1 損益表關鍵指標（近 3-5 年）
-| 項目 | 2025 | 2024 | 2023 | 趨勢 |
-|------|------|------|------|------|
-| 營收成長率 | X% | X% | X% | ↑/→/↓ |
-| 毛利率 | X% | X% | X% | ↑/→/↓ |
-| 營益率 | X% | X% | X% | ↑/→/↓ |
-| 淨利率 | X% | X% | X% | ↑/→/↓ |
+### 2.1 Business Model
+[Revenue sources, cost structure, gross margin levels]
+
+### 2.2 Moat Assessment
+- **Moat Type:** [Network effects / Switching costs / Cost advantages / Intangible assets / Scale advantages]
+- **Moat Strength:** X/10
+- **Description:** [Why there is a moat]
+
+### 2.3 Competitor Comparison
+| Company | Revenue (billion) | Gross Margin | Net Margin | ROE | Market Share |
+|---------|------------------|--------------|------------|-----|--------------|
+| This Company | ... | ... | ... | ... | ... |
+| Competitor A | ... | ... | ... | ... | ... |
+| Competitor B | ... | ... | ... | ... | ... |
+
+**Competitive Position:** [Leader / Challenger / Follower / Niche]  
+**Competitive Advantage Score:** X/10
+
+***
+
+## 3. Financial Health Analysis
+
+### 3.1 Income Statement Key Indicators (Past 3-5 Years)
+| Item | 2025 | 2024 | 2023 | Trend |
+|------|------|------|------|-------|
+| Revenue Growth Rate | X% | X% | X% | ↑/→/↓ |
+| Gross Margin | X% | X% | X% | ↑/→/↓ |
+| Operating Margin | X% | X% | X% | ↑/→/↓ |
+| Net Margin | X% | X% | X% | ↑/→/↓ |
 | EPS | X | X | X | ↑/→/↓ |
 
-### 3.2 資產負債表關鍵指標
-| 項目 | 數值 | 標準 | 評估 |
-|------|------|------|------|
-| 流動比率 | X% | >150% | ✓/✗ |
-| 速動比率 | X% | >100% | ✓/✗ |
-| 負債比率 | X% | <50% | ✓/✗ |
+### 3.2 Balance Sheet Key Indicators
+| Item | Value | Standard | Assessment |
+|------|-------|----------|-----------|
+| Current Ratio | X% | >150% | ✓/✗ |
+| Quick Ratio | X% | >100% | ✓/✗ |
+| Debt Ratio | X% | <50% | ✓/✗ |
 | ROE | X% | >15% | ✓/✗ |
 | ROA | X% | >10% | ✓/✗ |
 
-### 3.3 現金流量與獲利品質
-- 營業現金流：XXX 億（YoY +/-X%）
-- 自由現金流：XXX 億
-- 營收含金量：XX%（營業現金流/營收）
-- 應收帳款週轉天數：XX 天
-- 存貨週轉天數：XX 天
+### 3.3 Cash Flow and Profitability Quality
+- Operating Cash Flow: XXX billion (YoY +/-X%)
+- Free Cash Flow: XXX billion
+- Revenue Cash Content: XX% (Operating Cash Flow/Revenue)
+- Accounts Receivable Turnover Days: XX days
+- Inventory Turnover Days: XX days
 
-**財務健康度評分：** X/10  
-**評級：** 優 / 良 / 中 / 差
-
-***
-
-## 4. 管理層與公司治理
-
-### 4.1 關鍵領導人
-- **CEO：** [姓名、背景、業界地位]
-- **經營團隊：** [關鍵成員簡介]
-
-### 4.2 公司治理
-- 獨立董事比例：X%
-- 大股東持股：X%
-- 經營層持股：X%
-- 資訊透明度：高 / 中 / 低
-
-### 4.3 追蹤建議
-- 法說會：[日期 / 連結]
-- 產業大會：[名稱 / 日期]
-- 社群追蹤：[Twitter / LinkedIn / 官方部落格]
-
-**管理層評分：** X/10  
-**治理評級：** 優 / 良 / 中 / 差
+**Financial Health Score:** X/10  
+**Rating:** Excellent / Good / Fair / Poor
 
 ***
 
-## 5. 產品發展與未來路線圖
+## 4. Management and Corporate Governance
 
-### 5.1 產品生命週期
-- 主力產品：[產品名稱]（[成長 / 成熟 / 衰退]）
-- 新產品：[產品名稱]（預計 YYYY-Q# 推出）
-- 技術突破：[說明]
+### 4.1 Key Leaders
+- **CEO:** [Name, background, industry status]
+- **Management Team:** [Key member profiles]
 
-### 5.2 市場評價
-- 消費者評價：[正面 / 中性 / 負面]
-- 市場滲透率：X%
-- 未來成長潛力：[高 / 中 / 低]
+### 4.2 Corporate Governance
+- Independent director ratio: X%
+- Major shareholder holdings: X%
+- Management holdings: X%
+- Information transparency: High / Medium / Low
 
-**產品發展評分：** X/10
+### 4.3 Tracking Recommendations
+- Earnings calls: [Date / Link]
+- Industry conferences: [Name / Date]
+- Social media tracking: [Twitter / LinkedIn / Official blog]
 
-***
-
-## 6. 事件驅動因素
-
-### 6.1 近期關鍵事件
-| 日期 | 事件 | 潛在影響 | 重要性 |
-|------|------|---------|--------|
-| YYYY-MM-DD | 財報發布 | [業績預期] | 高/中/低 |
-| YYYY-MM-DD | 新品發表 | [市場潛力] | 高/中/低 |
-| YYYY-MM-DD | 產能擴張 | [產能提升 X%] | 高/中/低 |
-
-### 6.2 投資機會識別
-- [是否有風險報酬不對等的機會]
-- [說明]
+**Management Score:** X/10  
+**Governance Rating:** Excellent / Good / Fair / Poor
 
 ***
 
-## 7. 風險評估
+## 5. Product Development and Future Roadmap
 
-### 7.1 主要風險清單
-1. **[風險名稱]**（機率：高/中/低，衝擊：高/中/低）
-   - 說明：[詳細描述]
-   - 應對：[建議]
+### 5.1 Product Lifecycle
+- Main product: [Product name] ([Growth / Maturity / Decline])
+- New product: [Product name] (Expected YYYY-Q# launch)
+- Technological breakthrough: [Description]
 
-2. **[風險名稱]**（機率：高/中/低，衝擊：高/中/低）
-   - 說明：[詳細描述]
-   - 應對：[建議]
+### 5.2 Market Evaluation
+- Consumer review: [Positive / Neutral / Negative]
+- Market penetration rate: X%
+- Future growth potential: [High / Medium / Low]
 
-[最多列出前 5 項關鍵風險]
+**Product Development Score:** X/10
 
-### 7.2 風險矩陣
-| 風險 | 機率 | 衝擊 | 綜合評級 |
-|------|------|------|---------|
+***
+
+## 6. Event-Driven Factors
+
+### 6.1 Recent Key Events
+| Date | Event | Potential Impact | Importance |
+|------|-------|-----------------|-----------|
+| YYYY-MM-DD | Earnings Release | [Earnings expectation] | High/Med/Low |
+| YYYY-MM-DD | New Product Launch | [Market potential] | High/Med/Low |
+| YYYY-MM-DD | Capacity Expansion | [Capacity increase X%] | High/Med/Low |
+
+### 6.2 Investment Opportunity Identification
+- [Whether there are opportunities with asymmetric risk-return]
+- [Description]
+
+***
+
+## 7. Risk Assessment
+
+### 7.1 Main Risk List
+1. **[Risk Name]** (Probability: High/Med/Low, Impact: High/Med/Low)
+   - Description: [Detailed description]
+   - Response: [Recommendation]
+
+2. **[Risk Name]** (Probability: High/Med/Low, Impact: High/Med/Low)
+   - Description: [Detailed description]
+   - Response: [Recommendation]
+
+[List up to top 5 key risks]
+
+### 7.2 Risk Matrix
+| Risk | Probability | Impact | Overall Rating |
+|------|------------|--------|----------------|
 | ... | ... | ... | ... |
 
-**風險評級：** 低 / 中 / 高
+**Risk Rating:** Low / Medium / High
 
 ***
 
-## 8. SWOT 分析
+## 8. SWOT Analysis
 
-| 優勢 (Strengths) | 劣勢 (Weaknesses) |
-|-----------------|-------------------|
-| - [優勢 1]       | - [劣勢 1]         |
-| - [優勢 2]       | - [劣勢 2]         |
+| Strengths | Weaknesses |
+|-----------|------------|
+| - [Strength 1] | - [Weakness 1] |
+| - [Strength 2] | - [Weakness 2] |
 
-| 機會 (Opportunities) | 威脅 (Threats) |
-|---------------------|---------------|
-| - [機會 1]           | - [威脅 1]     |
-| - [機會 2]           | - [威脅 2]     |
-
-***
-
-## 9. 綜合評估與投資建議
-
-### 9.1 評分總結
-| 評估項目 | 評分 | 權重 | 加權分數 |
-|---------|------|------|---------|
-| 業務理解 | X/10 | 15% | X.X |
-| 競爭優勢 | X/10 | 25% | X.X |
-| 財務健康 | X/10 | 25% | X.X |
-| 管理層質量 | X/10 | 15% | X.X |
-| 產品發展 | X/10 | 10% | X.X |
-| 風險控制 | X/10 | 10% | X.X |
-
-**基本面總評：** X.X/10
-
-### 9.2 投資建議
-- **評級：** 買進 / 持有 / 觀望 / 賣出
-- **理由：** [3-5 句話說明]
-- **適合投資人：** [價值型 / 成長型 / 收益型]
-- **建議部位：** 組合 X-X%
-
-### 9.3 後續追蹤重點
-- [追蹤項目 1]
-- [追蹤項目 2]
-- [追蹤項目 3]
+| Opportunities | Threats |
+|--------------|---------|
+| - [Opportunity 1] | - [Threat 1] |
+| - [Opportunity 2] | - [Threat 2] |
 
 ***
 
-**免責聲明：** 本分析僅供參考，不構成投資建議。投資決策應基於個人風險承受能力與完整研究。
+## 9. Comprehensive Evaluation and Investment Recommendation
+
+### 9.1 Score Summary
+| Evaluation Item | Score | Weight | Weighted Score |
+|----------------|-------|--------|----------------|
+| Business Understanding | X/10 | 15% | X.X |
+| Competitive Advantage | X/10 | 25% | X.X |
+| Financial Health | X/10 | 25% | X.X |
+| Management Quality | X/10 | 15% | X.X |
+| Product Development | X/10 | 10% | X.X |
+| Risk Control | X/10 | 10% | X.X |
+
+**Fundamental Overall Score:** X.X/10
+
+### 9.2 Investment Recommendation
+- **Rating:** Buy / Hold / Watch / Sell
+- **Rationale:** [3-5 sentences explaining]
+- **Suitable Investors:** [Value / Growth / Income]
+- **Suggested Position:** X-X% of portfolio
+
+### 9.3 Follow-up Focus Points
+- [Tracking item 1]
+- [Tracking item 2]
+- [Tracking item 3]
+
+***
+
+**Disclaimer:** This analysis is for reference only and does not constitute investment advice. Investment decisions should be based on individual risk tolerance and comprehensive research.
 ```
 
+---
+
+## Scoring Criteria
+
+Each dimension uses a 1-10 point scale:
+
+- **9-10 points:** Excellent level, industry-leading, clear long-term competitive advantage
+- **7-8 points:** Superior level, healthy fundamentals, solid competitiveness
+- **5-6 points:** Average level, stable performance, no obvious advantages or disadvantages
+- **3-4 points:** Below average, notable problems or risks exist
+- **1-2 points:** Serious problems, deteriorating fundamentals, high risk
 
 ---
 
-## 評分標準說明
+## Reference Materials
 
-各維度評分採用 1-10 分制：
+For detailed analytical methods, scoring standards, and case examples for this skill, please refer to the following documents:
 
-- **9-10 分：** 卓越水準，產業領先，長期競爭優勢明顯
-- **7-8 分：** 優秀水準，體質健康，具備穩固競爭力
-- **5-6 分：** 中等水準，表現平穩，無明顯優勢或劣勢
-- **3-4 分：** 偏弱水準，存在明顯問題或風險
-- **1-2 分：** 嚴重問題，基本面惡化，高風險
-
----
-
-## 參考資料
-
-本技能的詳細分析方法、評分標準與案例範例，請參考以下文檔：
-
-- `references/business-understanding-guide.md` - 企業營業項目分析指南
-- `references/moat-analysis-framework.md` - 經濟護城河評估框架
-- `references/financial-analysis-metrics.md` - 財務指標解讀手冊
-- `references/management-evaluation-guide.md` - 管理層評估準則
-- `references/product-lifecycle-analysis.md` - 產品生命週期分析
-- `references/event-driven-checklist.md` - 事件驅動投資檢查表
-- `references/risk-assessment-matrix.md` - 風險評估矩陣工具
-- `references/case-studies.md` - 實際案例分析範例
+- `references/business-understanding-guide.md` - Business Operations Analysis Guide
+- `references/moat-analysis-framework.md` - Economic Moat Assessment Framework
+- `references/financial-analysis-metrics.md` - Financial Indicator Interpretation Manual
+- `references/management-evaluation-guide.md` - Management Evaluation Criteria
+- `references/product-lifecycle-analysis.md` - Product Lifecycle Analysis
+- `references/event-driven-checklist.md` - Event-Driven Investment Checklist
+- `references/risk-assessment-matrix.md` - Risk Assessment Matrix Tool
+- `references/case-studies.md` - Actual Case Study Examples
 
 ---
 
-## 版本記錄
+## Version History
 
-- **v1.0.0** (2026-01-14) - 初始版本，建立七大分析維度架構
-
+- **v1.0.0** (2026-01-16) - Initial version, established seven analytical dimensions framework

@@ -1,8 +1,20 @@
 ---
+language: en
+output_language: zh-TW
+---
+
+<!-- CRITICAL INSTRUCTION -->
+**IMPORTANT: When using this skill, you MUST generate ALL responses in Traditional Chinese (繁體中文).**
+
+This English documentation serves as a reference framework for the AI model.
+However, all analysis outputs, reports, and recommendations must be written in Traditional Chinese.
+<!-- END INSTRUCTION -->
+
+---
 name: valuation-analysis
 description: |
-  第四階段：估值與安全邊際（Valuation & Margin of Safety）。
-  在已完成總體環境、產業位置與個股基本面評估後，系統化判斷股價貴賤、合理價值區間與安全邊際，並輸出具體價格區間與操作建議。
+  Stage 4: Valuation & Margin of Safety.
+  After completing macro environment, industry positioning, and company fundamental assessments, systematically determine stock price levels, fair value ranges, and margin of safety, outputting specific price ranges and actionable recommendations.
 version: 1.0.0
 author: Evan
 license: Proprietary
@@ -18,39 +30,44 @@ tags:
 
 ## Skill Overview
 
-本技能用於「第四階段：估值與安全邊際」，假設使用者已完成：
-- 第一階段：總體經濟分析（Macro Market Analysis）
-- 第二階段：產業研究與輪動（Industry Research & Rotation）
-- 第三階段：個股基本面分析（Fundamental Analysis）
+This skill is used for "Stage 4: Valuation & Margin of Safety", assuming users have completed:
+- Stage 1: Macro Market Analysis
+- Stage 2: Industry Research & Rotation
+- Stage 3: Fundamental Analysis
 
-目標是回答四個核心問題：
-1. 這支股票現在貴還是便宜？
-2. 合理價值區間是多少？
-3. 下檔風險有多大？
-4. 什麼價位可以開始買進？
+The goal is to answer four core questions:
+1. Is this stock currently expensive or cheap?
+2. What is the fair value range?
+3. How significant is the downside risk?
+4. At what price can buying begin?
 
-輸出會包含目標價區間、當前價格評級、建議操作與安全邊際百分比。
+The output includes target price ranges, current price rating, recommended actions, and margin of safety percentage.
 
 ---
 
 ## Input Format
 
-支援兩種主要使用情境：
+Supports two main usage scenarios:
 
-1. 自由文字指令（自然語言）
-2. 結構化 JSON（方便程式/其他技能串接）
+1. Natural language commands
+2. Structured JSON (convenient for program/skill integration)
 
-### 1. 自然語言範例
+### 1. Natural Language Examples
 
-- 「幫我用估值框架分析 TSLA，評估目前價位的貴賤，給出保守/中性/樂觀目標價與安全邊際。」
-- 「請用相對估值 + DCF 檢查這家公司現在是否有 30% 以上的安全邊際，並給出操作建議。」
-- 「幫我針對這間成長股做估值分析，參考同業 P/E、P/S 與未來 3 年成長率。」
+- "幫我用估值框架分析 TSLA，評估目前價位的貴賤，給出保守/中性/樂觀目標價與安全邊際。"
+  (Use valuation framework to analyze TSLA, assess current price level, provide conservative/neutral/optimistic target prices and margin of safety)
 
-### 2. 結構化 JSON 輸入
+- "請用相對估值 + DCF 檢查這家公司現在是否有 30% 以上的安全邊際，並給出操作建議。"
+  (Use relative valuation + DCF to check if this company has >30% margin of safety and provide recommendations)
 
-完整 JSON 輸入格式與欄位說明請參考 `templates/valuation-input-schema.json`。
+- "幫我針對這間成長股做估值分析，參考同業 P/E、P/S 與未來 3 年成長率。"
+  (Perform valuation analysis for this growth stock, referencing peer P/E, P/S, and next 3-year growth rates)
 
-簡化範例：
+### 2. Structured JSON Input
+
+For complete JSON input format and field descriptions, refer to `templates/valuation-input-schema.json`.
+
+Simplified example:
 
 ```json
 {
@@ -72,240 +89,264 @@ tags:
 }
 ```
 
-
 ---
 
 ## Analysis Workflow
 
-估值分析流程分成五個主要步驟，並依照公司類型與資料完整度動態選擇工具與權重。
+The valuation analysis process consists of five main steps, with tools and weights dynamically selected based on company type and data completeness.
 
-> **開始分析前，建議先檢視 `references/valuation-checklist.md`，確保資料準備完整。**
+> **Before starting analysis, it's recommended to review `references/valuation-checklist.md` to ensure data preparation is complete.**
 
-### Step 1：定義估值前提與情境
+### Step 1: Define Valuation Premises and Scenarios
 
-1. 核對輸入條件
-    - 確認 ticker、幣別、產業、商業模式（成長股 / 價值股 / 週期股 / 高配息）。
-    - 檢查當前股價、總市值、基本財務比率是否齊全。
-2. 建立估值情境
-    - 時間視野：短期（1 年內） vs 中期（3–5 年） vs 長期（5 年以上）。
-    - 風險承受度：保守 / 穩健 / 積極。
-    - 宏觀與產業前提：引用前幾階段結論（景氣位置、利率環境、產業週期）。
-3. 分類公司類型
-    - 成熟穩定現金流：適合 DCF、DDM、歷史估值比較。
-    - 高成長但波動大：重視 PEG、EV/EBITDA、成長調整後 P/S。
-    - 資產密集 / 週期股：考慮資產價值法、清算價值、重置成本。
+1. **Verify Input Conditions**
+    - Confirm ticker, currency, industry, business model (growth stock / value stock / cyclical stock / high dividend).
+    - Check if current stock price, total market cap, basic financial ratios are complete.
 
-> 若輸入資訊不足，提示使用者補充或引導使用 references 文檔中的估值假設模板。
+2. **Establish Valuation Scenarios**
+    - Time horizon: Short-term (within 1 year) vs Medium-term (3–5 years) vs Long-term (5+ years).
+    - Risk tolerance: Conservative / Moderate / Aggressive.
+    - Macro and industry premises: Reference conclusions from previous stages (economic position, interest rate environment, industry cycle).
 
----
+3. **Classify Company Type**
+    - Mature stable cash flow: Suitable for DCF, DDM, historical valuation comparison.
+    - High growth but volatile: Emphasize PEG, EV/EBITDA, growth-adjusted P/S.
+    - Asset-intensive / cyclical stocks: Consider asset value method, liquidation value, replacement cost.
 
-### Step 2：相對估值分析（Relative Valuation）
-
-使用相對估值指標，回答「相較於歷史與同業，現在是貴還是便宜？」。
-
-1. 歷史估值比較
-    - 取用公司歷史 P/E、P/B、EV/EBITDA、P/S 分佈（區間：過去 3 年或 5 年）。
-    - 標記當前位置：低檔區（歷史 0–25% 分位）、中位區（25–75%）、高檔區（75–100%）。
-    - 若公司成長率明顯變化，調整對歷史估值的參考權重。
-2. 同業估值比較
-    - 選出同產業 + 類似商業模式的 peer group。
-    - 比較：
-        - P/E vs 同業平均 + 公司成長率
-        - EV/EBITDA vs 同業
-        - P/B vs 公司 ROE（高 ROE 可接受較高 P/B）
-        - PEG（P/E ÷ EPS 成長率）是否在合理區間（約 1 左右或依產業調整）。
-    - 按公司品質（護城河、盈利穩定度）給予溢價或折價評分。
-3. 建立相對估值合理區間
-    - 以同業與歷史數據，推導合理倍數區間：
-        - 保守倍數：同業下四分位數或歷史下分位，必要時再折價。
-        - 中性倍數：同業中位數或歷史中位數。
-        - 樂觀倍數：同業上四分位數或歷史上分位，僅適用於成長有明確支撐情境。
-4. 將倍數轉換成價格區間
-    - 用 EPS、BVPS、EBITDA 等對應指標，計算三種估值對應的股價範圍。
-
-> 各指標如何解讀與常見範圍，放在 `references/relative-valuation.md` 中詳細說明。
+> If input information is insufficient, prompt user to supplement or guide to use valuation assumption templates in references.
 
 ---
 
-### Step 3：絕對估值分析（Absolute Valuation）
+### Step 2: Relative Valuation Analysis
 
-透過 DCF 與 DDM（適用時）估算公司內在價值，回答「如果現金流折現，這家公司值多少？」
+Use relative valuation metrics to answer "Compared to history and peers, is it expensive or cheap now?"
 
-1. DCF（Discounted Cash Flow）
-    - 決定估值期間：常見 5–10 年估值期 + 終值。
-    - 現金流選擇：FCF to Firm 或 FCF to Equity，視資料與目的而定。
-    - 主要輸入：
-        - 收入成長率假設（分為前期高成長 + 後期收斂階段）。
-        - 利潤率與 FCF Margin 演變。
-        - 資本支出與再投資需求。
-        - 折現率（WACC 或股權成本）。
-        - 終值成長率（長期穩態，通常貼近長期名目 GDP / 通膨 + 真實成長）。
-    - 建立三種情境：保守 / 基準 / 樂觀，輸出每股內在價值。
-2. DDM（Dividend Discount Model）
-    - 僅適用於配息穩定、紅利政策可預期的公司。
-    - 建立股利成長率假設與折現率，計算理論價值。
-    - 將 DDM 結果與 DCF/相對估值交叉檢驗。
-3. 模型敏感度檢測
-    - 檢視估值對折現率、長期成長率的敏感度。
-    - 標出估值最敏感的關鍵變數，提示使用者後續追蹤。
+1. **Historical Valuation Comparison**
+    - Obtain company's historical P/E, P/B, EV/EBITDA, P/S distribution (range: past 3 or 5 years).
+    - Mark current position: Low range (historical 0–25% percentile), Mid range (25–75%), High range (75–100%).
+    - If company growth rate changes significantly, adjust reference weight for historical valuation.
 
-> 具體 DCF / DDM 模板、常用折現率與成長率範圍，放在 `references/absolute-valuation.md`。
+2. **Peer Valuation Comparison**
+    - Select peer group from same industry + similar business model.
+    - Compare:
+        - P/E vs peer average + company growth rate
+        - EV/EBITDA vs peers
+        - P/B vs company ROE (high ROE can accept higher P/B)
+        - PEG (P/E ÷ EPS growth rate) within reasonable range (around 1 or industry-adjusted).
+    - Assign premium or discount rating based on company quality (moat, profit stability).
 
----
+3. **Establish Relative Valuation Fair Range**
+    - Based on peer and historical data, derive reasonable multiple ranges:
+        - Conservative multiple: Peer lower quartile or historical lower percentile, discount further if necessary.
+        - Neutral multiple: Peer median or historical median.
+        - Optimistic multiple: Peer upper quartile or historical upper percentile, only for scenarios with clear growth support.
 
-### Step 4：資產價值與下檔保護
+4. **Convert Multiples to Price Ranges**
+    - Use EPS, BVPS, EBITDA and other corresponding metrics to calculate stock price ranges for the three valuations.
 
-用資產面與清算價值評估下檔風險，回答「最壞情況下，這家公司至少值多少？」
-
-1. 資產價值法
-    - 評估可辨識資產：
-        - 現金與等價物。
-        - 金融資產與投資部位。
-        - 土地、廠房與設備（考慮折舊與重估）。
-        - 無形資產（品牌、專利）通常保守處理。
-    - 建立「調整後淨資產值」（Adjusted Book Value），並估算每股資產價值。
-2. 清算價值 / 重置成本
-    - 針對資產密集、週期股或困境公司，使用折扣後資產價值。
-    - 考慮：庫存折價、設備折舊、處分成本、債務清償優先順序。
-    - 給出粗略的「最壞情境每股價值」區間。
-3. 結合債務結構
-    - 檢查負債比率、債務到期結構與利息保障倍數。
-    - 判斷在壓力情境下，股東剩餘權益是否仍有安全邊際。
-
-> 更詳盡的資產調整方法，可放在 `references/asset-valuation.md`。
+> For interpretation of each metric and common ranges, detailed explanations are in `references/relative-valuation.md`.
 
 ---
 
-### Step 5：整合估值結果與安全邊際
+### Step 3: Absolute Valuation Analysis
 
-將相對估值、絕對估值與資產價值整合為一組「可操作」的價位區間與評級。
+Through DCF and DDM (when applicable) estimate company's intrinsic value, answering "If cash flows are discounted, what is this company worth?"
 
-1. 整合不同估值方法
-    - 建立估值矩陣：
-        - 相對估值（倍數法）→ 價格區間 A
-        - 絕對估值（DCF/DDM）→ 價格區間 B
-        - 資產/清算價值 → 價格下限 C
-    - 根據公司類型與數據可信度設定權重，計算綜合合理價值區間。
-2. 目標價區間（保守 / 中性 / 樂觀）
-    - 保守目標價：偏向資產價值 + 相對估值低檔 + DCF 保守情境。
-    - 中性目標價：多數方法集中區間的中位數。
-    - 樂觀目標價：成長與利多假設較樂觀但仍有合理支撐。
-3. 安全邊際計算
-    - 以「中性目標價」為基準：
-        - 安全邊際 = (中性目標價 − 當前股價) ÷ 中性目標價。
-    - 可視需要同時計算相對於「保守目標價」的安全邊際。
-    - 將安全邊際分級：
-        - ≥ 40%：深度安全邊際。
-        - 20–40%：安全邊際充足。
-        - 10–20%：有限安全邊際。
-        - < 10%：安全邊際不足或無。
-4. 當前價格評級
-    - 嚴重低估：當前價顯著低於保守目標價，且基本面無結構性惡化。
-    - 低估：當前價低於中性目標價，安全邊際明顯。
-    - 合理：當前價落在中性目標價附近 ± 一定區間。
-    - 高估：當前價顯著高於中性目標價，成長假設需非常樂觀才合理。
-    - 嚴重高估：當前價高於樂觀目標價，或需不切實際假設才成立。
-5. 建議操作（Actionable Recommendation）
-    - 積極買進：嚴重低估 + 安全邊際 ≥ 40%，且流動性與風險可控。
-    - 逢低買進：低估 + 安全邊際 20–40%，適合分批加碼。
-    - 持有：估值合理、公司品質佳，無明顯加碼或減碼理由。
-    - 逢高減碼：高估區間，建議逐步獲利了結或調降部位。
-    - 賣出：嚴重高估或基本面惡化，風險報酬不再合理。
+1. **DCF (Discounted Cash Flow)**
+    - Determine valuation period: Typically 5–10 year valuation period + terminal value.
+    - Cash flow selection: FCF to Firm or FCF to Equity, depending on data and purpose.
+    - Main inputs:
+        - Revenue growth rate assumptions (divided into early high growth + later convergence phases).
+        - Profit margin and FCF Margin evolution.
+        - Capital expenditure and reinvestment needs.
+        - Discount rate (WACC or cost of equity).
+        - Terminal growth rate (long-term steady state, usually close to long-term nominal GDP / inflation + real growth).
+    - Establish three scenarios: conservative / base / optimistic, output intrinsic value per share.
+
+2. **DDM (Dividend Discount Model)**
+    - Only applicable to companies with stable dividends and predictable dividend policies.
+    - Establish dividend growth rate assumptions and discount rate, calculate theoretical value.
+    - Cross-check DDM results with DCF/relative valuation.
+
+3. **Model Sensitivity Testing**
+    - Review valuation sensitivity to discount rate and long-term growth rate.
+    - Mark key variables where valuation is most sensitive, prompt users to track subsequently.
+
+> Specific DCF / DDM templates, commonly used discount rates and growth rate ranges are in `references/absolute-valuation.md`.
+
+---
+
+### Step 4: Asset Value and Downside Protection
+
+Use asset-side and liquidation value to assess downside risk, answering "In worst case, what is this company worth at minimum?"
+
+1. **Asset Value Method**
+    - Assess identifiable assets:
+        - Cash and equivalents.
+        - Financial assets and investment positions.
+        - Land, plant, and equipment (consider depreciation and revaluation).
+        - Intangible assets (brands, patents) usually treated conservatively.
+    - Establish "Adjusted Book Value" and estimate value per share based on assets.
+
+2. **Liquidation Value / Replacement Cost**
+    - For asset-intensive, cyclical stocks, or distressed companies, use discounted asset value.
+    - Consider: inventory discount, equipment depreciation, disposal costs, debt repayment priority.
+    - Provide rough "worst-case value per share" range.
+
+3. **Combine Debt Structure**
+    - Check debt ratio, debt maturity structure, and interest coverage ratio.
+    - Determine if shareholder residual equity still has margin of safety under stress scenarios.
+
+> More detailed asset adjustment methods can be found in `references/asset-valuation.md`.
+
+---
+
+### Step 5: Integrate Valuation Results and Margin of Safety
+
+Integrate relative valuation, absolute valuation, and asset value into one set of "actionable" price ranges and ratings.
+
+1. **Integrate Different Valuation Methods**
+    - Establish valuation matrix:
+        - Relative valuation (multiples method) → Price range A
+        - Absolute valuation (DCF/DDM) → Price range B
+        - Asset/liquidation value → Price floor C
+    - Set weights based on company type and data reliability, calculate comprehensive fair value range.
+
+2. **Target Price Ranges (Conservative / Neutral / Optimistic)**
+    - Conservative target price: Lean toward asset value + relative valuation low end + DCF conservative scenario.
+    - Neutral target price: Median of concentrated ranges from most methods.
+    - Optimistic target price: Growth and positive assumptions more optimistic but still reasonably supported.
+
+3. **Margin of Safety Calculation**
+    - Using "neutral target price" as baseline:
+        - Margin of Safety = (Neutral Target Price − Current Stock Price) ÷ Neutral Target Price.
+    - Can also calculate margin of safety relative to "conservative target price" as needed.
+    - Grade margin of safety:
+        - ≥ 40%: Deep margin of safety.
+        - 20–40%: Sufficient margin of safety.
+        - 10–20%: Limited margin of safety.
+        - < 10%: Insufficient or no margin of safety.
+
+4. **Current Price Rating**
+    - Severely undervalued: Current price significantly below conservative target, no structural fundamental deterioration.
+    - Undervalued: Current price below neutral target, clear margin of safety.
+    - Fair: Current price near neutral target ± certain range.
+    - Overvalued: Current price significantly above neutral target, requires very optimistic growth assumptions to be reasonable.
+    - Severely overvalued: Current price above optimistic target, or requires unrealistic assumptions.
+
+5. **Actionable Recommendation**
+    - Aggressive Buy: Severely undervalued + margin of safety ≥ 40%, and liquidity & risk controllable.
+    - Buy on Dips: Undervalued + margin of safety 20–40%, suitable for gradual accumulation.
+    - Hold: Fair valuation, good company quality, no clear reason to add or reduce.
+    - Take Profit on Rallies: Overvalued range, recommend gradual profit-taking or position reduction.
+    - Sell: Severely overvalued or fundamental deterioration, risk-reward no longer reasonable.
 
 ---
 
 ## Output Format
 
-輸出分為「簡要結論」與「詳細說明」兩層，以方便在對話中漸進式揭露。
+Output is divided into "Summary Conclusion" and "Detailed Explanation" for progressive disclosure in conversation.
 
-### 1. 簡要結論（Summary）
+### 1. Summary Conclusion
 
-- 目標價區間（保守 / 中性 / 樂觀）
-- 當前價格評級
-- 安全邊際百分比
-- 建議操作
-- 一句話理由（整合宏觀、產業與個股基本面）
+- Target price ranges (conservative / neutral / optimistic)
+- Current price rating
+- Margin of safety percentage
+- Recommended action
+- One-sentence rationale (integrating macro, industry, and company fundamentals)
 
-範例（自然語言）：
+Example (natural language):
 
-> - 保守目標價：約 180–190。
-> - 中性目標價：約 210。
-> - 樂觀目標價：約 240。
-> - 當前股價 185，屬於「低估」區間，安全邊際約 12%。
-> - 建議操作：逢低買進，分批布局。
+> - Conservative target price: approximately 180–190.
+> - Neutral target price: approximately 210.
+> - Optimistic target price: approximately 240.
+> - Current stock price 185, belongs to "undervalued" range, margin of safety approximately 12%.
+> - Recommended action: Buy on dips, gradual accumulation.
 
-### 2. 詳細說明（Detail）
+### 2. Detailed Explanation
 
-依區塊拆解：
+Breakdown by sections:
 
-1. 相對估值結果
-    - 歷史倍數位置、與同業比較、PEG 評估。
-2. 絕對估值結果
-    - DCF/ DDM 三種情境的關鍵假設與估值。
-    - 對折現率與長期成長率的敏感度。
-3. 資產與下檔分析
-    - 調整後帳面價值、清算價值區間、債務壓力。
-4. 風險與觸發條件
-    - 哪些變數若偏離假設，估值需重新檢討（例：成長放緩、利率變化）。
-5. 操作建議與執行策略
-    - 建議買入區間、分批點位、風險管理提示。
+1. **Relative Valuation Results**
+    - Historical multiples position, peer comparison, PEG assessment.
 
-### 3. 結構化輸出（JSON）
+2. **Absolute Valuation Results**
+    - DCF/DDM three scenarios' key assumptions and valuations.
+    - Sensitivity to discount rate and long-term growth rate.
 
-若需要程式化處理或與其他系統串接，可輸出結構化 JSON 格式。
+3. **Asset and Downside Analysis**
+    - Adjusted book value, liquidation value range, debt pressure.
 
-完整 JSON 輸出格式請參考 `templates/valuation-output-schema.json`。
+4. **Risks and Trigger Conditions**
+    - Which variables, if deviating from assumptions, require valuation re-examination (e.g., growth slowdown, interest rate changes).
+
+5. **Recommended Actions and Execution Strategy**
+    - Recommended buying range, staged entry points, risk management tips.
+
+### 3. Structured Output (JSON)
+
+For programmatic processing or integration with other systems, can output structured JSON format.
+
+For complete JSON output format, refer to `templates/valuation-output-schema.json`.
 
 ---
 
-## Quality Control \& Checklist
+## Quality Control & Checklist
 
-**在完成估值分析前，請務必檢視：**
+**Before completing valuation analysis, please review:**
 
 - `references/valuation-checklist.md`
-    - 資料準備檢查清單
-    - 估值方法執行檢查清單
-    - 估值結果檢核清單
-    - 風險評估檢查清單
-    - 報告輸出檢查清單
-    - 常見錯誤自查清單
+    - Data preparation checklist
+    - Valuation method execution checklist
+    - Valuation results verification checklist
+    - Risk assessment checklist
+    - Report output checklist
+    - Common errors self-check list
 
-此檢查清單確保估值分析的完整性、一致性與可靠性。
+This checklist ensures completeness, consistency, and reliability of valuation analysis.
 
 ---
 
 ## References
 
-詳細公式、常用參數與案例放在下列參考文檔：
+Detailed formulas, common parameters, and case studies are in the following reference documents:
 
 - `references/relative-valuation.md`
-    - P/E、P/B、PEG、EV/EBITDA、P/S 指標說明與常見區間
-    - 不同產業的典型估值範圍與陷阱
+    - P/E, P/B, PEG, EV/EBITDA, P/S metric descriptions and common ranges
+    - Typical valuation ranges and pitfalls for different industries
+
 - `references/absolute-valuation.md`
-    - DCF 與 DDM 建模步驟
-    - 折現率估算、終值處理與敏感度分析
+    - DCF and DDM modeling steps
+    - Discount rate estimation, terminal value treatment, and sensitivity analysis
+
 - `references/asset-valuation.md`
-    - 資產調整與清算價值估算方法
-    - 週期股與資產股估值實務注意事項
+    - Asset adjustment and liquidation value estimation methods
+    - Practical considerations for cyclical and asset-heavy stock valuation
+
 - `references/valuation-checklist.md`
-    - 估值分析五大檢查清單
-    - 常見錯誤與避免方法
+    - Five major valuation analysis checklists
+    - Common errors and avoidance methods
+
 - `templates/valuation-output-schema.json`
-    - 標準化 JSON 輸出格式
-    - 欄位定義與範例
+    - Standardized JSON output format
+    - Field definitions and examples
 
 ---
 
 ## Usage Tips
 
-1. **漸進式分析**：可先從相對估值快速評估，再視需要深入 DCF 與資產分析。
-2. **多方法交叉驗證**：單一方法容易偏誤，至少使用 2-3 種方法。
-3. **動態調整權重**：成長股重視 DCF 與 PEG，價值股重視 P/B 與資產價值，週期股重視 EV/EBITDA 與歷史估值。
-4. **定期重評**：市場環境、產業週期與公司基本面變化時，應重新估值。
-5. **風險優先**：估值永遠是假設的產物，風險管理比精確估值更重要。
+1. **Progressive Analysis**: Can start with quick relative valuation assessment, then dive into DCF and asset analysis as needed.
+
+2. **Multi-method Cross-validation**: Single method prone to bias, use at least 2-3 methods.
+
+3. **Dynamically Adjust Weights**: Growth stocks emphasize DCF and PEG, value stocks emphasize P/B and asset value, cyclical stocks emphasize EV/EBITDA and historical valuation.
+
+4. **Regular Re-evaluation**: When market environment, industry cycle, and company fundamentals change, should re-evaluate.
+
+5. **Risk First**: Valuation is always a product of assumptions, risk management is more important than precise valuation.
 
 ---
 
-**版本紀錄**
+**Version History**
 
-- v1.0.0 (2026-01-15)：初版完成，整合五步驟估值流程與完整參考文檔體系
+- v1.0.0 (2026-01-15): Initial release, integrated five-step valuation process and complete reference documentation system

@@ -1,6 +1,18 @@
 ---
+language: en
+output_language: zh-TW
+---
+
+<!-- CRITICAL INSTRUCTION -->
+**IMPORTANT: When using this skill, you MUST generate ALL responses in Traditional Chinese (繁體中文).**
+
+This English documentation serves as a reference framework for the AI model.
+However, all analysis outputs, reports, and recommendations must be written in Traditional Chinese.
+<!-- END INSTRUCTION -->
+
+---
 name: macro-market-analysis
-description: 資深投資人視角的總體經濟與產業趨勢分析，解讀經濟數據、政策環境、市場週期，判斷大盤方向與產業輪動機會
+description: Senior investor perspective macroeconomic and industry trend analysis. Interprets economic data, policy environment, market cycles to determine market direction and sector rotation opportunities.
 version: 1.0.0
 author: Evan
 license: Proprietary
@@ -14,1488 +26,517 @@ tags:
   - asset-allocation
 ---
 
-# 總體經濟市場趨勢分析（Macro Market Analysis）
+# Macro Market Analysis
 
-## 概述
+## Overview
 
-本技能模擬一位擁有超過 30 年實戰經驗的資深專業投資人角色，專注於總體經濟環境分析與產業趨勢研判。透過系統化解讀經濟數據、央行政策、地緣政治事件、產業發展週期，協助使用者掌握市場大方向，做出理性的資產配置與產業選擇決策。
+This skill simulates a senior professional investor with over 30 years of practical experience, focusing on macroeconomic environment analysis and industry trend assessment. Through systematic interpretation of economic data, central bank policies, geopolitical events, and industry development cycles, it assists users in grasping market direction and making rational asset allocation and industry selection decisions.
 
-### 核心理念
+### Core Philosophy
 
-**投資的第一步：判斷現在是否該進場**
+**The First Step in Investing: Determine Whether to Enter the Market**
 
-- 在空頭市場中，再好的股票也難逃下跌命運
-- 在多頭市場中，選對產業比選對個股更重要
-- 資產配置決定 80% 的報酬，選股只決定 20%
-- 理解經濟週期，才能做到「該積極時積極，該保守時保守」
+- In a bear market, even the best stocks struggle to escape decline
+- In a bull market, choosing the right industry is more important than choosing the right stock
+- Asset allocation determines 80% of returns; stock selection determines only 20%
+- Understanding economic cycles enables you to "be aggressive when appropriate, conservative when necessary"
 
-### 核心能力
+### Core Capabilities
 
-1. **經濟數據深度解讀**
-   - GDP 成長率（經濟動能）
-   - 通膨數據（CPI、PPI、PCE）
-   - 就業市場（失業率、非農就業、薪資成長）
-   - 利率與殖利率曲線
-   - PMI 與領先指標（ISM、消費者信心）
+1. **In-Depth Economic Data Interpretation**
+   - GDP growth rate (economic momentum)
+   - Inflation data (CPI, PPI, PCE)
+   - Labor market (unemployment rate, nonfarm payrolls, wage growth)
+   - Interest rates and yield curve
+   - PMI and leading indicators (ISM, consumer confidence)
 
-2. **央行政策影響評估**
-   - 貨幣政策立場（鴿派/中性/鷹派）
-   - 利率路徑預測
-   - 量化寬鬆/緊縮（QE/QT）
-   - 政策傳導機制分析
+2. **Central Bank Policy Impact Assessment**
+   - Monetary policy stance (dovish/neutral/hawkish)
+   - Interest rate path prediction
+   - Quantitative easing/tightening (QE/QT)
+   - Policy transmission mechanism analysis
 
-3. **市場週期位置判斷**
-   - 經濟週期階段（復甦/擴張/高峰/衰退）
-   - 市場週期階段（牛市/熊市/盤整）
-   - 週期領先/落後指標交叉驗證
+3. **Market Cycle Position Judgment**
+   - Economic cycle stage (recovery/expansion/peak/recession)
+   - Market cycle stage (bull/bear/consolidation)
+   - Cross-validation of leading/lagging indicators
 
-4. **產業趨勢與輪動策略**
-   - 產業景氣循環追蹤
-   - 不同週期階段的產業表現特徵
-   - 產業輪動時機判斷
+4. **Industry Trends and Rotation Strategy**
+   - Industry business cycle tracking
+   - Industry performance characteristics at different cycle stages
+   - Industry rotation timing judgment
 
-5. **地緣政治風險評估**
-   - 國際關係變化（中美、俄烏、中東）
-   - 貿易政策與關稅
-   - 能源供應風險
+5. **Geopolitical Risk Assessment**
+   - International relations changes (US-China, Russia-Ukraine, Middle East)
+   - Trade policy and tariffs
+   - Energy supply risks
 
-6. **歷史數據比較與情境推演**
-   - 尋找相似的歷史情境
-   - 推演可能的發展路徑
-   - 評估各情境發生機率
-
-## 適用場景
-
-### 應使用本模組的情境
-
-**總體環境評估：**
-- 「現在市場環境適合投資嗎？」
-- 「該增加股票部位還是保留現金？」
-- 「現在是牛市還是熊市？」
-
-**經濟數據解讀：**
-- 「這次的 CPI 數據對股市有什麼影響？」
-- 「Fed 升息會持續多久？」
-- 「最新的非農就業數據怎麼解讀？」
-
-**產業選擇：**
-- 「現在該佈局哪些產業？」
-- 「科技股/金融股/傳產股哪個比較好？」
-- 「半導體產業處於週期的哪個階段？」
-
-**資產配置：**
-- 「股票、債券、現金該怎麼配置？」
-- 「該投資美股還是台股？」
-- 「需要避險嗎？黃金、美債該買嗎？」
-
-### 觸發關鍵詞範例
-
-**經濟面：**
-- 通膨、CPI、PPI、PCE
-- GDP、經濟成長、景氣
-- 升息、降息、利率、Fed
-- 就業、失業率、非農
-- 衰退、軟著陸、硬著陸
-
-**市場面：**
-- 大盤走勢、加權指數、S&P 500
-- 牛市、熊市、修正
-- 市場情緒、風險偏好
-- 股債配置、資產配置
-
-**產業面：**
-- 產業趨勢、產業週期
-- 半導體、AI、電動車、綠能
-- 產業輪動、類股表現
-
-**風險面：**
-- 地緣政治、中美關係
-- 黑天鵝、系統性風險
-- 該避險嗎、風險控制
-
-### 不適用情境
-
-- 單一公司或個股的深度分析 → 使用 `equity-fundamental-analysis`
-- 具體交易時機、技術指標判斷 → 使用 `technical-analysis`
-- 財務報表分析 → 使用 `fundamental-analysis`
+6. **Historical Data Comparison and Scenario Simulation**
+   - Find similar historical scenarios
+   - Simulate possible development paths
+   - Assess probability of each scenario
 
 ---
 
-## 輸入格式
+## Applicable Scenarios
 
-### 自然語言輸入（推薦）
+### When to Use This Module
 
-使用者可以直接用自然語言提問，AI 會自動解析並執行分析。
+**Overall Environment Assessment:**
+- "Is the current market environment suitable for investing?"
+- "Should I increase equity positions or hold cash?"
+- "Is this a bull market or bear market?"
 
-**範例提問：**
+**Economic Data Interpretation:**
+- "What impact does the latest CPI data have on the stock market?"
+- "How long will the Fed continue raising rates?"
+- "How to interpret the latest nonfarm payroll data?"
 
-**總經環境類：**
-- 「現在經濟處於什麼階段？適合投資嗎？」
-- 「通膨這麼高，Fed 還會繼續升息嗎？對股市有什麼影響？」
-- 「經濟會衰退嗎？該如何應對？」
+**Industry Selection:**
+- "Which industries should I invest in now?"
+- "Which is better: tech stocks / financial stocks / traditional industry stocks?"
+- "What stage is the semiconductor industry at in its cycle?"
 
-**數據解讀類：**
-- 「最新的 GDP 數據怎麼解讀？」
-- 「這次非農就業數據超預期，代表什麼？」
-- 「殖利率曲線倒掛，真的會衰退嗎？」
+**Asset Allocation:**
+- "How to allocate stocks, bonds, and cash?"
+- "Should I invest in US stocks or Taiwan stocks?"
+- "Do I need to hedge? Should I buy gold or US Treasuries?"
 
-**產業策略類：**
-- 「半導體產業現在處於週期的哪個階段？」
-- 「AI 產業還能漲多久？」
-- 「現在該買科技股還是傳產股？」
+### Trigger Keywords Examples
 
-**配置策略類：**
-- 「現在應該增加股票部位還是保留現金？」
-- 「美股和台股哪個比較好？」
-- 「股債比例該怎麼調整？」
+**Economic:**
+- Inflation, CPI, PPI, PCE
+- GDP, economic growth, business conditions
+- Rate hike, rate cut, interest rates, Fed
+- Employment, unemployment rate, nonfarm payrolls
+- Recession, soft landing, hard landing
 
-### 結構化輸入（進階使用）
+**Market:**
+- Market direction, index, S&P 500
+- Bull market, bear market, correction
+- Market sentiment, risk appetite
+- Stock-bond allocation, asset allocation
 
-如需精確控制分析範圍與深度，可使用 JSON 格式：
+**Industry:**
+- Industry trends, industry cycles
+- Semiconductors, AI, EVs, green energy
+- Sector rotation, sector performance
 
-#### 必填參數
+**Risk:**
+- Geopolitics, US-China relations
+- Black swan, systemic risk
+- Should I hedge, risk control
 
-- `analysis_type` (string): 分析類型
-  - `"economic_environment"` - 總體經濟環境評估
-  - `"data_interpretation"` - 經濟數據深度解讀
-  - `"policy_impact"` - 政策影響評估
-  - `"market_cycle"` - 市場週期位置判斷
-  - `"industry_rotation"` - 產業輪動策略
-  - `"asset_allocation"` - 資產配置建議
-  - `"risk_assessment"` - 風險因素評估
+### Not Applicable Scenarios
 
-- `region` (string): 分析區域
-  - `"US"` - 美國市場
-  - `"China"` - 中國市場
-  - `"Taiwan"` - 台灣市場
-  - `"Europe"` - 歐洲市場
-  - `"Global"` - 全球市場（預設）
-
-- `language` (string): 報告語言
-  - `"zh-TW"` - 繁體中文（預設）
-  - `"en"` - 英文
-
-#### 選填參數
-
-- `time_horizon` (string): 分析時間範圍
-  - `"short-term"` - 短期（1-3 個月）
-  - `"medium-term"` - 中期（3-12 個月）（預設）
-  - `"long-term"` - 長期（1-3 年）
-
-- `focus_industries` (array): 特別關注的產業
-  - 範例：`["semiconductor", "ai", "ev", "finance", "real_estate"]`
-
-- `include_historical_comparison` (boolean): 是否包含歷史數據比較
-  - 預設：`true`
-
-- `risk_tolerance` (string): 風險偏好
-  - `"conservative"` - 保守型（重視資本保全）
-  - `"moderate"` - 穩健型（平衡風險與報酬）（預設）
-  - `"aggressive"` - 積極型（追求高報酬）
-
-- `current_portfolio` (object): 當前投資組合狀況（選填，用於提供更精準的調整建議）
-  ```json
-  {
-    "stocks": 60,
-    "bonds": 30,
-    "cash": 10,
-    "region_allocation": {
-      "US": 40,
-      "Taiwan": 30,
-      "China": 10,
-      "Others": 20
-    }
-  }
-```
-
-#### 輸入範例
-
-```json
-{
-  "analysis_type": "market_cycle",
-  "region": "US",
-  "language": "zh-TW",
-  "time_horizon": "medium-term",
-  "focus_industries": ["semiconductor", "ai", "ev"],
-  "include_historical_comparison": true,
-  "risk_tolerance": "moderate",
-  "current_portfolio": {
-    "stocks": 70,
-    "bonds": 20,
-    "cash": 10
-  }
-}
-```
-
+- Single company or stock in-depth analysis → Use `equity-fundamental-analysis`
+- Specific trading timing, technical indicators → Use `technical-analysis`
+- Financial statement analysis → Use `fundamental-analysis`
 
 ---
 
+## Input Format
+
+### Natural Language Input (Recommended)
+
+Users can ask questions directly in natural language; AI will automatically parse and execute analysis.
+
+**Sample Questions:**
+
+**Economic Environment:**
+- "What stage is the economy in? Is it suitable for investing?"
+- "With such high inflation, will the Fed continue raising rates? What's the impact on stocks?"
+- "Will the economy enter recession? How should I respond?"
+
+**Data Interpretation:**
+- "How to interpret the latest GDP data?"
+- "Nonfarm payroll data beat expectations - what does this mean?"
+- "Yield curve inversion - will there really be a recession?"
+
+**Industry Strategy:**
+- "What stage is the semiconductor industry at?"
+- "How long can the AI industry continue rising?"
+- "Should I buy tech stocks or traditional industry stocks now?"
+
+**Allocation Strategy:**
+- "Should I increase equity positions or hold cash now?"
+- "Which is better: US stocks or Taiwan stocks?"
+- "How to adjust stock-bond ratio?"
+
+### Structured Input (Advanced Use)
+
+For precise control over analysis scope and depth, use JSON format:
+
+#### Required Parameters
+
+- `analysis_type` (string): Analysis type
+  - `"economic_environment"` - Overall economic environment assessment
+  - `"data_interpretation"` - In-depth economic data interpretation
+  - `"policy_impact"` - Policy impact assessment
+  - `"market_cycle"` - Market cycle position judgment
+  - `"industry_rotation"` - Industry rotation strategy
+  - `"asset_allocation"` - Asset allocation recommendations
+  - `"risk_assessment"` - Risk factor assessment
+
+- `region` (string): Analysis region
+  - `"US"` - US market
+  - `"China"` - China market
+  - `"Taiwan"` - Taiwan market
+  - `"Europe"` - Europe market
+  - `"Global"` - Global market (default)
+
+- `language` (string): Report language
+  - `"zh-TW"` - Traditional Chinese (default)
+  - `"en"` - English
+
+#### Optional Parameters
+
+- `time_horizon` (string): Analysis timeframe
+  - `"short-term"` - Short-term (1-3 months)
+  - `"medium-term"` - Medium-term (3-12 months) (default)
+  - `"long-term"` - Long-term (1-3 years)
+
+- `focus_industries` (array): Industries of special interest
+  - Example: `["semiconductor", "ai", "ev", "finance", "real_estate"]`
+
+- `include_historical_comparison` (boolean): Include historical data comparison
+  - Default: `true`
+
+- `risk_tolerance` (string): Risk preference
+  - `"conservative"` - Conservative (capital preservation focus)
+  - `"moderate"` - Moderate (balanced risk-return) (default)
+  - `"aggressive"` - Aggressive (high return pursuit)
+
 ---
 
-## 執行流程
+## Execution Workflow
 
-### Step 1: 情境識別與需求分析
+### Step 1: Scenario Identification and Requirement Analysis
 
-**1.1 解析使用者問題**
+**1.1 Parse User Question**
 
-識別問題類型：
+Identify question type:
+- Overall economic environment assessment? → Need comprehensive economic data
+- Specific indicator interpretation? → Focus on that indicator + related indicators
+- Industry trend analysis? → Need industry data + macro background
+- Investment strategy recommendation? → Need complete analysis chain
 
-- 總經環境評估？→ 需要全面經濟數據
-- 特定指標解讀？→ 聚焦該指標 + 相關連動指標
-- 產業趨勢分析？→ 需要產業數據 + 總經背景
-- 投資策略建議？→ 需要完整分析鏈
+**1.2 Determine Analysis Scope**
 
-**1.2 確定分析範圍**
+- **Geographic scope:** Global / US / China / Taiwan / Europe
+- **Time scope:** Latest value / Recent 3 months / Recent 1 year / Recent 5 years
+- **Focus points:** Growth / Inflation / Employment / Interest rates / Industry
 
-- **地理範圍：** 全球 / 美國 / 中國 / 台灣 / 歐洲
-- **時間範圍：** 最新值 / 近 3 個月 / 近 1 年 / 近 5 年
-- **關注重點：** 成長 / 通膨 / 就業 / 利率 / 產業
+**1.3 Establish Analysis Checklist**
 
-**1.3 建立分析檢查清單**
-
-根據問題類型，確定需要蒐集的數據：
+Based on question type, determine data to collect:
 
 ```
-□ 經濟成長：GDP (Real GDP Growth, YoY)
-□ 通膨指標：CPI, Core CPI, PPI, PCE
-□ 就業市場：Unemployment Rate, Nonfarm Payrolls, Wage Growth
-□ 利率環境：Fed Funds Rate, 10Y Treasury Yield, Yield Curve
-□ 領先指標：ISM PMI, Consumer Confidence, Leading Economic Index
-□ 市場估值：S&P 500 P/E, VIX, Put/Call Ratio
-□ 產業數據：（根據關注產業而定）
-□ 政策動態：Fed Meeting Minutes, FOMC Statement
+□ Economic growth: GDP (Real GDP Growth, YoY)
+□ Inflation indicators: CPI, Core CPI, PPI, PCE
+□ Labor market: Unemployment Rate, Nonfarm Payrolls, Wage Growth
+□ Interest rate environment: Fed Funds Rate, 10Y Treasury Yield, Yield Curve
+□ Leading indicators: ISM PMI, Consumer Confidence, Leading Economic Index
+□ Market valuation: S&P 500 P/E, VIX, Put/Call Ratio
+□ Industry data: (Based on industries of interest)
+□ Policy dynamics: Fed Meeting Minutes, FOMC Statement
 ```
-
 
 ---
 
-### Step 2: 資料蒐集與驗證
+### Step 2: Data Collection and Verification
 
-**2.1 主要數據來源**
+**2.1 Primary Data Sources**
 
-依據優先順序：
+In order of priority:
 
-**首選來源（官方權威）：**
+**Preferred Sources (Official Authoritative):**
 
 - **FRED** (Federal Reserve Economic Data): https://fred.stlouisfed.org/
-    - 美國所有經濟數據的首選來源
-    - 提供歷史數據、圖表、API
-    - 涵蓋：GDP、CPI、就業、利率、貨幣供給等
-- **各國央行官網：**
-    - Fed (美國): https://www.federalreserve.gov/
-    - ECB (歐洲): https://www.ecb.europa.eu/
-    - PBoC (中國): http://www.pbc.gov.cn/
-    - CBC (台灣): https://www.cbc.gov.tw/
-- **統計局官網：**
-    - BLS (美國勞工統計局): https://www.bls.gov/
-    - BEA (美國經濟分析局): https://www.bea.gov/
-    - 台灣行政院主計總處: https://www.dgbas.gov.tw/
+- **Central Bank Websites:**
+  - Fed (US): https://www.federalreserve.gov/
+  - ECB (Europe): https://www.ecb.europa.eu/
+  - PBoC (China): http://www.pbc.gov.cn/
+  - CBC (Taiwan): https://www.cbc.gov.tw/
+- **Statistical Bureau Websites:**
+  - BLS (US Bureau of Labor Statistics): https://www.bls.gov/
+  - BEA (US Bureau of Economic Analysis): https://www.bea.gov/
 
-**次選來源（數據整合平台）：**
+**Secondary Sources (Data Integration Platforms):**
 
 - **Trading Economics**: https://tradingeconomics.com/
-    - 全球經濟數據整合
-    - 提供各國數據比較
-    - 經濟日曆（數據發布時間）
 - **Investing.com**: https://www.investing.com/economic-calendar/
-    - 經濟日曆
-    - 市場預期 vs 實際值
 
-**產業數據來源：**
+**2.2 Data Collection Steps**
 
-- **半導體**: SEMI, WSTS, Gartner
-- **能源**: EIA, IEA, OPEC
-- **製造業**: ISM, Markit PMI
+1. Use `search_web` to search for latest data
+2. Use `fetch_url` to directly access authoritative sources
+3. Data verification and cross-referencing
 
-**2.2 數據蒐集步驟**
+**2.3 Read Internal Reference Documents**
 
-1. **使用 `search_web` 搜尋最新數據**
-    - 搜尋關鍵字範例：
-        - "US CPI latest data 2026"
-        - "Fed interest rate decision January 2026"
-        - "FRED GDP growth rate"
-2. **使用 `fetch_url` 直接獲取權威來源**
-    - 直接訪問 FRED 數據頁面
-    - 讀取 Fed 會議紀要全文
-    - 獲取 BLS 就業報告原文
-3. **資料驗證與交叉比對**
-    - 確認數據發布日期（是否為最新）
-    - 比對多個來源（避免錯誤）
-    - 注意數據修正（Revised Data）
-
-**2.3 讀取內部參考文件**
-
-- `references/economic-indicators.md` - 各指標的標準解讀邏輯
-- `references/industry-cycles.md` - 產業週期特性
-- `references/historical-scenarios.md` - 歷史情境資料庫
-- `assets/2025_macro-economics-guide.pdf` - 總經分析指引
+- `references/economic-indicators.md` - Standard interpretation logic for indicators
+- `references/industry-cycles.md` - Industry cycle characteristics
+- `references/historical-scenarios.md` - Historical scenario database
 
 ---
 
-### Step 3: 經濟數據深度解讀
+### Step 3: In-Depth Economic Data Interpretation
 
-**3.1 單一指標分析**
+**3.1 Single Indicator Analysis**
 
-對每個關鍵指標進行「三維分析」：
+Perform "three-dimensional analysis" for each key indicator:
 
-**維度 1：絕對值分析**
+**Dimension 1: Absolute Value Analysis**
+- Current value
+- vs Historical average: high / medium / low
+- vs Healthy range: normal / warning / danger
 
-- 當前值是多少？
-- vs 歷史水準（過去 5 年平均）：高 / 中 / 低
-- vs 健康區間：正常 / 警戒 / 危險
+**Dimension 2: Trend Analysis**
+- Recent direction: rising / falling / stable
+- Change speed: fast / slow / stable
+- Inflection point identification
 
-範例：
+**Dimension 3: Surprise Degree**
+- Market expectation
+- Actual value
+- Beat / meet / miss expectations
+- Likely market reaction
 
-```
-CPI: 3.2% (最新)
-- vs 歷史平均 (2.5%): 偏高
-- vs Fed 目標 (2.0%): 高於目標 1.2 個百分點
-- 評估：通膨壓力仍存，但已從高峰回落
-```
+**3.2 Cross-Indicator Validation**
 
-**維度 2：趨勢分析**
+Indicators divided into three categories requiring cross-validation:
 
-- 近期變化方向：上升 / 下降 / 持平
-- 變化速度：快速 / 緩慢 / 穩定
-- 拐點識別：是否出現反轉訊號
+**Leading Indicators (predict next 3-6 months):**
+- PMI, consumer confidence, housing starts, stock market, yield curve
 
-範例：
+**Coincident Indicators (reflect current conditions):**
+- GDP growth, industrial production, retail sales, employment data
 
-```
-CPI 趨勢：
-- 3 個月前: 3.7% → 2 個月前: 3.5% → 1 個月前: 3.3% → 最新: 3.2%
-- 趨勢：持續回落中，但速度趨緩
-- 評估：去通膨進程進入瓶頸期，最後一哩路較為艱難
-```
+**Lagging Indicators (confirm occurred trends):**
+- Unemployment rate, CPI/PPI, wage growth, corporate profits
 
-**維度 3：超預期程度**
+**3.3 Historical Scenario Comparison**
 
-- 市場預期：多少？
-- 實際值：多少？
-- 超預期 / 符合預期 / 低於預期
-- 市場可能反應
-
-範例：
-
-```
-CPI 預期 vs 實際：
-- 市場預期: 3.1%
-- 實際值: 3.2%
-- 評估：略高於預期，市場可能失望，Fed 鴿派轉向時間延後
-```
-
-**3.2 跨指標交叉驗證**
-
-經濟指標分為三類，需交叉驗證一致性：
-
-**領先指標（預測未來 3-6 個月）：**
-
-- PMI（製造業、服務業）
-- 消費者信心指數
-- 房屋開工/建築許可
-- 股市表現
-- 殖利率曲線
-
-**同步指標（反映當前狀況）：**
-
-- GDP 成長率
-- 工業生產
-- 零售銷售
-- 就業數據（非農）
-
-**落後指標（確認已發生的趨勢）：**
-
-- 失業率
-- CPI / PPI
-- 薪資成長
-- 企業獲利
-
-**交叉驗證邏輯：**
-
-✅ **訊號一致（高信度）：**
-
-- 領先指標下滑 + 同步指標轉弱 + 落後指標尚未反應
-→ 經濟正在走弱，需要降低風險
-- 領先指標回升 + 同步指標改善 + 落後指標仍差
-→ 經濟正在復甦，可開始佈局
-
-⚠️ **訊號矛盾（需進一步分析）：**
-
-- 領先指標強勁 + 同步指標疲弱
-→ 可能：1) 經濟即將好轉（領先指標準確）
-→ 可能：2) 領先指標誤判（過度樂觀）
-→ 需要：等待更多數據確認
-
-範例分析：
-
-```
-當前經濟指標解讀（2026年1月）：
-
-【領先指標】
-- ISM PMI: 52.3（擴張，但接近榮枯線）
-- 消費者信心: 68.5（偏低，消費者謹慎）
-- 殖利率曲線：平坦（不再倒掛，但仍未正常化）
-→ 評估：經濟動能疲弱，復甦力道不強
-
-【同步指標】
-- GDP 成長: 2.8% (YoY)（穩定但不快）
-- 零售銷售：+0.6% (MoM)（溫和成長）
-- 工業生產：+0.2% (MoM)（幾乎停滯）
-→ 評估：經濟維持低速成長，無明顯衰退跡象
-
-【落後指標】
-- 失業率: 3.7%（低位，勞動市場健康）
-- CPI: 3.2%（仍高，通膨黏性強）
-- 薪資成長: +4.1% (YoY)（工資通膨持續）
-→ 評估：勞動市場緊俏支撐消費，但通膨壓力限制 Fed 寬鬆空間
-
-【綜合結論】
-經濟處於「低成長 + 通膨回落但黏性強」的組合，Fed 面臨兩難（不敢快速降息，但也不會再升息）。市場進入「磨底」階段，適合防禦性佈局，等待更明確的方向訊號。
-```
-
-**3.3 歷史情境比對**
-
-找出當前環境類似的歷史時期，參考過往市場反應：
-
-**比對維度：**
-
-- 經濟成長速度
-- 通膨水準
-- 利率水準
-- 央行政策立場
-- 市場估值
-
-**歷史相似情境資料庫（內建參考）：**
-
-- 1970s - 停滯性通膨時期
-- 1980s - Volcker 激進升息抗通膨
-- 1990s - 科技泡沫前夕
-- 2000-2002 - 科技泡沫破裂
-- 2008-2009 - 金融海嘯
-- 2010-2019 - 低利率低通膨
-- 2020-2022 - 疫情 + 通膨飆升
-- 2023-2024 - Fed 激進升息
-
-範例：
-
-```
-當前環境 vs 歷史情境比對：
-
-【最相似情境：2018 Q4】
-相似點：
-- Fed 升息週期尾聲
-- 經濟成長放緩但未衰退
-- 市場估值偏高
-- 地緣政治不確定性（中美貿易戰）
-
-不同點：
-- 2018 通膨溫和，2026 通膨仍具黏性
-- 2018 勞動市場健康，2026 更緊俏
-- 2018 科技股主導，2026 AI 革命中
-
-市場後續反應（2018）：
-- 2018 Q4 大幅修正（S&P -13.5%）
-- 2019 Q1 快速反彈（Fed 轉鴿派）
-
-對當前的啟示：
-- 短期波動難免，但系統性風險有限
-- Fed 政策轉向是關鍵（觀察通膨數據）
-- AI 趨勢提供結構性支撐（優於 2018）
-```
-
+Find similar historical periods to reference past market reactions.
 
 ---
 
-### Step 4: 政策環境評估
+### Step 4: Policy Environment Assessment
 
-**4.1 央行政策立場判斷**
+**4.1 Central Bank Policy Stance Judgment**
 
-**分析 Fed 政策的「三步驟」：**
+**Fed Policy Stance Classification:**
 
-**Step 1: 官方聲明解讀**
+| Stance | Characteristics | Market Impact |
+|--------|----------------|---------------|
+| **Extremely Hawkish** | Aggressive hikes, accelerated QT, tough official comments | High stock pressure, strong dollar, bonds fall |
+| **Moderately Hawkish** | Continue hiking but slower, data-dependent | Market volatility, rate-sensitive sectors under pressure |
+| **Neutral Wait** | Pause hikes, awaiting data confirmation | Market volatility, unclear direction |
+| **Moderately Dovish** | Hints at possible cuts, policy pivot signals | Stock rally, growth stocks benefit |
+| **Extremely Dovish** | Rate cuts + QE, crisis response mode | Stock surge, risk assets rally broadly |
 
-- 最新 FOMC Statement 關鍵字變化
-- 利率決策（升息 / 暫停 / 降息）
-- 會後記者會 Powell 發言重點
+**4.2 Fiscal Policy Impact**
+- Government spending plans
+- Tax policy
+- Specific industry policies
 
-**Step 2: Dot Plot（點陣圖）分析**
+**4.3 Policy Transmission Mechanism Analysis**
 
-- Fed 官員對未來利率路徑的預期
-- 中位數預測 vs 市場預期
-- 預測分歧程度（鴿派 vs 鷹派佔比）
+Understanding how policy affects asset prices.
 
-**Step 3: 經濟預測（SEP）更新**
-
-- GDP 成長預測
-- 通膨預測（PCE）
-- 失業率預測
-- 長期中性利率預測
-
-**Fed 立場分類：**
-
-
-| 立場 | 特徵 | 市場影響 |
-| :-- | :-- | :-- |
-| **極度鷹派** | 激進升息、QT 加速、官員發言強硬 | 股市壓力大、美元強、債券跌 |
-| **溫和鷹派** | 繼續升息但速度放緩、關注數據 | 股市震盪、利率敏感產業承壓 |
-| **中性觀望** | 暫停升息、等待數據確認 | 市場震盪、方向不明 |
-| **溫和鴿派** | 暗示降息可能、政策轉向信號 | 股市反彈、成長股受益 |
-| **極度鴿派** | 降息 + QE、危機應對模式 | 股市大漲、風險資產全面反彈 |
-
-**當前評估範例：**
-
-```
-Fed 政策立場評估（2026年1月）：
-
-【官方聲明】
-- 利率決策：維持 4.5% 不變（連續 3 次會議暫停）
-- 關鍵字變化：
-  - "通膨壓力持續" → 改為 "通膨回落中但仍高於目標"
-  - "高度關注就業" → 新增（顯示關注點轉移）
-
-【Dot Plot】
-- 2026 年底利率中位數預測：4.0%（暗示 2-3 次降息）
-- 但 4 位官員認為應維持 4.5%（鷹派阻力仍在）
-
-【經濟預測】
-- GDP：2.5%（下修 0.2%）
-- PCE：2.5%（下修 0.3%，接近目標）
-- 失業率：3.9%（上修 0.2%，顯示勞動市場預期降溫）
-
-【綜合評估】
-立場：溫和鴿派轉向中
-- Fed 已完成升息，進入「觀察期」
-- 降息條件：通膨持續回落 + 就業市場降溫
-- 預期時機：Q2-Q3 可能開始降息
-- 市場影響：中性偏多，但需數據配合
-```
-
-**4.2 財政政策影響**
-
-- **政府支出計畫**：基建、補貼、國防
-- **稅收政策**：企業稅、個人稅、資本利得稅
-- **特定產業政策**：
-    - 晶片法案（CHIPS Act）→ 利多半導體
-    - IRA（降低通膨法案）→ 利多綠能、電動車
-    - 中國相關管制 → 影響科技股
-
-**4.3 政策傳導機制分析**
-
-理解政策如何影響資產價格：
-
-```
-【利率政策傳導鏈】
-Fed 升息 
-  → 企業融資成本上升 
-    → 資本支出減少、併購活動降溫
-      → 企業獲利成長放緩
-        → 股價下跌
-
-  → 房貸利率上升
-    → 購屋需求下降
-      → 房價下跌
-        → 財富效應減弱 → 消費減少
-
-  → 債券殖利率上升
-    → 股票相對吸引力下降
-      → 資金從股市流向債市
-
-  → 美元走強
-    → 新興市場承壓
-    → 出口企業獲利受影響
-```
-
-**4.4 政策風險評估**
-
-- **政策失誤風險：**
-    - 升息過度 → 經濟衰退
-    - 降息過早 → 通膨回升
-- **政策不確定性：**
-    - 選舉年政策變數
-    - 政府債務上限問題
-    - 國際協調（G7、G20）
+**4.4 Policy Risk Assessment**
+- Policy error risks
+- Policy uncertainty
 
 ---
 
-### Step 5: 市場週期位置判斷
+### Step 5: Market Cycle Position Judgment
 
-**5.1 經濟週期階段識別**
+**5.1 Economic Cycle Stage Identification**
 
-**四階段經濟週期：**
+**Four-Stage Economic Cycle:**
 
+| Stage | Characteristics | Duration | Investment Strategy |
+|-------|----------------|----------|---------------------|
+| **Recovery** | GDP turns positive, high but improving unemployment, low inflation, accommodative central bank | 6-12 months | Aggressively allocate stocks, cyclical sectors priority |
+| **Expansion** | Solid GDP growth, falling unemployment, moderate inflation rise, neutral central bank | 2-5 years | Continue holding stocks, growth stocks perform well |
+| **Peak** | GDP growth slowing, extremely low unemployment, inflation pressure emerges, central bank tightening | 6-18 months | Reduce risk, shift to defensive assets |
+| **Recession** | GDP negative growth, rapidly rising unemployment, falling inflation, central bank cuts rates | 6-18 months | Hold cash, wait for bottom signals |
 
-| 階段 | 特徵 | 持續時間 | 投資策略 |
-| :-- | :-- | :-- | :-- |
-| **復甦期** (Recovery) | - GDP 由負轉正<br>- 失業率高但改善中<br>- 通膨低<br>- 央行寬鬆 | 6-12 個月 | 積極佈局股票<br>週期性產業優先 |
-| **擴張期** (Expansion) | - GDP 穩健成長<br>- 失業率持續下降<br>- 通膨溫和上升<br>- 央行中性 | 2-5 年 | 持續持有股票<br>成長股表現佳 |
-| **高峰期** (Peak) | - GDP 成長放緩<br>- 失業率極低<br>- 通膨壓力浮現<br>- 央行開始緊縮 | 6-18 個月 | 降低風險<br>轉向防禦性資產 |
-| **衰退期** (Recession) | - GDP 負成長<br>- 失業率快速上升<br>- 通膨下降<br>- 央行降息救市 | 6-18 個月 | 保留現金<br>等待底部訊號 |
+**5.2 Market Sentiment and Valuation Levels**
 
-**週期位置判斷方法：**
+Valuation and sentiment indicators assessment.
 
-使用「三指標確認法」：
+**5.3 Risk Appetite Assessment**
 
-```
-【指標 1：GDP 成長率】
-- 加速成長（YoY 上升）→ 復甦期 or 擴張期
-- 穩定成長（YoY 平穩）→ 擴張期
-- 成長放緩（YoY 下降但仍正）→ 高峰期
-- 負成長（YoY 負值）→ 衰退期
-
-【指標 2：失業率】
-- 高位回落 → 復甦期
-- 低位穩定 → 擴張期
-- 極低但轉升 → 高峰期 or 衰退初期
-- 快速攀升 → 衰退期
-
-【指標 3：領先指標（LEI）】
-- 連續上升 → 復甦期 or 擴張期
-- 開始轉弱 → 高峰期
-- 連續下滑 → 衰退風險上升
-- 止跌回升 → 衰退見底
-```
-
-**當前週期位置判斷範例：**
-
-```
-經濟週期位置判斷（2026年1月）：
-
-【GDP 成長率】
-- 當前：2.8% (YoY)
-- 趨勢：從 3.5% 逐季放緩至 2.8%
-- 評估：成長放緩但仍為正成長
-
-【失業率】
-- 當前：3.7%
-- 趨勢：從 3.5% 微升至 3.7%
-- 評估：極低但出現轉升跡象
-
-【LEI（領先指標）】
-- 當前：近 6 個月微幅下滑
-- 評估：經濟動能減弱
-
-【綜合判斷】
-階段：**擴張後期 → 高峰期過渡**
-- 經濟仍在成長但動能減弱
-- 勞動市場從極度緊俏轉向平衡
-- 領先指標警示成長放緩
-
-建議：降低風險、謹慎佈局、保留現金
-```
-
-**5.2 市場情緒與估值水準**
-
-**估值指標：**
-
-
-| 指標 | 當前值 | 歷史平均 | 評估 |
-| :-- | :-- | :-- | :-- |
-| S\&P 500 P/E | 22x | 18x | 偏高 |
-| S\&P 500 P/B | 4.2x | 3.5x | 偏高 |
-| 風險溢酬 | 3.5% | 4.5% | 偏低（估值偏高） |
-| VIX | 15 | 17 | 低（市場不恐慌） |
-
-**情緒指標：**
-
-- **VIX（恐慌指數）：**
-    - <15：極度樂觀（警戒）
-    - 15-20：正常
-    - 20-30：擔憂
-    - >30：恐慌（機會）
-- **Put/Call Ratio：**
-    - <0.7：過度樂觀
-    - 0.7-1.0：正常
-    - >1.0：過度悲觀（潛在反彈）
-- **散戶參與度：**
-    - 融資餘額創新高 → 過熱警訊
-    - 新開戶數暴增 → 泡沫跡象
-    - 散戶大量離場 → 底部訊號
-
-**5.3 風險偏好評估**
-
-**Risk-On vs Risk-Off 環境：**
-
-
-| 環境 | 特徵 | 資產表現 |
-| :-- | :-- | :-- |
-| **Risk-On**<br>(風險偏好) | - 經濟數據佳<br>- 政策支持<br>- 地緣風險低 | 成長股 ↑<br>小型股 ↑<br>新興市場 ↑<br>高收益債 ↑ |
-| **Risk-Off**<br>(風險規避) | - 經濟疑慮<br>- 政策不確定<br>- 地緣風險升 | 美債 ↑<br>美元 ↑<br>黃金 ↑<br>防禦股 ↑ |
-
-**判斷方法：**
-觀察「資產相對強弱」：
-
-```
-Risk-On 訊號：
-✓ 成長股 outperform 價值股
-✓ 小型股 outperform 大型股
-✓ 高收益債利差收窄
-✓ 新興市場貨幣走強
-✓ VIX 下降
-
-Risk-Off 訊號：
-✓ 公用事業、必需消費品 outperform
-✓ 美債殖利率下降（避險需求）
-✓ 黃金走強
-✓ 美元走強
-✓ VIX 上升
-```
-
+Risk-On vs Risk-Off environment judgment.
 
 ---
 
-### Step 6: 產業趨勢分析（如適用）
+### Step 6: Industry Trend Analysis (If Applicable)
 
-**6.1 產業週期位置判斷**
+**6.1 Industry Cycle Position Judgment**
 
-**產業生命週期四階段：**
+Industry lifecycle stages: introduction / growth / maturity / decline
 
+**6.2 Industry Key Drivers Analysis**
+- Demand-side drivers
+- Supply-side drivers
+- Technology drivers
 
-| 階段 | 特徵 | 投資機會 |
-| :-- | :-- | :-- |
-| **導入期** | - 新技術萌芽<br>- 市場規模小<br>- 虧損常見<br>- 競爭者眾多 | 高風險高報酬<br>適合創投不適合散戶 |
-| **成長期** | - 需求快速擴張<br>- 營收高成長<br>- 獲利轉正<br>- 龍頭開始浮現 | **最佳投資階段**<br>選龍頭股長期持有 |
-| **成熟期** | - 成長趨緩<br>- 市場飽和<br>- 競爭穩定<br>- 重視股利 | 適合價值投資<br>波動度低 |
-| **衰退期** | - 需求萎縮<br>- 營收下滑<br>- 廠商退出<br>- 技術被取代 | 避開<br>除非有轉型契機 |
+**6.3 Sector Rotation Strategy**
 
-**產業景氣循環判斷指標：**
-
-以半導體產業為例：
-
-- **需求面：** PC/手機出貨量、雲端資本支出、車用晶片需求
-- **供給面：** 產能利用率、晶圓廠資本支出、設備商訂單
-- **庫存面：** 庫存天數、庫存去化速度
-- **價格面：** 晶圓代工價格、記憶體價格
-
-**6.2 產業關鍵驅動因素分析**
-
-**需求面驅動：**
-
-- **終端需求：** 消費者需求、企業資本支出
-- **替代效應：** 新技術取代舊技術（EV 取代燃油車）
-- **政策驅動：** 補貼、管制、標準制定
-
-**供給面驅動：**
-
-- **產能週期：** 擴產 → 供過於求 → 削減 → 供不應求
-- **庫存週期：** 去庫存 → 補庫存循環
-- **競爭格局：** 集中度、定價權、進入障礙
-
-**技術面驅動：**
-
-- **技術變革：** AI、5G、電動化
-- **規格升級：** 製程演進、性能提升
-
-**產業分析範例：半導體產業（2026年1月）**
-
-```
-【產業週期位置】
-階段：成長期（AI 驅動新一輪成長）
-景氣循環：庫存去化尾聲 → 需求復甦初期
-
-【需求面】
-✓ AI 伺服器需求強勁（YoY +40%）
-✓ 車用晶片需求穩健（電動化持續）
-✗ 消費性電子需求疲軟（PC/手機換機週期延長）
-→ 評估：結構性成長（AI）抵消週期性疲弱
-
-【供給面】
-✓ 產能利用率回升（Q4: 85% → Q1: 88%）
-✓ 先進製程供不應求（3nm/5nm）
-✗ 成熟製程仍有閒置產能
-→ 評估：供需逐步平衡，先進製程定價權強
-
-【庫存面】
-✓ 庫存天數下降（Q3: 120天 → Q4: 95天）
-✓ 通路庫存接近健康水準
-→ 評估：去庫存接近尾聲，補庫存即將啟動
-
-【競爭格局】
-✓ 台積電市佔率擴大（先進製程 >90%）
-✓ 三星追趕困難，Intel 轉型緩慢
-→ 評估：龍頭優勢鞏固
-
-【投資建議】
-產業評級：超配（Overweight）
-邏輯：
-1. AI 提供結構性成長動能
-2. 庫存週期觸底反彈
-3. 龍頭企業護城河深厚
-
-重點標的：
-- 台積電（2330.TW）：AI 最大受益者
-- NVIDIA（NVDA）：AI 晶片龍頭
-- ASML（ASML）：EUV 設備獨家供應
-
-風險提示：
-- 消費性需求持續疲軟
-- 地緣政治（中美科技戰）
-- AI 需求不如預期
-```
-
-**6.3 產業輪動策略**
-
-**不同經濟週期的產業表現：**
-
-
-| 經濟階段 | 領先產業 | 落後產業 |
-| :-- | :-- | :-- |
-| **復甦期** | 金融、工業、原物料 | 公用事業、必需消費 |
-| **擴張期** | 科技、非必需消費、工業 | 能源、公用事業 |
-| **高峰期** | 能源、原物料、金融 | 科技、非必需消費 |
-| **衰退期** | 必需消費、醫療、公用事業 | 金融、工業、原物料 |
-
-**當前產業配置建議：**
-
-```markdown
-基於「擴張後期 → 高峰期」判斷：
-
-【超配（Overweight）】
-1. 科技（AI 主題）：結構性成長不受景氣影響
-2. 醫療：防禦性 + 人口老化趨勢
-3. 金融：利差擴大受益，資產品質穩定
-
-【標配（Standard Weight）】
-4. 工業：景氣循環中段受益，但需注意訂單能見度
-
-【低配（Underweight）】
-5. 公用事業：利率維持高檔，股息吸引力下降
-6. 非必需消費：消費者信心不足，可支配所得受壓
-
-【持續觀察】
-7. 房地產（REITs）：利率敏感，等待降息明朗化
-```
-
-**產業輪動時機表：**
-
-參考 `references/industry-cycles.md` 進行更詳細的產業分析。
-
-***
-
-### Step 7: 投資策略建議
-
-**7.1 資產配置建議**
-
-基於前述分析，產出具體的資產配置比例：
-
-```markdown
-## 資產配置建議
-
-### 目標配置（基於當前分析）
-
-**整體風險等級：** 中性偏多（60/100）
-
-| 資產類別 | 目標比例 | 調整幅度 | 理由 |
-|---------|---------|---------|------|
-| 股票 | 60% | 持平 | 經濟軟著陸預期支撐，但估值不便宜 |
-| - 美股 | 35% | -5% | 估值偏高，降息預期已部分反映 |
-| - 台股 | 15% | +5% | AI 供應鏈受益，評價相對合理 |
-| - 其他市場 | 10% | 持平 | 分散風險 |
-| 債券 | 30% | +5% | 殖利率吸引力回升 |
-| - 短期美債（1-3Y） | 15% | +3% | 收益率高且風險低 |
-| - 中期公司債 | 10% | +2% | 信用利差合理 |
-| - 長期美債 | 5% | 持平 | 避險部位 |
-| 商品/黃金 | 5% | 持平 | 對沖地緣風險 |
-| 現金 | 5% | -5% | 維持流動性，等待機會 |
-
-### 動態調整觸發點
-
-**增加股票倉位至 70%（觸發條件擇一）：**
-- CPI 連續 2 個月低於 2.5%（年增）
-- Fed 明確宣告開始降息週期
-- S&P 500 跌至 4,500（提供安全邊際）
-
-**減少股票倉位至 50%（觸發條件擇一）：**
-- CPI 反彈至 4% 以上
-- 失業率單月跳升 0.5% 以上（Sahm Rule）
-- VIX 突破 25（市場恐慌升溫）
-- 地緣風險評分突破 70（極高風險）
-
-**啟動防禦模式（股票 <40%）：**
-- NBER 正式宣告經濟衰退
-- 殖利率曲線倒掛幅度擴大至 -50bps 以上
-- 信用市場出現系統性風險（如 2008）
-- 地緣衝突直接影響台海或中東石油運輸
-```
-
-**7.2 產業配置建議**
-
-```markdown
-### 股票部位內部配置（60% 股票中的細部分配）
-
-| 產業 | 目標權重 | 當前權重 | 調整方向 | 理由 |
-|-----|---------|---------|---------|------|
-| 科技 | 30% | 28% | +2% | AI 趨勢不變，選擇龍頭 |
-| 金融 | 15% | 12% | +3% | 利差穩定，資產品質健康 |
-| 醫療 | 12% | 10% | +2% | 防禦性 + 創新藥題材 |
-| 工業 | 10% | 12% | -2% | 景氣放緩風險 |
-| 能源 | 8% | 5% | +3% | 地緣溢價支撐 |
-| 必需消費 | 8% | 10% | -2% | 成長性有限 |
-| 非必需消費 | 7% | 10% | -3% | 消費放緩 |
-| 原物料 | 5% | 8% | -3% | 需求疲弱 |
-| 公用事業 | 3% | 3% | 持平 | 低配維持流動性 |
-| 房地產 | 2% | 2% | 持平 | 等待降息明朗 |
-
-### 重點個股/ETF 建議
-
-**核心持股（各 5-10%）：**
-- **科技：** MSFT, NVDA, TSMC（台積電 ADR / 2330.TW）
-- **金融：** JPM, BAC（大型銀行資產品質佳）
-- **醫療：** JNJ, UNH（防禦 + 成長平衡）
-
-**衛星持股（各 2-5%）：**
-- **能源：** XOM, CVX（整合油商穩健）
-- **AI 供應鏈：** ASML, AMD
-- **工業：** CAT, HON（基建受益）
-
-**ETF 組合（適合被動投資者）：**
-- 核心：SPY（S&P 500）或 VTI（全市場）60%
-- 衛星：QQQ（科技）20%, VGT（科技）10%, XLE（能源）5%, GLD（黃金）5%
-```
-
-**7.3 風險管理策略**
-
-```markdown
-### 風險管理框架
-
-**部位管理原則：**
-1. 單一標的不超過組合 10%（避免過度集中）
-2. 單一產業不超過組合 30%
-3. 單一國家/區域不超過 70%
-4. 現金部位最低 5%，最高 30%
-
-**停損策略：**
-- **個股停損：** 較買入價 -15% 或投資邏輯改變
-- **產業停損：** 產業評級從「超配」降至「低配」時減碼 50%
-- **市場停損：** S&P 500 跌破 200 日均線且 VIX >25，減至 50% 股票
-
-**對沖工具：**
-- **Put Options：** 當 VIX <15 且組合股票部位 >70% 時，買入 S&P 500 Put（3-6 個月到期，行使價 -5%）
-- **VIX Call：** 小部位（<2%）買入 VIX Call，當 VIX <15 時建立
-- **黃金：** 固定配置 3-5% 作為長期避險
-- **反向 ETF：** 不建議（時間耗損高，僅適合極短期）
-
-**情境演練：**
-
-參考 `references/historical-scenarios.md` 進行壓力測試：
-
-| 情境 | 觸發條件 | 預期影響 | 應對策略 |
-|------|---------|---------|---------|
-| 通膨反彈 | CPI 反彈至 5% | 股票 -10%, 債券 -8% | 增持 TIPS、能源股、黃金 |
-| 經濟衰退 | GDP -2%, 失業率 6% | 股票 -20%, 債券 +10% | 減至股票 30%,增持長期美債 |
-| 地緣衝突 | 台海或中東戰爭 | 股票 -25%, 黃金 +20% | 股票降至 20%,黃金升至 15% |
-| 金融危機 | 大型銀行倒閉 | 股票 -35%, 信用市場凍結 | 全部轉入現金與美債 |
-```
-
-**7.4 執行紀律**
-
-```markdown
-### 投資決策檢查清單
-
-**開倉前（買入前）：**
-- [ ] 基本面分析完成（參考 `interpretation-framework.md`）
-- [ ] 估值合理（P/E、P/B 在歷史合理區間）
-- [ ] 技術面支持（無嚴重超買）
-- [ ] 資金配置合理（不超過單一標的上限）
-- [ ] 停損點明確（價格停損、時間停損、理由停損）
-- [ ] 記錄買入理由（供日後檢討）
-
-**持有中（定期檢視）：**
-- [ ] 每週檢視：投資邏輯是否改變？
-- [ ] 每月檢視：基本面是否惡化？財報是否低於預期？
-- [ ] 每季檢視：產業趨勢是否轉向？競爭格局是否改變？
-- [ ] 停損/停利觸發點檢查
-
-**平倉前（賣出前）：**
-- [ ] 賣出理由明確：
-  - [ ] 到達目標價（獲利了結）
-  - [ ] 觸發停損（虧損控制）
-  - [ ] 投資邏輯改變（如產業衰退、管理層問題）
-  - [ ] 發現更好機會（機會成本考量）
-- [ ] 稅務影響評估（資本利得稅、洗售規則）
-- [ ] 記錄賣出理由與結果（供績效檢討）
-
-**績效檢討（每季進行）：**
-參考 `assets/investment-decision-checklist.md` 進行完整檢討。
-
-```markdown
-### 季度績效檢討範本
-
-**投資績效：**
-- 絕對報酬：+X%
-- 相對報酬（vs S&P 500）：+/-X%
-- 最大回撤：-X%
-- 夏普比率：X.XX
-
-**歸因分析：**
-- 資產配置貢獻：+/-X%
-- 產業選擇貢獻：+/-X%
-- 個股選擇貢獻：+/-X%
-- 現金拖累：-X%
-
-**決策檢討：**
-1. 本季最成功的決策：[例如：提早佈局 AI 供應鏈]
-2. 本季最失敗的決策：[例如：過早賣出能源股]
-3. 應繼續保持的做法：[例如：嚴守停損紀律]
-4. 需要改進的地方：[例如：對地緣風險反應過度]
-
-**下季改進計畫：**
-- [ ] 具體改進措施 1
-- [ ] 具體改進措施 2
-```
-
-### Step 8: 產出報告
-
-**8.1 報告格式選擇**
-
-根據分析目的選擇適當的報告格式：
-
-- **每日快評：** 重要數據發布、突發事件（1-2 頁）
-- **週度報告：** 定期市場回顧與展望（3-5 頁）
-- **月度深度：** 全面分析與配置調整（8-12 頁）
-- **季度策略：** 戰略性配置、年度規劃（15-20 頁）
-
-**8.2 標準報告結構**
-
-參考 `references/analysis-report-template.md` 產出標準化報告：
-
-```markdown
-# 總體經濟市場趨勢分析報告
-**Macro Market Analysis Report**
-
-**分析日期：** YYYY-MM-DD  
-**分析師：** 資深投資人 AI（30 年經驗視角）  
-**分析區域：** [Global / US / China / Taiwan]  
-**報告類型：** [每日快評 / 週度報告 / 月度深度 / 季度策略]
+Industry performance at different economic stages.
 
 ---
 
-## 執行摘要（Executive Summary）
+### Step 7: Investment Strategy Recommendations
 
-**市場回顧：**
-- 📊 [主要指數表現]
-- 📈 [債券/匯率變化]
-- 💵 [商品價格動態]
+**7.1 Asset Allocation Recommendations**
 
-**關鍵事件：**
-- 🟢 [正面事件]
-- 🟡 [中性事件]
-- 🔴 [負面事件]
+Specific asset allocation ratios based on analysis.
 
-**投資建議：**
-- ✅ [立即行動事項]
-- ⚠️ [觀察指標]
-- 🛡️ [風險對沖]
+**7.2 Industry Allocation Recommendations**
 
-**風險提示：**
-[核心風險簡述]
+Detailed industry weights.
 
----
-## 一、經濟環境解讀
+**7.3 Risk Management Strategy**
 
-### 1.1 經濟成長
-[GDP、工業生產、消費數據分析]
-- 當前狀況：[數據 + 解讀]
-- 趨勢判斷：[上升/持平/下降]
-- 歷史比較：[當前位於歷史哪個分位數]
-- 預期展望：[未來 3-6 個月]
+Position management principles, stop-loss strategies, hedging tools.
 
-### 1.2 通膨與利率
-[CPI/PPI/PCE 走勢、Fed 政策立場、利率預期]
-- 當前通膨水準：[核心指標數據]
-- Fed 政策立場：[鴿派/中性/鷹派]
-- 利率路徑預測：[未來 6-12 個月]
-- 對市場影響：[股債商品反應]
+**7.4 Execution Discipline**
 
-### 1.3 就業市場
-[失業率、薪資成長、勞動參與率]
-- 就業市場健康度：[強勁/穩定/疲弱]
-- 薪資通膨壓力：[高/中/低]
-- 勞動市場供需：[緊俏/平衡/鬆弛]
+Investment decision checklist and performance review.
 
 ---
 
-## 二、市場週期位置
+### Step 8: Report Output
 
-### 2.1 經濟週期判斷
-[當前處於：復甦期/擴張期/高峰期/衰退期]
+**8.1 Report Format Selection**
+- Daily brief, weekly report, monthly analysis, quarterly strategy
 
-**判斷依據：**
-- GDP 成長趨勢：[加速/穩定/放緩/負成長]
-- 失業率變化：[下降/穩定/上升]
-- 領先指標（LEI）：[上升/持平/下降]
+**8.2 Standard Report Structure**
 
-**歷史類比：**
-當前環境最接近 [歷史時期]，相似點包括 [列舉]，不同點為 [列舉]。
-
-### 2.2 市場估值與情緒
-- S&P 500 P/E：[當前值] vs 歷史平均 [數值]（評估：偏高/合理/偏低）
-- VIX 恐慌指數：[當前值]（評估：過度樂觀/正常/恐慌）
-- Put/Call Ratio：[當前值]（評估：樂觀/中性/悲觀）
-- 資金流向：[流入股市/流入債市/觀望]
-
-### 2.3 週期展望
-預期未來 6-12 個月將 [維持當前階段 / 轉入下一階段]。
-
-**關鍵觀察指標：**
-- [指標 1]：若 [條件]，則 [結果]
-- [指標 2]：若 [條件]，則 [結果]
+Reference `references/analysis-report-template.md` for standardized reports.
 
 ---
 
-## 三、產業趨勢分析
+## Reference Materials
 
-### 3.1 重點產業評估
+### Internal Documents (Must-Read)
 
-參考 `references/industry-cycles.md` 進行各產業分析：
+**Core Frameworks:**
+- `references/interpretation-framework.md` - Data interpretation and decision framework
+- `references/analysis-report-template.md` - Standardized report template
 
-| 產業 | 景氣階段 | 評級 | 關鍵驅動因素 | 投資建議 |
-|-----|---------|-----|-------------|---------|
-| 科技 | 成長期 | ⭐⭐⭐⭐⭐ | AI 革命、雲端需求 | 超配 |
-| 金融 | 成熟期 | ⭐⭐⭐⭐ | 利差穩定、資產品質 | 標配 |
-| 能源 | 循環高峰 | ⭐⭐⭐ | 地緣溢價、供給偏緊 | 標配 |
-| 醫療 | 成長期 | ⭐⭐⭐⭐ | 老齡化、創新藥 | 標配 |
-| 工業 | 成熟期 | ⭐⭐⭐ | 基建需求、訂單放緩 | 標配 |
-| 消費 | 放緩期 | ⭐⭐ | 可支配所得受壓 | 低配 |
-| 公用事業 | 成熟期 | ⭐⭐ | 利率高檔壓制 | 低配 |
+**Data Related:**
+- `references/data-sources.md` - Authoritative data source guide
+- `references/economic-indicators.md` - Economic indicator definitions and interpretation standards
 
-### 3.2 產業輪動建議
-基於當前經濟週期位置（[階段名稱]），建議：
-- **增持：** [產業 1], [產業 2]
-- **減持：** [產業 3], [產業 4]
-- **觀察：** [產業 5]（等待 [觸發條件]）
+**Policy Analysis:**
+- `references/fed-policy-framework.md` - Fed policy decision logic and interpretation framework
 
----
+**Industry Research:**
+- `references/industry-cycles.md` - Industry business cycle characteristics and rotation strategy
 
-## 四、風險因素評估
+**Risk Management:**
+- `references/geopolitical-risks.md` - Geopolitical risk assessment checklist
+- `references/historical-scenarios.md` - Historical scenario database and comparative analysis
 
-參考 `references/geopolitical-risks.md` 進行風險評估：
+**Practical Tools:**
+- `assets/investment-decision-checklist.md` - Investment decision checklist
+- `assets/2025_macro-economics-guide.pdf` - Macroeconomic analysis practical guide
 
-### 4.1 地緣政治風險
+### External Resources (Recommended Bookmarks)
 
-| 風險類型 | 當前狀態 | 機率 | 影響程度 | 應對策略 |
-|---------|---------|------|---------|---------|
-| 中美關係 | [描述] | 中 | 高 | [策略] |
-| 台海情勢 | [描述] | 低 | 極高 | [策略] |
-| 中東衝突 | [描述] | 中 | 中 | [策略] |
-| 俄烏戰爭 | [描述] | 低 | 中 | [策略] |
+**Economic Data (Preferred Sources):**
+- [FRED](https://fred.stlouisfed.org/) - Federal Reserve Economic Data
+- [Trading Economics](https://tradingeconomics.com/) - Global economic data platform
+- [BLS](https://www.bls.gov/) - US Bureau of Labor Statistics
+- [BEA](https://www.bea.gov/) - US Bureau of Economic Analysis
 
-**整體地緣風險評分：** [0-100] / 100（[低/中/高]風險）
+**Central Banks and Policy:**
+- [Federal Reserve](https://www.federalreserve.gov/)
+- [ECB](https://www.ecb.europa.eu/)
+- [PBoC](http://www.pbc.gov.cn/)
+- [CBC Taiwan](https://www.cbc.gov.tw/)
 
-### 4.2 政策風險
-- Fed 政策失誤風險：[評估]
-- 財政政策不確定性：[評估]
-- 監管環境變化：[評估]
-
-### 4.3 市場風險
-- 估值風險：[評估]
-- 流動性風險：[評估]
-- 系統性風險：[評估]
+**Market Data and Analysis:**
+- [Bloomberg](https://www.bloomberg.com/)
+- [Investing.com](https://www.investing.com/economic-calendar/)
+- [Yahoo Finance](https://finance.yahoo.com/)
+- [TradingView](https://www.tradingview.com/)
 
 ---
 
-## 五、投資策略建議
+## Frequently Asked Questions (FAQ)
 
-### 5.1 資產配置
-[詳細配置表格，如前述 Step 7]
+**Q1: With so much economic data, which are most important?**
 
-### 5.2 產業配置
-[詳細產業權重，如前述 Step 7]
+Top 10 in order of importance:
+1. Nonfarm Payrolls
+2. CPI / Core CPI
+3. Fed Rate Decision + FOMC Statement
+4. GDP Growth Rate
+5. ISM PMI
+6. Unemployment Rate
+7. PCE Price Index
+8. Retail Sales
+9. Initial Jobless Claims
+10. Michigan Consumer Sentiment
 
-### 5.3 行動清單
+**Q2: How to determine when the Fed will pivot?**
 
-**立即執行：**
-1. [具體行動 1]
-2. [具體行動 2]
+Watch three conditions (must be met simultaneously):
+1. Sustained inflation decline
+2. Labor market cooling
+3. Official comments shift
 
-**條件式執行：**
-- 若 [條件 A]，則 [行動 A]
-- 若 [條件 B]，則 [行動 B]
+**Q3: Does yield curve inversion always lead to recession?**
 
-**觀察指標：**
-- [指標 1]：關注 [具體數值/變化]
-- [指標 2]：關注 [具體數值/變化]
+Historically, 2Y-10Y yield curve inversion has preceded recession by 12-18 months with ~80% accuracy. But note:
+- Duration matters more than magnitude
+- True recession signal is when curve shifts from inverted to positive slope
+
+**Q4: How to handle contradictory data?**
+
+Use confidence weighting system:
+1. Official data (BLS, BEA): 30% weight
+2. Fed policy signals: 25% weight
+3. Corporate earnings and guidance: 20% weight
+4. Market price behavior: 15% weight
+5. Survey data: 10% weight
+
+**Q5: How to quantify geopolitical risk?**
+
+Use scoring system from `geopolitical-risks.md` (0-100):
+- <30: Low risk, normal allocation
+- 30-50: Medium risk, reduce stocks 5%
+- 50-70: High risk, reduce stocks 15%
+- >70: Extreme risk, activate defensive mode (stocks <40%)
+
+**Q6: How often should I adjust portfolio?**
+
+Recommended frequency:
+- Daily: Track important data, but don't adjust lightly
+- Weekly: Comprehensive assessment, small adjustments (±5%)
+- Monthly: Formal review, medium adjustments (±10%)
+- Quarterly: Strategic adjustments, large adjustments possible (±20%)
 
 ---
 
-## 六、情境推演
+## Conclusion
 
-### 基準情境（機率 60%）
-[假設、市場反應、配置建議]
+Macroeconomic analysis is the foundation of investment decisions, but remember:
 
-### 上檔情境（機率 25%）
-[假設、市場反應、配置建議]
+**No one can predict the future with 100% accuracy.** This framework aims to:
 
-### 下檔情境（機率 15%）
-[假設、市場反應、配置建議]
+1. Establish systematic analysis processes - avoid emotional decisions
+2. Identify key risks and opportunities - improve win rate
+3. Dynamically adjust strategies - adapt to market changes
+4. Maintain discipline and humility - accept uncertainty
 
----
+**Investing is a marathon, not a sprint.** In the long run, investors who persist with rational analysis frameworks and strict risk management discipline will ultimately be rewarded by the market.
 
-## 附錄
-
-### A. 重要圖表
-[建議包含的圖表]
-
-### B. 數據來源
-參考 `references/data-sources.md`
-
-### C. 重要名詞解釋
-[關鍵術語定義]
-
-### D. 免責聲明
-本報告僅供參考，不構成投資建議。投資涉及風險，請審慎評估。
-
----
-**報告編號：** [YYYYMMDD-XXX]  
-**發布時間：** [時間戳記]  
-**下次更新：** [預計日期]
-```
-
-
-***
-
-## 參考資料
-
-### 內部文件（必讀）
-
-**核心框架：**
-
-- `references/interpretation-framework.md` - 數據解讀與決策框架（核心方法論）
-- `references/analysis-report-template.md` - 標準化報告範本
-
-**數據相關：**
-
-- `references/data-sources.md` - 權威數據來源指引
-- `references/economic-indicators.md` - 經濟指標定義與解讀標準
-
-**政策分析：**
-
-- `references/fed-policy-framework.md` - Fed 政策決策邏輯與解讀框架
-
-**產業研究：**
-
-- `references/industry-cycles.md` - 各產業景氣循環特性與輪動策略
-
-**風險管理：**
-
-- `references/geopolitical-risks.md` - 地緣政治風險評估清單
-- `references/historical-scenarios.md` - 歷史情境資料庫與類比分析
-
-**實用工具：**
-
-- `assets/investment-decision-checklist.md` - 投資決策檢查清單
-- `assets/2025_macro-economics-guide.pdf` - 總體經濟分析實戰指引
-
-***
-
-### 外部資源（建議收藏）
-
-**經濟數據（首選來源）：**
-
-- [FRED](https://fred.stlouisfed.org/) - 聯準會經濟數據庫（美國數據首選）
-- [Trading Economics](https://tradingeconomics.com/) - 全球經濟數據整合平台
-- [BLS](https://www.bls.gov/) - 美國勞工統計局（就業數據）
-- [BEA](https://www.bea.gov/) - 美國經濟分析局（GDP 數據）
-
-**央行與政策：**
-
-- [Federal Reserve](https://www.federalreserve.gov/) - 聯準會官網
-- [ECB](https://www.ecb.europa.eu/) - 歐洲央行
-- [中國人民銀行](http://www.pbc.gov.cn/) - 中國央行
-- [中華民國中央銀行](https://www.cbc.gov.tw/) - 台灣央行
-
-**市場數據與分析：**
-
-- [Bloomberg](https://www.bloomberg.com/) - 專業金融資訊（付費）
-- [Investing.com](https://www.investing.com/economic-calendar/) - 經濟日曆
-- [Yahoo Finance](https://finance.yahoo.com/) - 免費市場數據
-- [TradingView](https://www.tradingview.com/) - 圖表分析工具
-
-**研究機構：**
-
-- [IMF](https://www.imf.org/) - 國際貨幣基金組織
-- [World Bank](https://www.worldbank.org/) - 世界銀行
-- [OECD](https://www.oecd.org/) - 經濟合作暨發展組織
-
-***
-
-## 工具腳本（開發中）
-
-### 自動化資料抓取
-
-- `scripts/fetch_macro_data.py` - 自動從 FRED、Trading Economics 抓取最新數據
-- `scripts/parse_fed_minutes.py` - 解析 Fed 會議紀要關鍵字
-
-
-### 分析輔助工具
-
-- `scripts/calculate_cycle_indicators.py` - 計算景氣循環指標
-- `scripts/sentiment_analysis.py` - 市場情緒量化分析
-- `scripts/correlation_matrix.py` - 資產相關性分析
-
-
-### 報告生成
-
-- `scripts/generate_weekly_report.py` - 自動生成週度報告框架
-- `scripts/chart_generator.py` - 經濟數據視覺化圖表生成
-
-***
-
-## 版本歷史
-
-### v2.0.0 (2026-01-07)
-
-**重大更新：**
-
-- ✅ 完整整合 references 文檔體系
-- ✅ 強化八步驟執行流程的可操作性
-- ✅ 新增詳細的數據解讀框架（參考 interpretation-framework.md）
-- ✅ 補充完整的產業分析與輪動策略
-- ✅ 增加風險管理與執行紀律章節
-- ✅ 提供標準化報告產出格式
-- ✅ 新增實戰案例演練（SVB 危機）
-- ✅ 整合投資決策檢查清單
-
-**優化內容：**
-
-- 數據來源指引更具體（FRED/Trading Economics 優先順序）
-- 單一指標解讀模板（2x2 矩陣判斷法）
-- 跨指標交叉驗證邏輯（領先/同步/落後指標）
-- Fed 政策立場判斷框架（五級分類）
-- 經濟週期四階段特徵表與轉折識別清單
-- 產業配置建議矩陣（超配/標配/低配）
-- 動態調整觸發條件（量化標準）
-- 情境分析機率加權（基準/上檔/下檔）
-
-### v1.0.0 (Initial Release)
-
-- 建立基本框架與八步驟流程
-- 定義輸入輸出格式
-- 初版經濟指標解讀邏輯
-
-***
-
-## 使用指南
-
-### 新手上路（0-3 個月）
-
-1. **熟悉數據來源：** 先收藏 FRED、Trading Economics，每天瀏覽一次經濟日曆
-2. **練習單一指標解讀：** 每次重要數據發布，使用 2x2 矩陣進行初步判斷
-3. **閱讀核心文檔：** 精讀 `interpretation-framework.md` 和 `economic-indicators.md`
-4. **模擬投資決策：** 使用 `investment-decision-checklist.md` 進行紙上交易
-
-### 進階使用（3-12 個月）
-
-1. **掌握跨指標驗證：** 建立自己的「經濟健康檢查矩陣」
-2. **追蹤 Fed 政策：** 每次 FOMC 會議都進行政策立場分析
-3. **產業輪動研究：** 深入研究 `industry-cycles.md`，追蹤 3-5 個重點產業
-4. **開始實盤操作：** 小倉位測試自己的分析框架
-
-### 專家級應用（12 個月以上）
-
-1. **建立情境分析能力：** 熟練運用多情境假設與機率加權
-2. **歷史回測：** 使用 `historical-scenarios.md` 進行情境類比
-3. **風險管理精進：** 建立完整的對沖策略與壓力測試
-4. **持續優化：** 每季進行績效回顧，調整分析框架
-
-***
-
-## 常見問題（FAQ）
-
-### Q1: 經濟數據這麼多，哪些最重要？
-
-**A:** 依重要性排序（Top 10）：
-
-1. 非農就業人數（就業市場健康度）
-2. CPI / 核心 CPI（通膨壓力）
-3. Fed 利率決議 + FOMC 聲明（政策方向）
-4. GDP 成長率（經濟動能）
-5. ISM PMI（製造業景氣）
-6. 失業率（勞動市場）
-7. PCE 物價指數（Fed 首選通膨指標）
-8. 零售銷售（消費強度）
-9. 初領失業金人數（就業市場領先指標）
-10. 密西根消費者信心（情緒指標）
-
-### Q2: 如何判斷 Fed 何時會轉向（停止升息/開始降息）？
-
-**A:** 觀察三個條件（需同時滿足）：
-
-1. **通膨持續回落**：核心 PCE 連續 3 個月下降且接近 2.5%
-2. **就業市場降溫**：失業率較低點上升 0.3-0.5%，薪資成長放緩
-3. **官員發言轉向**：多位票委開始釋放鴿派訊號
-
-**領先指標：** 聯邦基金利率期貨隱含的降息機率突破 70%，通常領先實際降息 2-3 個月。
-
-### Q3: 殖利率曲線倒掛一定會衰退嗎？
-
-**A:** 歷史上殖利率曲線（2Y-10Y）倒掛後，平均 12-18 個月會進入衰退，準確率約 80%。但需注意：
-
-- 倒掛「持續時間」比「幅度」更重要（持續 >3 個月警訊較強）
-- 真正的衰退訊號是曲線「從倒掛轉為正斜率」（衰退前 3-6 個月）
-- 2023 年曲線倒掛但未衰退，因 Fed 快速反應 + 財政刺激
-
-
-### Q4: 如何應對「數據矛盾」的情況？
-
-**A:** 使用「置信度加權系統」（參考 `interpretation-framework.md` 第三章）：
-
-1. 官方數據（BLS、BEA）權重 30%
-2. Fed 政策訊號權重 25%
-3. 企業財報與指引權重 20%
-4. 市場價格行為權重 15%
-5. 調查數據權重 10%
-
-當數據衝突時，優先相信高權重數據源，並降低整體配置（增加現金觀望）。
-
-### Q5: 地緣政治風險如何量化？
-
-**A:** 使用 `geopolitical-risks.md` 中的評分系統（0-100）：
-
-- <30：低風險，正常配置
-- 30-50：中風險，降低 5% 股票
-- 50-70：高風險，降低 15% 股票
-- >70：極高風險，啟動防禦模式（股票 <40%）
-
-
-### Q6: 多久應該調整一次投資組合？
-
-**A:** 建議頻率：
-
-- **每日：** 追蹤重要數據，但不輕易調整
-- **每週：** 綜合評估，小幅調整（±5%）
-- **每月：** 正式檢討，中幅調整（±10%）
-- **每季：** 戰略調整，可大幅調整（±20%）
-
-**原則：** 避免過度交易（增加成本），但也不要固執己見（忽視變化）。
-
-### Q7: 如何避免「馬後砲」偏誤？
-
-**A:** 建立「決策日誌」：
-
-1. 每次投資決策前，書面記錄：
-    - 投資理由（3-5 點）
-    - 預期報酬與風險
-    - 停損/停利條件
-    - 情境假設（基準/上檔/下檔）
-2. 每季回顧，評估：
-    - 哪些判斷正確？哪些錯誤？
-    - 錯誤是因為邏輯問題，還是黑天鵝事件?
-    - 下次如何改進？
-
-***
-
-## 結語
-
-總體經濟分析是投資決策的基礎，但請記住：
-
-**沒有人能 100% 預測未來。** 本框架的目的不是提供「完美預測」，而是：
-
-1. **建立系統化的分析流程**：避免情緒化決策
-2. **識別關鍵風險與機會**：提高勝率
-3. **動態調整策略**：適應市場變化
-4. **保持紀律與謙卑**：接受不確定性
-
-**投資是一場馬拉松，不是短跑。** 長期而言，堅持理性分析框架、嚴守風險管理紀律的投資者，終將獲得市場的回報。
-
-**持續學習，保持好奇，祝投資順利！**
-```
+**Keep learning, stay curious, and happy investing!**

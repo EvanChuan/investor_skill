@@ -1,0 +1,223 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-01-16T13:24:22.206036",
+  "algorithm": "sha384",
+  "repository": "EvanChuan/investor_skill",
+  "files": [
+    {
+      "path": "skills/FRAMEWORK.md",
+      "sha384": "6a94de20c32e76c30f606aaf30d89646d330bd9fa5a0285d702233450e0a315479bf0249cd262ca3b0c7337e9074e88d",
+      "size": 16301
+    },
+    {
+      "path": "skills/equity-fundamental-analysis/SKILL.md",
+      "sha384": "8a4d2d101ac4b46c687a3a83a0acdb9746ff5d291499dc961cf34198ed9fa8e86bd58a4045f7df9e44dd6b572bea3151",
+      "size": 15708
+    },
+    {
+      "path": "skills/equity-fundamental-analysis/references/business-understanding-guide.md",
+      "sha384": "81bdc3d985b69abbd2d8a070fa17fbee0077a29dcd4bd48c56cb0a930ecdb3066314f6953c803e53d5044dec73a55b48",
+      "size": 22134
+    },
+    {
+      "path": "skills/equity-fundamental-analysis/references/case-studies.md",
+      "sha384": "d4f5bff77f493b24ec739d57cd7dbd5741804a9d21d8881965823ece06b963608d38b192a981093567d6607fe7c6d353",
+      "size": 20297
+    },
+    {
+      "path": "skills/equity-fundamental-analysis/references/event-driven-checklist.md",
+      "sha384": "235fe205548da878c557372b6363dab8f49e09b473feb7668500aa4fea9301f9c344213dbbd7c3e40a0cfa94f072afbf",
+      "size": 57812
+    },
+    {
+      "path": "skills/equity-fundamental-analysis/references/financial-analysis-metrics.md",
+      "sha384": "eee11403f513f0895ecabf7e5c2c2d3a668a5b1103725a9716175854bb62ae47042e2de036f439965168a2145aa227ef",
+      "size": 41275
+    },
+    {
+      "path": "skills/equity-fundamental-analysis/references/management-evaluation-guide.md",
+      "sha384": "50f34d201b4c87d488eab354e8d3af278e48a8cdd59f8dab4b3077a0d18e1d8ae3ecf1cce0936bca0665617599562327",
+      "size": 53294
+    },
+    {
+      "path": "skills/equity-fundamental-analysis/references/moat-analysis-framework.md",
+      "sha384": "8d7d4930ffc27eb3c8f9b952bde8ca3ee9a569e06dd10b394d0ca418427f159154fc6f6eb52a04b2a939efde577a4d0d",
+      "size": 28797
+    },
+    {
+      "path": "skills/equity-fundamental-analysis/references/product-lifecycle-analysis.md",
+      "sha384": "c16b11d53dc411fa919bcacbed90059c4f5398e0c732c74fcada3b6aeb270997f70163f96c4221b2302e9d8ce3db8573",
+      "size": 68736
+    },
+    {
+      "path": "skills/equity-fundamental-analysis/references/risk-assessment-matrix.md",
+      "sha384": "2e6b3f9e0a22bc0310d16d7425acc7a27dc47eb94ad382e037cd46f37639c83405ab72cae4828ba6dcfcddfa0eb0b04a",
+      "size": 15019
+    },
+    {
+      "path": "skills/industry-research/SKILL.md",
+      "sha384": "bb14b971c1675326327106758ccfb5b9fcffb37c3b080f63b56ea591f82b4985cea63d5e97558103413cf73739a4ed9c",
+      "size": 15004
+    },
+    {
+      "path": "skills/industry-research/references/data-sources/industry-data-sources.md",
+      "sha384": "3db711799419897468222466c64ca760b81bb8541e47eb68391b33ed633064665a5d17a827dbd438d85436d23c2d2941",
+      "size": 17869
+    },
+    {
+      "path": "skills/industry-research/references/data-sources/leading-indicators.md",
+      "sha384": "ed9a845aca8f5f8d810ea6c2ca4ba40a64e7e2d6fbbe01190fb2174d1faa24723290fc31e67180500eb0a7bb897c98c3",
+      "size": 20328
+    },
+    {
+      "path": "skills/industry-research/references/frameworks/competitive-landscape-framework.md",
+      "sha384": "9898b05053c2cf9b23d00a12e773f2c04318036386e3f871b0c33ca44ab822877cf84a4eef6f002e417cae36e94686a6",
+      "size": 32171
+    },
+    {
+      "path": "skills/industry-research/references/frameworks/industry-lifecycle-analysis.md",
+      "sha384": "89f05f9e1e317a5e4af9cf611b37f1a438a097d206106247c2e19e46260ccb981a53b78aeb246cf06233512bf5f02d01",
+      "size": 20508
+    },
+    {
+      "path": "skills/industry-research/references/frameworks/sector-rotation-by-cycle.md",
+      "sha384": "3757d119e5a28b2c8dab67b5ecd04f9f259557928f144b43ad0ef111d50efdbd84df9af22f8c0a7b65718962eb27c948",
+      "size": 23333
+    },
+    {
+      "path": "skills/industry-research/references/frameworks/seven-step-industry-analysis.md",
+      "sha384": "93ac8a91ff7f523f2565744e93e448fa8abc8008e28e112db5ba114352e1cb5beee4760398c1cd0b19eb44f5553770db",
+      "size": 25754
+    },
+    {
+      "path": "skills/industry-research/references/frameworks/supply-demand-framework.md",
+      "sha384": "99f9bd00a949b5dda8d8bd222738b8161a2489119a5657881e35ea7bfd40cc0a4d66ae365a129a2ee6e03e109e3e9b98",
+      "size": 26190
+    },
+    {
+      "path": "skills/industry-research/references/institutional/13f-tracking-guide.md",
+      "sha384": "8ab9b6d1d1b243e52e1b0614befd727bf0fa934818e578002cde0273ff5e3226ad3994ac6847ab36b62dc398ded9aa2c",
+      "size": 32506
+    },
+    {
+      "path": "skills/industry-research/references/institutional/activist-investors-tracking.md",
+      "sha384": "ef0e25c5101d9e06134cfa75e97a44179913c6d06cdd05030ac1a646135fc26e983335aa2ec340726df9a565701227b2",
+      "size": 53313
+    },
+    {
+      "path": "skills/industry-research/references/institutional/insider-trading-analysis.md",
+      "sha384": "41c8842ede09e7b6862a71dc6b087efa196aa2d22464499aab6f72116b0c45a1a53a3bb2bf5f93ee01c517757bf12536",
+      "size": 43019
+    },
+    {
+      "path": "skills/industry-research/references/templates/industry-report-template.md",
+      "sha384": "e0277e3fc94c0b786cbf2e0fa7f96e3448a4b63721bddbd6e64587f5bef70808ac0bb5a8b4452af42e46a7645256d6ad",
+      "size": 18385
+    },
+    {
+      "path": "skills/industry-research/references/templates/quick-insight-template.md",
+      "sha384": "c85a5fe719d78e20ef13cb01f5e9de4ddc1d95bc1323a2d4f2ff206cd084fb925e9e574e9b896f5b268b84ec7757525f",
+      "size": 18152
+    },
+    {
+      "path": "skills/industry-research/references/templates/rotation-decision-checklist.md",
+      "sha384": "9bde7220018a0b3b166b917066bca8edd3f0f95b5414b8eaf91699e956857548792052a6d29a8124407e954fa2e05853",
+      "size": 22010
+    },
+    {
+      "path": "skills/industry-research/references/themes/policy-tracking.md",
+      "sha384": "9c01c70b00e5aed9dc510fa4af03bf2d0fc10b450dcdd7a5e2f111135bdd4e92bc06077da6a0270441ddc8dd0c9e8c6b",
+      "size": 14959
+    },
+    {
+      "path": "skills/industry-research/references/themes/technology-maturity-assessment.md",
+      "sha384": "4ecbd2b4153bfb98e23a1ad0f34671e3c8a3bb279e585a1b6b6154c4089f08220c4053e71667abe9e0a4e4b9a64f50dd",
+      "size": 18870
+    },
+    {
+      "path": "skills/industry-research/references/themes/trend-evaluation-framework.md",
+      "sha384": "7cea2fc97cfc663c0c8bb17fa24ffd6751d7c8cf6153229d83229ca7d5cf72d81226e8ba11a85424cddf13bceb2e29df",
+      "size": 59453
+    },
+    {
+      "path": "skills/macro-market-analysis/SKILL.md",
+      "sha384": "223f41dff49e03b2541c9e111e53fe3c0bdd003d22b7516d300ac486e7c5b9132129f494a965b20dd6aa2e3c539bafff",
+      "size": 45710
+    },
+    {
+      "path": "skills/macro-market-analysis/assets/investment-decision-checklist.md",
+      "sha384": "66e9f436f5197824cbc77c01009a41643cef4f9770202076a46e4c49f744bdfc31abf22739f4c2fa4b7f4bf1e9d4737b",
+      "size": 6837
+    },
+    {
+      "path": "skills/macro-market-analysis/references/analysis-report-template.md",
+      "sha384": "dafe79785ea79e434ba55e25cc83b9f7b97dd811b9b83d8c2fd7633d5ecfba1f514e73909976ca79f5bed8e26df76479",
+      "size": 24649
+    },
+    {
+      "path": "skills/macro-market-analysis/references/data-sources.md",
+      "sha384": "cd03808702152091779dd59b3765bcfd0164d61af718609e167c06b60c51733b8aaf48a3dc57c7b6cd4f10cc5a109d31",
+      "size": 7690
+    },
+    {
+      "path": "skills/macro-market-analysis/references/economic-indicators.md",
+      "sha384": "5d85f23350ea25c2a31809cc3d3889d3a09122454afa9eb8d9119c99c927b5234e595bb553c1abf2adb1d6673f589bec",
+      "size": 15711
+    },
+    {
+      "path": "skills/macro-market-analysis/references/fed-policy-framework.md",
+      "sha384": "d3b402e72ecce757d343224a907bb2b30e6bd23208b6907432312f787cbef10aef3d95acf0efd938835ab023a10a2cc6",
+      "size": 22793
+    },
+    {
+      "path": "skills/macro-market-analysis/references/geopolitical-risks.md",
+      "sha384": "294d2458669252b6dc2414efc7e27bc714fc2134d9c939340e256f956b1eaf5a7918c713f874ba7506c2d61551dfa825",
+      "size": 16265
+    },
+    {
+      "path": "skills/macro-market-analysis/references/historical-scenarios.md",
+      "sha384": "17b93085ee67ff3da0662a2ab5f3c285bab8ae4228685bb969178f28a42c1a0ed63e62dc7f656a34d324ac8569f34b2f",
+      "size": 12487
+    },
+    {
+      "path": "skills/macro-market-analysis/references/industry-cycles.md",
+      "sha384": "d3c3ca784d0dc86f846ecdd4e4dec0329d74f48a0774dd957fc6da401694c14c533cde7e3f99003b947f45a4ae356741",
+      "size": 21504
+    },
+    {
+      "path": "skills/macro-market-analysis/references/interpretation-framework.md",
+      "sha384": "713b1cebd5185e9740de52689de1f26308a081f7061a1e938ab0f3bdc67f3128fea35a98e9ae5b27c3488b64966e3040",
+      "size": 35060
+    },
+    {
+      "path": "skills/macro-market-analysis/scripts/README.md",
+      "sha384": "124e309f5b6b3c64056196ebbfc9e1e6624483d8ac6ff20be93cc53245b65357bb76346662c78fbf6280884c3d12b769",
+      "size": 396
+    },
+    {
+      "path": "skills/valuation-analysis/SKILL.md",
+      "sha384": "9c21d93c17b5f1adb72e2c764399c48d9d4655964887181e24a8221c411fbade89a94d8ef27e0af2a0dcdc532850af91",
+      "size": 12300
+    },
+    {
+      "path": "skills/valuation-analysis/references/absolute-valuation.md",
+      "sha384": "1db6d9c401642931243a2cbb902f6d9c19f39ea6172ba5f398a7f89ed2b25b95a1ca2fbc7e9f0c9f3e1330958fb952bd",
+      "size": 11332
+    },
+    {
+      "path": "skills/valuation-analysis/references/asset-valuation.md",
+      "sha384": "ef1fb10ae9345d09850a91c155d049e3b31e20a7d06ab3105f074ba5b918a762f9e426abb3a4f359f1d89cf413ea3288",
+      "size": 13414
+    },
+    {
+      "path": "skills/valuation-analysis/references/relative-valuation.md",
+      "sha384": "6cd2a4f9acbc7c82ea812ac97b6b54e63c0e63f6101b76d24e063975c6315e94adc85d8441fbc9124f699d628f5da087",
+      "size": 10432
+    },
+    {
+      "path": "skills/valuation-analysis/references/valuation-checklist.md",
+      "sha384": "b99bf725324b47075bd0f46e68acc13720805893a505c82bfef6cc6774a24cb781d8820849e7caa1c59917107013c55f",
+      "size": 10281
+    }
+  ]
+}

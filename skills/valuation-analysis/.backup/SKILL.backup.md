@@ -13,6 +13,7 @@ tags:
   - investment-strategy
   - fundamental-analysis
 ---
+
 # Valuation & Margin of Safety Skill
 
 ## Skill Overview

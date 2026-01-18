@@ -72,7 +72,7 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK
 | 2 | 產業研究 | 識別產業景氣與輪動 |
 | 3 | 個股基本面 | 深度評估公司價值 |
 | 4 | 估值分析 | 判斷合理價格區間 |
-| 5 | 市場情緒 | 追蹤籌碼與情緒（開發中）|
+| 5 | 市場情緒 | 追蹤籌碼與情緒 |
 | 6 | 技術分析 | 優化進出場時機（開發中）|
 | 7 | 風險管理 | 執行紀律與部位（開發中）|
 

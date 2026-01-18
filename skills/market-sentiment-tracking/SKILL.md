@@ -206,7 +206,7 @@ tags:
 - 觀察 VIX 快速變化（單日漲幅 > 20% = 恐慌性拋售）
 - VIX 期貨溢價/逆價（Contango/Backwardation）
 
-**詳細解讀：** 參考 `references/sentiment/vix-interpretation-guide.md`
+**詳細解讀：** 參考 `references/vix-interpretation-guide.md`
 
 #### 2.2 CNN Fear & Greed Index
 
@@ -232,7 +232,7 @@ tags:
 - 當 Fear & Greed < 20 且連續 3 天不再下降 → 可能形成短線底部
 - 當 Fear & Greed > 80 且開始回落 → 可能形成短線頂部
 
-**詳細策略：** 參考 `references/sentiment/fear-greed-reversal-strategy.md`
+**詳細策略：** 參考 `references/fear-greed-reversal-strategy.md`
 
 #### 2.3 Put/Call Ratio
 
@@ -253,7 +253,7 @@ tags:
 - 觀察 Put/Call Ratio 與股價背離（Ratio 上升但股價上漲 = 警訊）
 - 比較近 1 週 vs 近 1 月 vs 歷史平均
 
-**詳細解讀：** 參考 `references/sentiment/put-call-ratio-guide.md`
+**詳細解讀：** 參考 `references/put-call-ratio-guide.md`
 
 ---
 
@@ -281,7 +281,7 @@ tags:
 - 股價上漲 + 融資暴增 + 法人賣超 = 散戶追高，可能見頂
 - 融資餘額創新高但股價不再創新高 = 背離，警訊
 
-**詳細分析：** 參考 `references/sentiment/margin-trading-analysis.md`
+**詳細分析：** 參考 `references/margin-trading-analysis.md`
 
 #### 3.2 法人買賣超（台股專用）
 
@@ -304,7 +304,7 @@ tags:
 - 外資持股比例變化趨勢（持續增加 vs 持續減少）
 - 投信持股集中度（前十大投信持股佔比）
 
-**詳細分析：** 參考 `references/sentiment/institutional-flow-taiwan.md`
+**詳細分析：** 參考 `references/institutional-flow-taiwan.md`
 
 #### 3.3 Institutional Ownership（美股專用）
 
@@ -320,7 +320,7 @@ tags:
 - Insider Buying（內部人買進）：看好公司前景（正面信號）
 - Insider Selling（內部人賣出）：需判斷是例行性賣出還是大量拋售
 
-**詳細解讀：** 參考 `references/sentiment/institutional-ownership-analysis.md`
+**詳細解讀：** 參考 `references/institutional-ownership-analysis.md`
 
 #### 3.4 Short Interest（放空比例）
 
@@ -336,7 +336,7 @@ tags:
 - Short Interest > 20% + 正面消息/業績超預期 = 可能軋空
 - Days to Cover > 5 天（放空回補需要時間，軋空力道更強）
 
-**詳細策略：** 參考 `references/sentiment/short-squeeze-detection.md`
+**詳細策略：** 參考 `references/short-squeeze-detection.md`
 
 #### 3.5 GEX（Gamma Exposure）
 
@@ -356,7 +356,7 @@ tags:
 - 結合 VIX 與 Put/Call Ratio 判斷暴力盤方向
 - 觀察主力選擇權部位變化（Call/Put OI 變化）
 
-**詳細解讀：** 參考 `references/sentiment/gex-gamma-exposure-guide.md`
+**詳細解讀：** 參考 `references/gex-gamma-exposure-guide.md`
 
 ---
 
@@ -392,7 +392,7 @@ tags:
 - 黃金 vs 實質利率（TIPS）的背離
 - 黃金 vs 比特幣（新型避險資產）資金流對比
 
-**詳細分析：** 參考 `references/sentiment/gold-safe-haven-flow.md`
+**詳細分析：** 參考 `references/gold-safe-haven-flow.md`
 
 #### 4.3 美元指數 DXY 快速變動
 
@@ -407,7 +407,7 @@ tags:
 - DXY vs 日圓（JPY）vs 瑞士法郎（CHF）三大避險貨幣對比
 - DXY 與 EM ETF（新興市場 ETF）資金流反向驗證
 
-**詳細解讀：** 參考 `references/sentiment/dxy-risk-sentiment.md`
+**詳細解讀：** 參考 `references/dxy-risk-sentiment.md`
 
 #### 4.4 國債殖利率與價格
 
@@ -460,7 +460,7 @@ tags:
 - 安全邊際 < 10%：上漲空間有限
 - 安全邊際 < 0：當前價已超越目標價（過熱）
 
-**詳細分析：** 參考 `references/sentiment/analyst-consensus-tracking.md`
+**詳細分析：** 參考 `references/analyst-consensus-tracking.md`
 
 ---
 
@@ -495,7 +495,7 @@ tags:
    - 正面新聞比例 > 80%：媒體一致看好（可能過度樂觀）
    - 負面新聞比例 > 80%：媒體一致看壞（可能過度悲觀，逆向機會）
 
-**詳細方法：** 參考 `references/sentiment/news-sentiment-nlp.md`
+**詳細方法：** 參考 `references/news-sentiment-nlp.md`
 
 #### 6.2 社群媒體情緒追蹤
 
@@ -534,7 +534,7 @@ tags:
 - 區分「散戶」vs「專業投資人」發言（根據帳號歷史與發言品質）
 - 追蹤「意見領袖」（KOL）的觀點變化
 
-**詳細方法：** 參考 `references/sentiment/social-media-sentiment-analysis.md`
+**詳細方法：** 參考 `references/social-media-sentiment-analysis.md`
 
 ---
 
@@ -557,7 +557,7 @@ tags:
 - 新開戶數創歷史新高 + 市場已連續上漲數月 = 散戶追高（可能見頂）
 - 選擇權 OI 暴增 + 高槓桿投機 = 過度投機
 
-**詳細分析：** 參考 `references/sentiment/retail-investor-behavior.md`
+**詳細分析：** 參考 `references/retail-investor-behavior.md`
 
 ---
 
@@ -609,7 +609,7 @@ tags:
 - 反轉機率（基於歷史相似情境）
 - 預估反轉時間範圍（1-2 週內 / 2-4 週內）
 
-**詳細方法：** 參考 `references/sentiment/sentiment-prediction-framework.md`
+**詳細方法：** 參考 `references/sentiment-prediction-framework.md`
 
 ---
 
@@ -642,7 +642,7 @@ tags:
 最終分數範圍：0 ~ 100
 ```
 
-**評分細節：** 參考 `references/sentiment/sentiment-scoring-methodology.md`
+**評分細節：** 參考 `references/sentiment-scoring-methodology.md`
 
 #### 9.2 綜合情緒分數解讀
 
@@ -709,7 +709,7 @@ tags:
    - VIX 上升但股價仍上漲
    - → 🔴 **潛在頂部，考慮減碼**
 
-**詳細策略：** 參考 `references/sentiment/contrarian-investing-framework.md`
+**詳細策略：** 參考 `references/contrarian-investing-framework.md`
 
 ---
 
@@ -813,7 +813,7 @@ tags:
    - 停損與停利設定
    - 動態調整觸發條件
 
-**詳細報告範本：** 參考 `references/sentiment/sentiment-report-template.md`
+**詳細報告範本：** 參考 `references/sentiment-report-template.md`
 
 ---
 
@@ -822,46 +822,46 @@ tags:
 ### 核心方法論（必讀）
 
 **情緒指標解讀：**
-- `references/sentiment/vix-interpretation-guide.md` - VIX 恐慌指數完整解讀
-- `references/sentiment/fear-greed-reversal-strategy.md` - Fear & Greed 極端點反轉策略
-- `references/sentiment/put-call-ratio-guide.md` - Put/Call Ratio 詳細解讀
+- `references/vix-interpretation-guide.md` - VIX 恐慌指數完整解讀
+- `references/fear-greed-reversal-strategy.md` - Fear & Greed 極端點反轉策略
+- `references/put-call-ratio-guide.md` - Put/Call Ratio 詳細解讀
 
 **籌碼面分析：**
-- `references/sentiment/margin-trading-analysis.md` - 融資融券分析方法（台股）
-- `references/sentiment/institutional-flow-taiwan.md` - 法人買賣超分析（台股）
-- `references/sentiment/institutional-ownership-analysis.md` - 機構持倉分析（美股）
-- `references/sentiment/short-squeeze-detection.md` - 軋空機會識別
-- `references/sentiment/gex-gamma-exposure-guide.md` - GEX 與暴力盤分析
+- `references/margin-trading-analysis.md` - 融資融券分析方法（台股）
+- `references/institutional-flow-taiwan.md` - 法人買賣超分析（台股）
+- `references/institutional-ownership-analysis.md` - 機構持倉分析（美股）
+- `references/short-squeeze-detection.md` - 軋空機會識別
+- `references/gex-gamma-exposure-guide.md` - GEX 與暴力盤分析
 
 **資金流向：**
-- `references/sentiment/gold-safe-haven-flow.md` - 黃金避險資金流分析
-- `references/sentiment/dxy-risk-sentiment.md` - 美元指數風險情緒解讀
+- `references/gold-safe-haven-flow.md` - 黃金避險資金流分析
+- `references/dxy-risk-sentiment.md` - 美元指數風險情緒解讀
 
 **分析師與社群：**
-- `references/sentiment/analyst-consensus-tracking.md` - 分析師共識追蹤方法
-- `references/sentiment/news-sentiment-nlp.md` - 新聞情緒 NLP 分析
-- `references/sentiment/social-media-sentiment-analysis.md` - 社群媒體情緒挖掘
+- `references/analyst-consensus-tracking.md` - 分析師共識追蹤方法
+- `references/news-sentiment-nlp.md` - 新聞情緒 NLP 分析
+- `references/social-media-sentiment-analysis.md` - 社群媒體情緒挖掘
 
 **散戶行為：**
-- `references/sentiment/retail-investor-behavior.md` - 散戶行為監測指標
+- `references/retail-investor-behavior.md` - 散戶行為監測指標
 
 **情緒預測：**
-- `references/sentiment/sentiment-prediction-framework.md` - 情緒預測與轉折點判斷
-- `references/sentiment/sentiment-scoring-methodology.md` - 情緒評分計算方法
+- `references/sentiment-prediction-framework.md` - 情緒預測與轉折點判斷
+- `references/sentiment-scoring-methodology.md` - 情緒評分計算方法
 
 **逆向投資：**
-- `references/sentiment/contrarian-investing-framework.md` - 逆向投資框架
-- `references/sentiment/behavioral-finance-principles.md` - 行為金融學應用
+- `references/contrarian-investing-framework.md` - 逆向投資框架
+- `references/behavioral-finance-principles.md` - 行為金融學應用
 
 ### 數據來源與工具
 
 **數據來源清單：**
-- `references/sentiment/data-sources.md` - 完整數據來源與 API 指引
+- `references/data-sources.md` - 完整數據來源與 API 指引
 
 **實用工具：**
-- `references/sentiment/sentiment-dashboard-template.md` - 情緒儀表板範本
-- `references/sentiment/contrarian-opportunity-checklist.md` - 逆向機會檢查清單
-- `references/sentiment/sentiment-report-template.md` - 完整報告範本
+- `references/sentiment-dashboard-template.md` - 情緒儀表板範本
+- `references/contrarian-opportunity-checklist.md` - 逆向機會檢查清單
+- `references/sentiment-report-template.md` - 完整報告範本
 
 ---
 

@@ -264,7 +264,7 @@ Q: 我想建立完整的投資組合策略？
 - 情緒面建議（逢低佈局/保持耐心/謹慎追價/獲利了結）
 - 反市場操作機會提示
 
-**模組：** `market-sentiment/SKILL.md`（待建立）
+**模組：** `market-sentiment/SKILL.md`
 
 ---
 

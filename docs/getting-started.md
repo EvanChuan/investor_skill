@@ -32,7 +32,7 @@ description: "如何快速開始使用投資分析框架"
 https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK.md
 ```
 
-[📋 點此複製](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK.md)
+[📋 一鍵複製連結](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK.md)
 
 #### 各階段連結
 
@@ -42,6 +42,7 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK
 | 2 | [產業研究](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/industry-research/SKILL.md) |
 | 3 | [個股基本面](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/equity-fundamental-analysis/SKILL.md) |
 | 4 | [估值分析](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/valuation-analysis/SKILL.md) |
+| 5 | [市場情緒](https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/market-sentiment-tracking/SKILL.md) |
 
 ---
 
@@ -99,12 +100,18 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK
 
 在 AI 對話框中輸入:
 
-```
-請詳細閱讀這份投資分析框架,並準備協助我進行專業級的投資研究:
-[貼上你複製的連結]
-
-我想分析 [公司名稱/產業/市場]
-```
+<div class="copy-container">
+   <div class="url-display">
+    請詳細閱讀這份投資分析框架,並準備協助我進行專業級的投資研究:
+    https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK.md <br>
+    我想分析 [公司名稱/產業/市場]
+  </div>
+  <button class="copy-btn" data-copy="請詳細閱讀這份投資分析框架,並準備協助我進行專業級的投資研究:
+    https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK.md
+    &#10;我想分析 [公司名稱/產業/市場]">
+    📋 一鍵複製指令
+  </button>
+</div>
 
 > 💡 **小提示:** 明確告訴 AI 你的分析目標,可以獲得更精準的回應!
 

@@ -139,3 +139,47 @@
   background: #d4f4dd;
   border-color: #22863a;
 }
+
+
+.copy-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.copy-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #159957, #155799);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-top: 10px;
+}
+
+.copy-btn:hover {
+  background: linear-gradient(135deg, #0d7042, #0d3f6f);
+  box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+
+.copy-btn:active {
+  transform: translateY(0);
+}
+
+.url-display {
+  background-color: #f6f8fa;
+  border: 1px solid #d1d5da;
+  border-radius: 6px;
+  padding: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  word-break: break-all;
+  margin-bottom: 10px;
+  white-space: pre-wrap; /* 保留換行 */
+  line-height: 1.6;
+}

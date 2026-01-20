@@ -243,10 +243,24 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/macro-mar
 
 ## 🎓 進階使用
 
-### 技巧 1: 分階段深入
+想看更多實戰範例？我們整理了完整的使用案例庫！
+
+### 📚 [查看完整範例文檔 →](./examples)
+
+**包含內容：**
+- ✅ **30+ 實戰範例**：涵蓋五個分析階段
+- ✅ **一鍵複製指令**：所有範例都可直接使用
+- ✅ **使用情境說明**：知道什麼時候該用哪個範例
+- ✅ **預期輸出介紹**：了解 AI 會提供什麼內容
+- ✅ **組合應用案例**：多階段連貫使用技巧
+
+### 快速預覽
+
+#### 技巧 1: 分階段深入
 
 ```
-我想對 Apple (AAPL) 進行完整分析:
+
+我想對 Apple (AAPL) 進行完整分析：
 
 第一步 - 載入框架:
 https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK.md
@@ -254,12 +268,15 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK
 第二步 - 逐步執行:
 請先完成階段一(總體經濟),用最新數據。
 完成後我再請你繼續。
-```
-
-### 技巧 2: 比較多支股票
 
 ```
+
+#### 技巧 2: 比較多支股票
+
+```
+
 請用此框架比較:
+
 - Apple (AAPL)
 - Microsoft (MSFT)
 - Google (GOOGL)
@@ -267,11 +284,13 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK
 框架: https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/equity-fundamental-analysis/SKILL.md
 
 產出比較表,包含: 基本面評分、財務健康度、競爭優勢
-```
-
-### 技巧 3: 建立觀察清單
 
 ```
+
+#### 技巧 3: 建立觀察清單
+
+```
+
 請用框架篩選科技股中最值得投資的前 5 家:
 
 產業框架: https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/industry-research/SKILL.md
@@ -279,7 +298,11 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK
 個股框架: https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/equity-fundamental-analysis/SKILL.md
 
 標準: 產業領先、財務健康、成長性佳、估值合理
+
 ```
+
+### 🚀 [探索更多範例 →](./examples)
+
 
 ---
 

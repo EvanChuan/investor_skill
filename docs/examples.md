@@ -651,8 +651,13 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/equity-fu
 4. 估值檢查：<br>
 https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/valuation-analysis/SKILL.md<br>
 <br>
-我的風險偏好：中等<br>
-投資期限：3-5 年<br>
+- 我的風險偏好：中等<br>
+- 投資期限：3-5 年<br>
+- 欲投資產業鏈：AI、國防、電力電網、核能<br>
+- 容許最大虧損:30% <br>
+- 投資期限：1~3年 <br>
+- 操作手法：現股/期權/現股+期權 <br>
+- 回報率：30%/2M <br>
 <br>
 請推薦 8-10 檔股票，並說明配置比例與理由
   </div>

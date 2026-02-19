@@ -1,9 +1,11 @@
 ---
-name: risk-radar-2026
-version: 1.0
+name: risk-radar
+version: 1.1.0
 description: >
-  建立一套以「流動性週期＋壓力型去通膨＋AI 資本支出週期」為核心的 2025–2026 宏觀風險雷達，
+  【子模組】隸屬於 macro-market-analysis（第一階段總體經濟分析）。
+  建立一套以「流動性週期＋壓力型去通膨＋AI 資本支出週期」為核心的宏觀風險雷達，
   協助投資人每月／每季透過固定指標檢查，調整整體槓桿與產業權重。
+  請透過 macro-market-analysis 的 Step 10 觸發本子模組，或直接載入本文件執行獨立掃描。
 tags:
   - macro
   - risk-management
@@ -12,7 +14,15 @@ tags:
   - equity
   - fixed-income
   - AI-semiconductor
-author: your_name_here
+  - sub-module
+author: Evan
+parent_skill: macro-market-analysis
+---
+
+> **架構說明：** 本文件為 `macro-market-analysis` 的子模組，定位為月度/季度定期風險掃描工具。
+> 執行完整總體經濟分析時，請使用 `macro-market-analysis/SKILL.md`；
+> 僅需執行週期性風險掃描時，可直接載入本文件。
+
 ---
 
 ## Skill 目標
@@ -164,6 +174,22 @@ Agent 在運行本 Skill 時，應優先蒐集以下指標（可用任意可靠�
 
 ## 限制與注意事項
 
-- 本 Skill 不提供個股買賣建議與精確目標價，只提供**資產類別／產業層級**的風險調整方向。  
-- 數據更新頻率建議為「每月至少一次」，重大事件（FOMC、重大信用事件、系統性風險新聞）後可臨時重跑。  
+- 本 Skill 不提供個股買賣建議與精確目標價，只提供**資產類別／產業層級**的風險調整方向。
+- 數據更新頻率建議為「每月至少一次」，重大事件（FOMC、重大信用事件、系統性風險新聞）後可臨時重跑。
 - 所有判斷屬輔助性質，使用者仍需依自身風險承受度與投資周期做最終決策。
+
+---
+
+## 版本記錄
+
+### v1.1.0 (2026-02-19)
+- ✅ 整合為 `macro-market-analysis` 的子模組
+- ✅ 更新 frontmatter：新增 `parent_skill`、`sub-module` tag、修正 author
+- ✅ 新增架構說明區塊，明確定位與使用時機
+- ✅ 版本號格式統一為 vX.Y.Z
+
+### v1.0 (初始版本)
+- 建立流動性週期＋壓力型去通膨＋AI 資本週期三大分析框架
+- 定義 22 個風險追蹤指標（通膨、信用、景氣、流動性、AI/半導體、銀行）
+- 建立四步驟核心分析邏輯（Step 1-4）
+- 定義結構化月報/季報輸出格式

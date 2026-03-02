@@ -113,7 +113,7 @@ Q: 我想深入研究某支股票值不值得買？
 
 Q: 我想知道某支股票現在該買還是等等？
 └─> 使用 technical-analysis（第六階段：技術分析）
-+ market-sentiment（第五階段：市場情緒）
++ market-sentiment-tracking（第五階段：市場情緒）
 
 Q: 我想建立完整的投資組合策略？
 └─> 依序執行第一階段 → 第二階段 → 第三階段 → ... → 第七階段
@@ -147,7 +147,7 @@ Q: 我想建立完整的投資組合策略？
 
 **模組：** `macro-market-analysis/SKILL.md`
 
-**子模組：** `risk-radar/SKILL.md`（月度/季度定期風險掃描，整合於第一階段 Step 10）
+**子模組：** `macro-market-analysis/risk-radar/SKILL.md`（月度/季度定期風險掃描，整合於第一階段 Step 10）
 
 | 使用情境 | 使用工具 |
 |---------|---------|
@@ -275,7 +275,7 @@ Q: 我想建立完整的投資組合策略？
 - 情緒面建議（逢低佈局/保持耐心/謹慎追價/獲利了結）
 - 反市場操作機會提示
 
-**模組：** `market-sentiment/SKILL.md`
+**模組：** `market-sentiment-tracking/SKILL.md`
 
 ---
 

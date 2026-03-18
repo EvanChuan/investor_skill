@@ -36,22 +36,19 @@ tags:
 - 對市場情緒的敏銳感知（理解市場先生的情緒波動）
 - 對技術面的合理運用（時機與紀律決定最終報酬）
 ​
-### 七個分析架構
+### 七個分析模組
 
-第一階段：總體經濟分析 (Macro Market Analysis)
-↓
-第二階段：產業研究與輪動 (Industry Research \& Rotation)
-↓
-第三階段：個股基本面分析 (Fundamental Analysis)
-↓
-第四階段：估值與安全邊際 (Valuation \& Margin of Safety)
-↓
-第五階段：市場情緒追蹤 (Market Sentiment Tracking)
-↓
-第六階段：技術面分析與時機 (Technical Analysis \& Timing)
-↓
-第七階段：風險管理與執行紀律 (Risk Management \& Execution)
-以上七個階段有前後關係，但也可以各別執行。
+每個模組均可**獨立使用**，無需依序執行。完整分析時可由上而下串聯，但更多情況下會針對單一問題直接調用對應模組。
+
+| 模組 | 適用問題 |
+|------|---------|
+| 第一：總體經濟分析 (Macro Market Analysis) | 現在適合進場嗎？宏觀環境如何？ |
+| 第二：產業研究與輪動 (Industry Research & Rotation) | 應該佈局哪個產業？ |
+| 第三：個股基本面分析 (Fundamental Analysis) | 這家公司值得投資嗎？ |
+| 第四：估值與安全邊際 (Valuation & Margin of Safety) | 現在貴不貴？合理價在哪？ |
+| 第五：市場情緒追蹤 (Market Sentiment Tracking) | 市場現在貪婪還是恐懼？ |
+| 第六：技術面分析與時機 (Technical Analysis & Timing) | 現在是好買點嗎？支撐壓力在哪？ |
+| 第七：風險管理與執行紀律 (Risk Management & Execution) | 應該買多少？停損設在哪裡？ |
 
 ### 適用場景
 
@@ -303,7 +300,7 @@ Q: 我想建立完整的投資組合策略？
 - 停損價位建議
 - 短期/中期/長期趨勢判斷
 
-**模組：** `technical-analysis/SKILL.md`（待建立）
+**模組：** `technical-analysis/SKILL.md`
 
 ---
 
@@ -333,7 +330,7 @@ Q: 我想建立完整的投資組合策略？
 - 風險管理計畫（停損點、加減碼策略）
 - 情境分析（樂觀/基準/悲觀情境下的預期報酬與風險）
 
-**模組：** `risk-management/SKILL.md`（待建立）
+**模組：** `risk-management/SKILL.md`
 
 ---
 ## 完整分析流程範例

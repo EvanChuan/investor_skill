@@ -97,6 +97,7 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK
 - ✅ **即學即用** - 無需技術背景，複製連結即可
 - ✅ **多平台支援** - 適用於主流 AI 助理
 - ✅ **開源免費** - 個人投資研究完全免費
+- ✅ **完整數據指標體系** - 80+ 指標全面涵蓋，含流動性（TGA/RRP/M2）、週度就業、PMI 等短中長期數據
 
 ---
 
@@ -158,4 +159,4 @@ https://raw.githubusercontent.com/EvanChuan/investor_skill/main/skills/FRAMEWORK
 
 ---
 
-**版本：** v1.2.0 | **維護者：** Evan | **更新日期：** 2026-01-20
+**版本：** v1.3.0 | **維護者：** Evan | **更新日期：** 2026-03-18

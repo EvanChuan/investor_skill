@@ -47,11 +47,22 @@ permalink: /docs/framework
 - 現在是多頭還是空頭？
 - 央行政策如何影響市場？
 - 經濟數據透露什麼訊號？
+- 市場流動性（TGA、RRP、M2、淨流動性）如何變化？
+- 資金實際正在流向哪些資產類別？
 
 **輸出：**
 - 市場環境評級（看多/中性/看空）
 - 建議股票部位比例（0-100%）
 - 產業輪動建議
+- 淨流動性趨勢判斷（充裕 / 收緊 / 警戒）
+- 跨資產資金溫度評分（16 大資產類別）
+
+**v2.3 新增數據涵蓋（80+ 指標）：**
+- 📅 **週度指標**：初領/續領失業救濟金（每週四）
+- 📊 **景氣指標**：ISM 製造業/服務業 PMI、Conference Board LEI
+- 💧 **流動性指標**：TGA（財政部現金餘額）、RRP（逆回購餘額）、M2 貨幣供給
+- ⚠️ **壓力預警**：FRA-OIS Spread、TED Spread
+- 🌏 **亞洲指標**：台灣出口訂單、南韓出口、人民幣匯率（CNH）
 
 **詳細文檔：** [總體經濟分析 SKILL.md](https://github.com/EvanChuan/investor_skill/blob/main/skills/macro-market-analysis/SKILL.md)
 

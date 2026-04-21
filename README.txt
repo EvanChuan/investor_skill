@@ -38,3 +38,5 @@ investor_skill 是一套基於 30 年實戰投資經驗設計的七階段投資�
 ## 授權
 
 Proprietary - 僅供個人使用
+
+test

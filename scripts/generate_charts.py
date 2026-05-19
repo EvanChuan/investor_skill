@@ -71,12 +71,14 @@ CHART_GROUPS = {
         {"name": "RUT",    "ticker": "^RUT",     "display": "羅素 2000（RUT）"},
         {"name": "SOX",    "ticker": "^SOX",     "display": "費城半導體（SOX）"},
     ],
-    "AI龍頭": [
+    "七巨頭": [
+        {"name": "AAPL",   "ticker": "AAPL",     "display": "蘋果（AAPL）"},
+        {"name": "MSFT",   "ticker": "MSFT",     "display": "微軟（MSFT）"},
+        {"name": "AMZN",   "ticker": "AMZN",     "display": "亞馬遜（AMZN）"},
+        {"name": "GOOGL",  "ticker": "GOOGL",    "display": "Alphabet（GOOGL）"},
+        {"name": "META",   "ticker": "META",     "display": "Meta（META）"},
         {"name": "NVDA",   "ticker": "NVDA",     "display": "輝達（NVDA）"},
-        {"name": "AVGO",   "ticker": "AVGO",     "display": "博通（AVGO）"},
-        {"name": "TSM",    "ticker": "TSM",      "display": "台積電 ADR（TSM）"},
-        {"name": "MRVL",   "ticker": "MRVL",     "display": "邁威爾科技（MRVL）"},
-        {"name": "UFO",    "ticker": "UFO",      "display": "太空衛星 ETF（UFO）"},
+        {"name": "TSLA",   "ticker": "TSLA",     "display": "特斯拉（TSLA）"},
     ],
     "加密黃金": [
         {"name": "BTC",    "ticker": "BTC-USD",  "display": "比特幣（BTC/USD）"},

@@ -58,13 +58,15 @@ US_INDICES = [
     {"name": "SOX",   "ticker": "^SOX",  "display": "費城半導體（SOX）"},
 ]
 
-# Watchlist 中的 AI 龍頭追蹤代號（不是所有都在 watchlist，yfinance 補足）
+# 七巨頭（Magnificent 7）追蹤
 AI_TICKERS = [
-    {"name": "NVDA", "display": "輝達（NVDA）"},
-    {"name": "AVGO", "display": "博通（AVGO）"},
-    {"name": "TSM",  "display": "台積電 ADR（TSM）"},
-    {"name": "MRVL", "display": "邁威爾科技（MRVL）"},
-    {"name": "UFO",  "display": "太空衛星 ETF（UFO）"},
+    {"name": "AAPL",  "display": "蘋果（AAPL）"},
+    {"name": "MSFT",  "display": "微軟（MSFT）"},
+    {"name": "AMZN",  "display": "亞馬遜（AMZN）"},
+    {"name": "GOOGL", "display": "Alphabet（GOOGL）"},
+    {"name": "META",  "display": "Meta（META）"},
+    {"name": "NVDA",  "display": "輝達（NVDA）"},
+    {"name": "TSLA",  "display": "特斯拉（TSLA）"},
 ]
 
 # ============================================================================
@@ -425,7 +427,7 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
     # 3-2 AI 龍頭
     lines += [
         "",
-        "> **#創新高族群，AI 半導體/晶片龍頭追蹤**",
+        "> **#七巨頭（Magnificent 7）追蹤**",
         "> 國際趨勢（題材）＋ 有客戶（需求）＋ 賣超好 ＋ 贏超多 ＝ 會持續上漲的股票。",
         "",
     ]

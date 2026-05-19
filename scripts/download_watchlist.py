@@ -40,9 +40,11 @@ def download_xlsx(creds, sheet_id, out_path):
     if creds.expired and creds.refresh_token:
         creds.refresh(Request())
 
+    # Drive API v3 export endpoint — 正確接受 OAuth2 Bearer token
+    # docs.google.com/export 是 browser-cookie 導向，不適合 API 呼叫
     export_url = (
-        f"https://docs.google.com/spreadsheets/d/{sheet_id}"
-        f"/export?format=xlsx"
+        f"https://www.googleapis.com/drive/v3/files/{sheet_id}/export"
+        f"?mimeType=application%2Fvnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
 
     headers = {"Authorization": f"Bearer {creds.token}"}

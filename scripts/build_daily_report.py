@@ -34,9 +34,10 @@ import openpyxl
 import pandas as pd
 import yfinance as yf
 
-PROJECT_ROOT = Path(__file__).parent.parent
-REPORTS_DIR  = PROJECT_ROOT / "reports"
-CHARTS_BASE  = REPORTS_DIR / "charts"
+PROJECT_ROOT   = Path(__file__).parent.parent
+REPORTS_DIR    = PROJECT_ROOT / "reports"
+CHARTS_BASE    = REPORTS_DIR / "charts"
+WATCHLIST_DIR  = PROJECT_ROOT / "data" / "watchlist"
 
 # ============================================================================
 # 指數設定（yfinance）
@@ -120,18 +121,34 @@ def get_stock_data(ticker: str) -> dict | None:
 
 def find_watchlist_xlsx(target_date: date) -> Path | None:
     mmdd = target_date.strftime("%m%d")
+    # 優先找 data/watchlist/，再 fallback 到舊的 PROJECT_ROOT
     patterns = [
-        PROJECT_ROOT / f"Market Watchlist{mmdd}.xlsx",
-        PROJECT_ROOT / f"Market Watchlist {mmdd}.xlsx",
+        WATCHLIST_DIR / f"Market Watchlist{mmdd}.xlsx",
+        WATCHLIST_DIR / f"Market Watchlist {mmdd}.xlsx",
+        PROJECT_ROOT  / f"Market Watchlist{mmdd}.xlsx",
+        PROJECT_ROOT  / f"Market Watchlist {mmdd}.xlsx",
     ]
     for p in patterns:
         if p.exists():
             return p
-    # fallback: 最新的 xlsx
-    files = list(PROJECT_ROOT.glob("Market Watchlist*.xlsx"))
+    # fallback: 最新的 xlsx（先找 data/watchlist/，再找 root）
+    files = list(WATCHLIST_DIR.glob("Market Watchlist*.xlsx")) + \
+            list(PROJECT_ROOT.glob("Market Watchlist*.xlsx"))
     if files:
         return max(files, key=lambda f: f.stat().st_mtime)
     return None
+
+def _to_num(v):
+    """字串數字轉 float；非數字原樣返回。"""
+    if isinstance(v, (int, float)):
+        return v
+    if isinstance(v, str):
+        try:
+            return float(v.replace(",", "").replace("%", "").strip())
+        except (ValueError, TypeError):
+            pass
+    return v
+
 
 def parse_xlsx_sections(xlsx_path: Path, sheet_name: str) -> list[dict]:
     """解析指定工作表，回傳 sections 清單，每個 section 含 name + rows。"""
@@ -149,7 +166,7 @@ def parse_xlsx_sections(xlsx_path: Path, sheet_name: str) -> list[dict]:
         vals  = list(row)
         c_val = vals[2] if len(vals) > 2 else None
         d_val = vals[3] if len(vals) > 3 else None
-        e_val = vals[4] if len(vals) > 4 else None
+        e_val = _to_num(vals[4]) if len(vals) > 4 else None
 
         if c_val == "Ticker":
             header = True
@@ -166,13 +183,14 @@ def parse_xlsx_sections(xlsx_path: Path, sheet_name: str) -> list[dict]:
 
         ticker = str(c_val).replace("BATS:", "").strip()
         price  = e_val
-        d1     = vals[5] if len(vals) > 5 else None
+        d1     = _to_num(vals[5]) if len(vals) > 5 else None
 
         # 尋找 Rank（最後一個有數值的欄位）
         rank = None
         for v in reversed(vals[6:14]):
-            if isinstance(v, (int, float)) and 0 <= v <= 100:
-                rank = float(v)
+            num_v = _to_num(v)
+            if isinstance(num_v, (int, float)) and 0 <= num_v <= 100:
+                rank = float(num_v)
                 break
 
         if current is None:
@@ -565,7 +583,6 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
         ]
         for r, code, desc in bond_map:
             if r:
-                from parse_watchlist import fmt_pct as wl_fmt_pct
                 d1 = fmt_pct(r["d1"])
                 rank = f"{r['rank']:.1f} {rank_icon(r['rank'])}" if r["rank"] else "—"
                 lines.append(f"| {desc} | {code} | ${r['price']:.2f} | {d1} | — | {rank} | {desc} |")

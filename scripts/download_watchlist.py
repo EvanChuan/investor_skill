@@ -28,9 +28,10 @@ from googleapiclient.discovery import build
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from google_auth import get_credentials
 
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-REPORTS_DIR  = os.path.join(PROJECT_ROOT, "reports")
-SCRIPTS_DIR  = os.path.join(PROJECT_ROOT, "scripts")
+PROJECT_ROOT    = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+REPORTS_DIR     = os.path.join(PROJECT_ROOT, "reports")
+SCRIPTS_DIR     = os.path.join(PROJECT_ROOT, "scripts")
+WATCHLIST_DIR   = os.path.join(PROJECT_ROOT, "data", "watchlist")
 
 # TheMarketMemo 試算表 ID（從 URL 取得）
 SHEET_ID = "1HlM-6fb9Hg2oEnqMWtWjcn6KNB5-mgt8oOrxKdv8O_Y"
@@ -83,6 +84,7 @@ def main():
     mmdd = today.strftime("%m%d")
 
     os.makedirs(REPORTS_DIR, exist_ok=True)
+    os.makedirs(WATCHLIST_DIR, exist_ok=True)
 
     # ── 步驟 1：取得憑證（自動刷新，無頭執行）──
     print(f"[{date_str}] 取得 Google 認證...")
@@ -90,7 +92,7 @@ def main():
     print("認證成功")
 
     # ── 步驟 2：用 Sheets API 讀取試算表 ──
-    xlsx_path = os.path.join(PROJECT_ROOT, f"Market Watchlist{mmdd}.xlsx")
+    xlsx_path = os.path.join(WATCHLIST_DIR, f"Market Watchlist{mmdd}.xlsx")
     print(f"讀取試算表至 {xlsx_path}...")
     try:
         ok = download_via_sheets_api(creds, SHEET_ID, xlsx_path)

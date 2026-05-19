@@ -18,3 +18,6 @@ __pycache__/
 
 # 圖表圖片（由 Routine 動態生成，不需追蹤）
 reports/charts/
+reports/
+data/
+config/

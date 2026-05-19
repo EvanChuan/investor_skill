@@ -6,3 +6,15 @@ _site/
 vendor/
 Gemfile.lock
 .DS_Store
+
+# Google API 憑證（絕對不能 commit）
+config/credentials.json
+config/token.json
+
+# Python 虛擬環境
+scripts/.venv/
+__pycache__/
+*.pyc
+
+# 圖表圖片（由 Routine 動態生成，不需追蹤）
+reports/charts/

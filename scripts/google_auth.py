@@ -27,7 +27,6 @@ TOKEN_PATH = os.path.join(PROJECT_ROOT, "config", "token.json")
 
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets.readonly",
-    "https://www.googleapis.com/auth/drive.readonly",  # export URL 需要 Drive 層級存取
 ]
 
 

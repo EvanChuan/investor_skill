@@ -12,6 +12,11 @@ google_auth.py — 一次性 OAuth2 認證，儲存 token.json 供後續自動�
 import os
 import sys
 
+# oauthlib 預設當 Google 回傳的 scope 是請求的子集時會拋出錯誤。
+# drive.readonly 在 export URL 時需要，但 Google 有時只回傳 spreadsheets.readonly，
+# 設此變數讓 oauthlib 接受較窄的 scope 而不中斷。
+os.environ.setdefault("OAUTHLIB_RELAX_TOKEN_SCOPE", "1")
+
 from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -20,9 +25,9 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CREDENTIALS_PATH = os.path.join(PROJECT_ROOT, "config", "credentials.json")
 TOKEN_PATH = os.path.join(PROJECT_ROOT, "config", "token.json")
 
-# spreadsheets.readonly 即可匯出 xlsx，不需要 drive.readonly
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets.readonly",
+    "https://www.googleapis.com/auth/drive.readonly",  # export URL 需要 Drive 層級存取
 ]
 
 

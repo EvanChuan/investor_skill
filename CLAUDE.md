@@ -24,11 +24,36 @@ Claude Code Routines 只負責以下三個可自動搜尋的模組：
 
 ---
 
+## Routine 執行順序（三段式自動化）
+
+每日 Routine 依序執行以下三步，再由 Routine 補充 WebSearch 數據：
+
+```bash
+# 步驟 1｜下載 Watchlist 試算表（Google Sheets → xlsx → watchlist.md）
+python3 /home/evan/Desktop/investor_skill/scripts/download_watchlist.py
+
+# 步驟 2｜生成技術線圖（yfinance → PNG，存入 reports/charts/YYYY-MM-DD/）
+/home/evan/Desktop/investor_skill/scripts/.venv/bin/python \
+  /home/evan/Desktop/investor_skill/scripts/generate_charts.py
+
+# 步驟 3｜整合日報（yfinance 指數 + Watchlist Rank + 線圖路徑 → 預填日報）
+/home/evan/Desktop/investor_skill/scripts/.venv/bin/python \
+  /home/evan/Desktop/investor_skill/scripts/build_daily_report.py
+```
+
+步驟 3 完成後，Routine 讀取預填日報並用 WebSearch 補充以下欄位：
+- 區塊五：美股成交額前 40 名
+- 區塊七：VIX 波動率指數、CNN 恐懼貪婪指數、期貨盤前數據
+- 區塊六：US10Y 實際殖利率、DXY 美元指數、WTI 現貨油價
+- 近期重要總經事件
+
+---
+
 ## 執行規則
 
 - **輸出路徑：** `reports/YYYY-MM-DD_daily_market_report.md`
 - **若 `reports/` 資料夾不存在，自動建立**
-- 資料來源：WebSearch 搜尋最新數據
+- 資料來源：Python 腳本（yfinance + Watchlist）＋ WebSearch 補充
 - 語言：繁體中文
 - **趨勢階段標注規則：**
   - `創新高（N）` — 突破前高，N = 連續第幾次

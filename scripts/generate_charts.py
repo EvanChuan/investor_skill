@@ -251,16 +251,6 @@ def generate_chart(ticker_info: dict, output_dir: Path, period: str = "2y") -> P
         color=chg_color, fontsize=10,
         va="top", ha="left",
     )
-    # 右上：趨勢標籤（大字）
-    ax_main.text(
-        0.98, 0.92, trend,
-        transform=ax_main.transAxes,
-        color=trend_color, fontsize=16,
-        va="top", ha="right",
-        fontproperties=_FP_BOLD,
-        bbox=dict(boxstyle="round,pad=0.3", facecolor="#131722aa", edgecolor=trend_color, linewidth=1.5),
-    )
-
     # 圖例：EMA
     legend_handles = [
         mpatches.Patch(color=EMA_COLORS["ema10"],  label="EMA 10"),

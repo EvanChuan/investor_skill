@@ -25,7 +25,7 @@ import os
 import re
 import sys
 import warnings
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 warnings.filterwarnings("ignore")
@@ -224,6 +224,19 @@ def get_watchlist_data(xlsx_path: Path) -> dict:
     }
 
 # ============================================================================
+# 日期工具
+# ============================================================================
+
+def prev_trading_day(d: date) -> date:
+    """回傳上一個交易日（跳過週末，不處理假日）。"""
+    delta = 1
+    prev = d - timedelta(days=delta)
+    while prev.weekday() >= 5:  # 5=Saturday, 6=Sunday
+        delta += 1
+        prev = d - timedelta(days=delta)
+    return prev
+
+# ============================================================================
 # 格式化工具
 # ============================================================================
 
@@ -266,7 +279,11 @@ def chart_img(name: str, date_str: str) -> str:
 
 def build_report(target_date: date, xlsx_path: Path | None) -> str:
     date_str = target_date.strftime("%Y-%m-%d")
-    mmdd     = target_date.strftime("%m/%d")
+    mmdd     = target_date.strftime("%m/%d")  # 亞股：今日
+
+    us_date     = prev_trading_day(target_date)
+    us_date_str = us_date.strftime("%Y-%m-%d")
+    us_mmdd     = us_date.strftime("%m/%d")   # 美股：昨日（前一交易日）
 
     print(f"\n📋 建構日報：{date_str}")
 
@@ -285,7 +302,7 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
         f"# 每日市場日報 — {date_str}",
         f"",
         f"**產出時間：** {date_str}（台灣時間）",
-        f"**資料截止：** 美股 {date_str} 收盤 ／ 亞股 {date_str} 收盤",
+        f"**資料截止：** 美股 {us_date_str} 收盤 ／ 亞股 {date_str} 收盤",
         f"**自動化模組：** macro-market-analysis ｜ industry-research ｜ market-sentiment-tracking",
         f"",
         f"---",
@@ -339,7 +356,7 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
     # 區塊二：美國股市
     # ====================================================================
     print("  [2/7] 美國股市... ", end="", flush=True)
-    lines += [f"## 二、{mmdd} 美國股市概況", ""]
+    lines += [f"## 二、{us_mmdd} 美國股市概況（昨日收盤）", ""]
 
     for idx in US_INDICES:
         d = get_index_data(idx["ticker"])
@@ -354,14 +371,14 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
                 if r and r["rank"] is not None:
                     rank_str = f"（Watchlist Rank：{r['rank']:.1f} {rank_icon(r['rank'])}）"
             lines += [
-                f"### {mmdd} {idx['display']} {chg_str}",
+                f"### {us_mmdd} {idx['display']} {chg_str}",
                 f"- 收盤：{d['close']:,.2f} {rank_str}",
                 f"- 趨勢階段：**{d['trend']}**",
                 "",
                 chart_img(idx["name"], date_str),
             ]
         else:
-            lines += [f"### {mmdd} {idx['display']}", "> 數據取得失敗", ""]
+            lines += [f"### {us_mmdd} {idx['display']}", "> 數據取得失敗", ""]
 
     lines += ["---", ""]
     print("✅")
@@ -370,7 +387,7 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
     # 區塊三：強弱板塊 + AI 龍頭
     # ====================================================================
     print("  [3/7] 強弱板塊... ", end="", flush=True)
-    lines += [f"## 三、{mmdd} 美股強弱勢板塊", ""]
+    lines += [f"## 三、{us_mmdd} 美股強弱勢板塊（昨日收盤）", ""]
 
     # 3-1 板塊強弱（Watchlist Industry Rank）
     lines += [

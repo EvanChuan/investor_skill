@@ -20,10 +20,9 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CREDENTIALS_PATH = os.path.join(PROJECT_ROOT, "config", "credentials.json")
 TOKEN_PATH = os.path.join(PROJECT_ROOT, "config", "token.json")
 
-# 只需要唯讀權限（下載試算表）
+# spreadsheets.readonly 即可匯出 xlsx，不需要 drive.readonly
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets.readonly",
-    "https://www.googleapis.com/auth/drive.readonly",
 ]
 
 

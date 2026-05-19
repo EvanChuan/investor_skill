@@ -167,7 +167,7 @@ TREND_COLORS = {
 # 單張圖表生成
 # ============================================================================
 
-def generate_chart(ticker_info: dict, output_dir: Path, period: str = "2y") -> Path | None:
+def generate_chart(ticker_info: dict, output_dir: Path, period: str = "1y") -> Path | None:
     name    = ticker_info["name"]
     ticker  = ticker_info["ticker"]
     display = ticker_info["display"]
@@ -286,8 +286,8 @@ def main():
     parser.add_argument("--group", default="all",
                         choices=["all"] + ALL_GROUPS,
                         help="只生成指定群組的圖表")
-    parser.add_argument("--period", default="2y",
-                        help="K 線資料期間，如 1y / 2y / 6mo（預設 2y）")
+    parser.add_argument("--period", default="1y",
+                        help="K 線資料期間，如 1y / 2y / 6mo（預設 1y）")
     args = parser.parse_args()
 
     # ── 輸出目錄 ────────────────────────────────────────────────────────────

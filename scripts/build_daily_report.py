@@ -2,21 +2,21 @@
 """
 build_daily_report.py — 每日市場日報自動建構器
 
-整合三個本地資料來源，生成預填充日報：
-  1. yfinance      → 指數收盤價 + 趨勢階段（與 generate_charts 共用邏輯）
-  2. Watchlist xlsx → 板塊 Rank、ETF 強弱排行、商品/黃金/BTC ETF 數據
+整合四個本地資料來源，生成預填充日報：
+  1. yfinance        → 指數收盤價 + 趨勢階段（與 generate_charts 共用邏輯）
+  2. Watchlist xlsx  → 板塊 Rank、ETF 強弱排行、商品/黃金/BTC ETF 數據
   3. reports/charts/ → 技術線圖（generate_charts.py 產出）
+  4. fetch_futu_data → 富途 OpenAPI：板塊類股排行 + 成交額排行（需本機 OpenD 運行）
 
 Routines 執行順序：
   Step 1: python3 scripts/download_watchlist.py     # 下載最新 watchlist
   Step 2: scripts/.venv/bin/python scripts/generate_charts.py  # 生成線圖
   Step 3: scripts/.venv/bin/python scripts/build_daily_report.py  # 整合日報
 
-Routine 最後補充 WebSearch 數據（VIX、CNN 恐懼貪婪、期貨盤前、成交額前40）
-
 用法：
   scripts/.venv/bin/python scripts/build_daily_report.py
   scripts/.venv/bin/python scripts/build_daily_report.py --date 2026-05-19
+  scripts/.venv/bin/python scripts/build_daily_report.py --no-futu  # 略過富途資料
 """
 
 import argparse
@@ -38,6 +38,19 @@ PROJECT_ROOT   = Path(__file__).parent.parent
 REPORTS_DIR    = PROJECT_ROOT / "reports"
 CHARTS_BASE    = REPORTS_DIR / "charts"
 WATCHLIST_DIR  = PROJECT_ROOT / "data" / "watchlist"
+
+# ============================================================================
+# 富途 OpenAPI 整合（可選，需本機 OpenD 運行）
+# ============================================================================
+
+def _try_import_futu():
+    """嘗試匯入 fetch_futu_data，若不可用則回傳 None 模組。"""
+    try:
+        sys.path.insert(0, str(Path(__file__).parent))
+        import fetch_futu_data as ffd
+        return ffd
+    except ImportError:
+        return None
 
 # ============================================================================
 # 指數設定（yfinance）
@@ -121,7 +134,6 @@ def get_stock_data(ticker: str) -> dict | None:
 
 def find_watchlist_xlsx(target_date: date) -> Path | None:
     mmdd = target_date.strftime("%m%d")
-    # 優先找 data/watchlist/，再 fallback 到舊的 PROJECT_ROOT
     patterns = [
         WATCHLIST_DIR / f"Market Watchlist{mmdd}.xlsx",
         WATCHLIST_DIR / f"Market Watchlist {mmdd}.xlsx",
@@ -131,7 +143,6 @@ def find_watchlist_xlsx(target_date: date) -> Path | None:
     for p in patterns:
         if p.exists():
             return p
-    # fallback: 最新的 xlsx（先找 data/watchlist/，再找 root）
     files = list(WATCHLIST_DIR.glob("Market Watchlist*.xlsx")) + \
             list(PROJECT_ROOT.glob("Market Watchlist*.xlsx"))
     if files:
@@ -139,7 +150,6 @@ def find_watchlist_xlsx(target_date: date) -> Path | None:
     return None
 
 def _to_num(v):
-    """字串數字轉 float；非數字原樣返回。"""
     if isinstance(v, (int, float)):
         return v
     if isinstance(v, str):
@@ -151,7 +161,6 @@ def _to_num(v):
 
 
 def parse_xlsx_sections(xlsx_path: Path, sheet_name: str) -> list[dict]:
-    """解析指定工作表，回傳 sections 清單，每個 section 含 name + rows。"""
     try:
         wb = openpyxl.load_workbook(xlsx_path, data_only=True)
         ws = wb[sheet_name]
@@ -174,7 +183,6 @@ def parse_xlsx_sections(xlsx_path: Path, sheet_name: str) -> list[dict]:
         if not header or c_val is None:
             continue
 
-        # Section header
         if not isinstance(e_val, (int, float)):
             if d_val is None and c_val:
                 current = {"name": str(c_val), "rows": []}
@@ -185,7 +193,6 @@ def parse_xlsx_sections(xlsx_path: Path, sheet_name: str) -> list[dict]:
         price  = e_val
         d1     = _to_num(vals[5]) if len(vals) > 5 else None
 
-        # 尋找 Rank（最後一個有數值的欄位）
         rank = None
         for v in reversed(vals[6:14]):
             num_v = _to_num(v)
@@ -208,12 +215,10 @@ def parse_xlsx_sections(xlsx_path: Path, sheet_name: str) -> list[dict]:
     return sections
 
 def get_watchlist_data(xlsx_path: Path) -> dict:
-    """提取日報所需的關鍵 watchlist 數據。"""
     assets    = parse_xlsx_sections(xlsx_path, "Assets")
     structure = parse_xlsx_sections(xlsx_path, "Structure")
     industry  = parse_xlsx_sections(xlsx_path, "Industry")
 
-    # 所有 rows 攤平，方便查找
     def flat(sections):
         out = {}
         for s in sections:
@@ -225,11 +230,9 @@ def get_watchlist_data(xlsx_path: Path) -> dict:
     all_structure = flat(structure)
     all_industry  = flat(industry)
 
-    # 全體 Rank 排行（Industry）
     all_industry_rows = [r for s in industry for r in s["rows"] if r["rank"] is not None]
     top_by_rank = sorted(all_industry_rows, key=lambda x: x["rank"], reverse=True)
 
-    # Market Cap Weighted Sectors（板塊輪動）
     sector_rows = []
     for s in structure:
         if "Sector" in s["name"] or "Market Cap" in s["name"]:
@@ -248,10 +251,9 @@ def get_watchlist_data(xlsx_path: Path) -> dict:
 # ============================================================================
 
 def prev_trading_day(d: date) -> date:
-    """回傳上一個交易日（跳過週末，不處理假日）。"""
     delta = 1
     prev = d - timedelta(days=delta)
-    while prev.weekday() >= 5:  # 5=Saturday, 6=Sunday
+    while prev.weekday() >= 5:
         delta += 1
         prev = d - timedelta(days=delta)
     return prev
@@ -268,7 +270,6 @@ def fmt_pct(val, plus=True) -> str:
     return f"{arrow} {sign}{val*100:.2f}%" if abs(val) < 1 else f"{arrow} {sign}{val:.2f}%"
 
 def fmt_pct_raw(pct_float) -> str:
-    """pct_float 已是百分比值（如 1.23）"""
     if pct_float is None:
         return "—"
     arrow = "↑" if pct_float >= 0 else "↓"
@@ -297,13 +298,13 @@ def chart_img(name: str, date_str: str) -> str:
 # 日報建構
 # ============================================================================
 
-def build_report(target_date: date, xlsx_path: Path | None) -> str:
+def build_report(target_date: date, xlsx_path: Path | None, use_futu: bool = True) -> str:
     date_str = target_date.strftime("%Y-%m-%d")
-    mmdd     = target_date.strftime("%m/%d")  # 亞股：今日
+    mmdd     = target_date.strftime("%m/%d")
 
     us_date     = prev_trading_day(target_date)
     us_date_str = us_date.strftime("%Y-%m-%d")
-    us_mmdd     = us_date.strftime("%m/%d")   # 美股：昨日（前一交易日）
+    us_mmdd     = us_date.strftime("%m/%d")
 
     print(f"\n📋 建構日報：{date_str}")
 
@@ -315,6 +316,22 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
     else:
         print("  ⚠️ 找不到 Watchlist xlsx，板塊 Rank 數據將為空")
 
+    # ── 取得富途 OpenAPI 數據（可選）──────────────────────────────────────────
+    futu_sector_md   = None
+    futu_turnover_md = None
+    if use_futu:
+        ffd = _try_import_futu()
+        if ffd:
+            print("  [富途] 抓取板塊排行中...")
+            sector_df = ffd.get_sector_rank(top_n=20)
+            futu_sector_md = ffd.format_sector_rank_md(sector_df, top_n=20)
+
+            print("  [富途] 抓取成交額排行中...")
+            turnover_df = ffd.get_turnover_rank(top_n=50)
+            futu_turnover_md = ffd.format_turnover_rank_md(turnover_df, top_n=50)
+        else:
+            print("  ⚠️ fetch_futu_data 未安裝或 moomoo-api 未安裝，跳過富途資料")
+
     lines = []
 
     # ── Header ───────────────────────────────────────────────────────────────
@@ -324,6 +341,7 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
         f"**產出時間：** {date_str}（台灣時間）",
         f"**資料截止：** 美股 {us_date_str} 收盤 ／ 亞股 {date_str} 收盤",
         f"**自動化模組：** macro-market-analysis ｜ industry-research ｜ market-sentiment-tracking",
+        f"**富途 OpenAPI：** {'✅ 已整合' if futu_sector_md or futu_turnover_md else '⚠️ 未啟用（需本機 OpenD）'}",
         f"",
         f"---",
         f"",
@@ -349,7 +367,6 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
         else:
             lines += [f"### {mmdd} {idx['display']}", "> 數據取得失敗，請手動補充", ""]
 
-    # Watchlist 補充：區域 ETF Rank
     if wl:
         lines += ["### 區域 ETF 相對強弱（Watchlist Rank）", ""]
         region_map = [
@@ -382,7 +399,6 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
         d = get_index_data(idx["ticker"])
         if d:
             chg_str = fmt_pct_raw(d["pct"])
-            # Watchlist Rank 補充
             rank_str = ""
             if wl:
                 r = wl["structure"].get(idx["name"]) or wl["assets"].get(
@@ -409,14 +425,26 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
     print("  [3/7] 強弱板塊... ", end="", flush=True)
     lines += [f"## 三、{us_mmdd} 美股強弱勢板塊（昨日收盤）", ""]
 
-    # 3-1 板塊強弱（Watchlist Industry Rank）
+    # 3-1 板塊強弱
     lines += [
         "> **#概念板塊排行，關注哪個族群才是一直排在前面。**",
         "",
     ]
-    if wl and wl["top_by_rank"]:
+
+    # ── 優先使用富途 OpenAPI 板塊排行 ─────────────────────────────────────────
+    if futu_sector_md:
+        lines += [
+            "#### 🔥 板塊漲跌排行 Top 20（來源：富途 OpenAPI）",
+            "",
+            "> 「板塊均漲跌」= 板塊前5強個股平均漲跌幅，反映板塊整體動能。",
+            "",
+            futu_sector_md,
+            "",
+        ]
+    # ── Fallback：Watchlist Industry Rank ─────────────────────────────────────
+    elif wl and wl["top_by_rank"]:
         top10 = wl["top_by_rank"][:10]
-        lines += ["#### 強勢板塊 Top 10（Industry Rank 排行）", ""]
+        lines += ["#### 強勢板塊 Top 10（Industry Rank 排行 — Watchlist）", ""]
         lines += ["| 排名 | 代號 | 板塊/名稱 | 價格 | 1D% | Rank |",
                   "|------|------|---------|------|-----|------|"]
         for i, r in enumerate(top10, 1):
@@ -426,21 +454,25 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
                 f"${r['price']:.2f} | {d1} | {r['rank']:.1f} 🔥 |"
             )
         lines.append("")
-
-        # 市值板塊 XL 系列
-        if wl["sector_rows"]:
-            xl_rows = [r for r in wl["sector_rows"] if r["ticker"].startswith("X") and r["rank"] is not None]
-            xl_sorted = sorted(xl_rows, key=lambda x: x["rank"], reverse=True)
-            if xl_sorted:
-                lines += ["#### 市值板塊 Rank 排行（XL 系列）", ""]
-                lines += ["| 代號 | 名稱 | 1D% | Rank |", "|------|------|-----|------|"]
-                for r in xl_sorted:
-                    d1 = fmt_pct(r["d1"])
-                    icon = rank_icon(r["rank"])
-                    lines.append(f"| {r['ticker']} | {r['name']} | {d1} | {r['rank']:.1f} {icon} |")
-                lines.append("")
     else:
-        lines += ["> ⚠️ Watchlist 未載入，板塊排行請手動補充", ""]
+        lines += [
+            "> ⚠️ 富途 OpenAPI 未啟用，Watchlist 亦未載入。",
+            "> 啟用富途：確認 OpenD 已運行後重新執行；或提供 Watchlist xlsx。",
+            "",
+        ]
+
+    # 市值板塊 XL 系列（Watchlist）
+    if wl and wl["sector_rows"]:
+        xl_rows = [r for r in wl["sector_rows"] if r["ticker"].startswith("X") and r["rank"] is not None]
+        xl_sorted = sorted(xl_rows, key=lambda x: x["rank"], reverse=True)
+        if xl_sorted:
+            lines += ["#### 市值板塊 Rank 排行（XL 系列 — Watchlist）", ""]
+            lines += ["| 代號 | 名稱 | 1D% | Rank |", "|------|------|-----|------|"]
+            for r in xl_sorted:
+                d1 = fmt_pct(r["d1"])
+                icon = rank_icon(r["rank"])
+                lines.append(f"| {r['ticker']} | {r['name']} | {d1} | {r['rank']:.1f} {icon} |")
+            lines.append("")
 
     # 3-2 AI 龍頭
     lines += [
@@ -452,7 +484,6 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
     for ai in AI_TICKERS:
         t = ai["name"]
         d = get_stock_data(t)
-        # 嘗試從 watchlist 取 Rank
         rank_info = ""
         if wl:
             r = wl["industry"].get(t) or wl["assets"].get(t)
@@ -479,7 +510,6 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
     print("  [4/7] 黃金/加密... ", end="", flush=True)
     lines += [f"## 四、{mmdd} 黃金、加密貨幣", ""]
 
-    # BTC（from watchlist IBIT + yfinance BTC-USD）
     lines += ["> **#BTC：[趨勢描述待 WebSearch 補充]**", ""]
     btc_d = get_stock_data("BTC-USD")
     if btc_d:
@@ -513,7 +543,6 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
         "",
     ]
 
-    # 黃金（from watchlist GLD + yfinance GC=F）
     lines += ["> **#黃金：[趨勢描述待補充]**", ""]
     gold_d = get_stock_data("GC=F")
     if gold_d:
@@ -542,21 +571,37 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
     print("✅")
 
     # ====================================================================
-    # 區塊五：成交額前 40
+    # 區塊五：成交額排行
     # ====================================================================
+    print("  [5/7] 成交額排行... ", end="", flush=True)
     lines += [
-        f"## 五、美股成交額前四十名排行",
+        f"## 五、美股成交額前五十名排行",
         "",
         "> **#觀察哪些公司持續在前段班，符合策略才建倉（後半是 AI 硬體公司）。**",
-        "> ⚠️ 此區塊需 WebSearch 補充（建議搜尋：Barchart most active stocks 或 Finviz screener）",
-        "",
-        "| 排名 | 代號 | 公司名稱 | 成交額 | 漲跌% |",
-        "|------|------|---------|--------|-------|",
-        "| 1-40 | — | 待 WebSearch 補充 | — | — |",
-        "",
-        "---",
         "",
     ]
+
+    # ── 優先使用富途 OpenAPI 成交額排行 ──────────────────────────────────────
+    if futu_turnover_md:
+        lines += [
+            "> 來源：富途 OpenAPI `get_market_snapshot`（掃描 S&P500 + 高波動個股約 180 支）",
+            "",
+            futu_turnover_md,
+            "",
+        ]
+    else:
+        lines += [
+            "> ⚠️ 富途 OpenAPI 未啟用，此區塊需 WebSearch 補充",
+            "> 建議搜尋：Barchart most active stocks 或 Finviz screener",
+            "",
+            "| 排名 | 代號 | 公司名稱 | 成交額 | 漲跌% |",
+            "|------|------|---------|--------|-------|",
+            "| 1-50 | — | 待 WebSearch 補充 | — | — |",
+            "",
+        ]
+
+    lines += ["---", ""]
+    print("✅")
 
     # ====================================================================
     # 區塊六：總經議題
@@ -564,7 +609,6 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
     print("  [6/7] 總經議題... ", end="", flush=True)
     lines += [f"## 六、市場資訊 / 總經議題", ""]
 
-    # 美債（from watchlist Treasury Bonds）
     if wl:
         tlt = wl["assets"].get("TLT")
         ief = wl["assets"].get("IEF")
@@ -595,7 +639,6 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
             "",
         ]
 
-    # 原油（from watchlist USO + PDBC）
     if wl:
         uso  = wl["assets"].get("USO")
         pdbc = wl["assets"].get("PDBC")
@@ -632,7 +675,7 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
     print("✅")
 
     # ====================================================================
-    # 區塊七：盤前（全部 WebSearch）
+    # 區塊七：盤前
     # ====================================================================
     lines += [
         f"## 七、{mmdd} 美股盤前與關注機會",
@@ -678,8 +721,8 @@ def build_report(target_date: date, xlsx_path: Path | None) -> str:
 
     # Footer
     lines += [
-        "*本報告由 build_daily_report.py 自動產出 ｜ investor_skill v1.3.0*",
-        "*資料來源：yfinance（指數）｜ TheMarketMemo Watchlist（板塊 Rank）｜ 技術線圖（generate_charts.py）*",
+        "*本報告由 build_daily_report.py 自動產出 ｜ investor_skill v1.4.0*",
+        "*資料來源：yfinance（指數）｜ TheMarketMemo Watchlist（板塊 Rank）｜ 富途 OpenAPI（板塊/成交額排行）｜ 技術線圖（generate_charts.py）*",
         "*⚠️ 標示欄位需 Routine WebSearch 補充完成*",
         "*免責聲明：本報告僅供參考，不構成投資建議。*",
     ]
@@ -694,28 +737,34 @@ def main():
     parser = argparse.ArgumentParser(description="每日市場日報建構器")
     parser.add_argument("--date", default=date.today().strftime("%Y-%m-%d"),
                         help="報告日期 YYYY-MM-DD（預設今日）")
+    parser.add_argument("--no-futu", action="store_true",
+                        help="略過富途 OpenAPI 資料抓取（OpenD 未運行時使用）")
     args = parser.parse_args()
 
     target_date = datetime.strptime(args.date, "%Y-%m-%d").date()
     date_str    = target_date.strftime("%Y-%m-%d")
+    use_futu    = not args.no_futu
 
-    # 找 watchlist xlsx
     xlsx_path = find_watchlist_xlsx(target_date)
     if xlsx_path:
         print(f"✅ Watchlist：{xlsx_path.name}")
     else:
         print("⚠️  找不到 Watchlist xlsx，板塊數據將跳過")
 
-    # 建構日報
-    report = build_report(target_date, xlsx_path)
+    if use_futu:
+        print("ℹ️  富途 OpenAPI 已啟用（確認 OpenD 於 127.0.0.1:11111 運行）")
+        print("   若 OpenD 未運行請加上 --no-futu 參數略過")
+    else:
+        print("⚠️  已略過富途 OpenAPI（--no-futu）")
 
-    # 輸出
+    report = build_report(target_date, xlsx_path, use_futu=use_futu)
+
     REPORTS_DIR.mkdir(exist_ok=True)
     out_path = REPORTS_DIR / f"{date_str}_daily_market_report.md"
     out_path.write_text(report, encoding="utf-8")
 
     print(f"\n✅ 日報已產出：{out_path}")
-    print(f"   ⚠️  請讓 Routine 補充 WebSearch 數據（VIX、CNN 恐懼貪婪、成交額前40、期貨盤前）")
+    print(f"   ⚠️  請讓 Routine 補充 WebSearch 數據（VIX、CNN 恐懼貪婪、期貨盤前）")
 
 
 if __name__ == "__main__":

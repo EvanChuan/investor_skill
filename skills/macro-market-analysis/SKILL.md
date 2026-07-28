@@ -1,474 +1,622 @@
 ---
 name: macro-market-analysis
 description: >
-  總體經濟市場趨勢分析，模擬 30 年經驗資深投資人視角，解讀經濟數據、央行政策與跨資產資金流向，判斷市場週期位置與資產配置方向。整合 risk-radar 宏觀風險雷達子模組，支援月度/季度定期風險掃描。
+  UC 總體經濟市場趨勢分析與投資決策引擎。以「市場交易預期 → 總經因果鏈 → 八大循環 → 政策反應函數 →
+  流動性與信用 → 製造業與全球貿易傳導 → 跨資產價格輪動 → 真實資金流 → 敘事與市場驗證」為核心，
+  將總經資料轉化為市場環境評級、資產曝險、產業權重、風險條件與部位調整觸發點。
+  整合 Risk Radar 宏觀風險雷達子模組（Step 11），支援每日快評、週報、月報、季報與重大事件後掃描。
 
-  當使用者詢問以下問題時，請使用本 skill：市場現在適合投資嗎？現在是牛市還是熊市？Fed 升降息對市場的影響是什麼？CPI/通膨/GDP/PMI/非農就業數據怎麼解讀？資金正在流向哪些資產類別？股票債券現金如何配置？哪些產業值得現在佈局？需要地緣政治風險評估？需要月報或季報形式的宏觀風險掃描？支援完整數據指標總表（短期/中期/長期、領先/同步/落後），涵蓋流動性指標（TGA、RRP、M2、淨流動性公式）、週度就業數據、PMI 採購經理人指數等超過 80 項關鍵指標。Step 5 跨資產輪動分析直接讀取全市場觀察 Google 試算表（涵蓋全球股票/固定收益/商品/比特幣共 100+ ETF 的趨勢、相對強弱排名與輪動訊號）。
-version: 2.4.0
+  當使用者詢問下列問題時使用本 skill：市場現在適合投資嗎？現在是牛市還是熊市？景氣循環在哪個位置？
+  Fed 升降息與 QE/QT 對市場的影響？CPI/PCE/GDP/PMI/非農就業數據怎麼解讀？市場已經 Price-in 多少？
+  流動性是擴張還是收縮（TGA/RRP/準備金/M2）？信用條件是否惡化（SLOOS/HY OAS）？
+  資金正在流向哪些資產類別？股票債券現金黃金如何配置？哪些產業值得佈局？
+  中國信用與台韓出口對半導體的傳導？AI/半導體資本支出週期是否過熱？地緣政治風險評估？
+  需要月報或季報形式的宏觀風險掃描？
+  支援 Tier 1/2/3 指標分層（80+ 指標）、UC Macro Score 與 Confidence Score 雙分數輸出。
+  Step 8A 跨資產價格輪動直接讀取全市場觀察 Google 試算表（100+ ETF 的趨勢、相對強弱排名與輪動訊號）。
+version: 3.0.0
 author: Evan
 license: Proprietary
 tags:
   - macroeconomics
-  - market-trends
-  - economic-indicators
-  - policy-analysis
-  - investment-strategy
-  - asset-allocation
-  - fund-flow-tracking
-  - risk-radar
+  - market-expectations
+  - causal-analysis
+  - market-regime
   - liquidity-cycle
+  - credit-cycle
+  - manufacturing-cycle
+  - asset-rotation
+  - fund-flow-tracking
+  - narrative-analysis
+  - investment-strategy
+  - risk-radar
 ---
 
-# 總體經濟市場趨勢分析（Macro Market Analysis）
+# UC 總體經濟市場分析與投資決策引擎
+## Macro Market Analysis v3.0
 
-## 概述
+---
 
-本技能模擬擁有超過 30 年實戰經驗的資深投資人角色，透過系統化解讀經濟數據、央行政策、地緣政治事件、產業發展週期與**跨資產資金流動追蹤**，協助掌握市場大方向，做出理性的資產配置與產業選擇決策。
+## 1. 定位
+
+本技能不是經濟數據百科，也不以單一指標預測市場。
+
+核心任務：
+
+> **總經資料 → 因果推理 → 預期差 → 政策反應 → 市場驗證 → 投資決策**
+
+分析時必須回答：
+
+1. 經濟現在如何？
+2. 經濟正在往哪裡變？
+3. 市場原本預期什麼？
+4. 資產價格已反映多少？
+5. Fed、財政與信用條件如何演變？
+6. 資金與價格是否確認該敘事？
+7. 哪些條件會推翻目前判斷？
 
 ### 核心理念
 
-- 在空頭市場中，再好的股票也難逃下跌命運
-- 在多頭市場中，選對產業比選對個股更重要
+- 空頭市場中，再好的股票也難逃下跌
+- 多頭市場中，選對產業比選對個股更重要
 - **資產配置決定 80% 的報酬，選股只決定 20%**
-- 理解經濟週期與資金流向，才能「該積極時積極，該保守時保守」
-
-### 子模組：Risk Radar 宏觀風險雷達
-
-整合 **risk-radar** 作為定期檢查子模組：
-- **使用時機：** 月度/季度例行風險掃描，或重大事件後（FOMC、黑天鵝、信用事件）臨時啟動
-- **核心框架：** 流動性週期 ＋ 壓力型去通膨 ＋ AI 資本支出週期
-- **與常規分析的差異：** 常規分析回應即時問題；Risk Radar 是固定指標的週期性掃描，輸出結構化月報/季報
-- **詳細執行邏輯：** 參考 `references/risk-radar-sop.md`
+- 股票與債券交易的是**預期**，不是已公布的數據
 
 ---
 
-### 核心能力
+## 2. 核心投資思維
 
-1. **經濟數據深度解讀** — GDP、CPI/PPI/PCE、就業市場、PMI、殖利率曲線
-2. **央行政策影響評估** — Fed 政策立場、利率路徑、QE/QT 傳導機制
-3. **跨資產資金流追蹤** — ETF 資金流、CFTC COT 大戶持倉、機構評級、16 大資產類別溫度評分
-4. **市場週期位置判斷** — 復甦/擴張/高峰/衰退，牛市/熊市/盤整
-5. **產業趨勢與輪動策略** — 週期對應產業特性，輪動時機識別
-6. **地緣政治風險評估** — 中美關係、貿易政策、能源供應風險
-7. **歷史情境比較** — 相似歷史週期尋找、路徑推演、機率評估
+### 2.1 市場交易的是預期
+
+- 數據「好或壞」不等於市場「漲或跌」
+- 必須比較：原值 / 修正值 / 共識 / 實際值 / 公布後市場反應
+- 利多已被 Price-in 時，數據優於預期也可能利多出盡
+- 市場極度悲觀時，數據只要不再惡化，價格就可能反轉
+
+### 2.2 五維資料變數（每項數據都要跑一次）
+
+| 維度 | 說明 |
+|------|------|
+| **Level** | 絕對值與歷史位置 |
+| **Trend** | 近 1/3/6/12 個月方向 |
+| **Rate of Change** | 改善或惡化的速度 |
+| **Surprise** | 實際值相對市場共識 |
+| **Revision** | 前期資料是否遭重大上修/下修 |
+
+> ❌ 禁止只因 PMI > 50、失業率低或 GDP 正成長就直接判定市場多空。
+
+### 2.3 數據必須放進因果鏈
+
+每項資料必須標示：原因 → 傳導節點 → 結果 → 領先/同步/落後屬性。
+
+### 2.4 敘事必須由價格、信用與資金驗證
+
+新聞、政策語言與社群情緒是市場敘事的一部分，但不是交易指令。
+詳見 `references/narrative-vs-reality.md`。
 
 ---
 
-## 適用場景
+## 3. 適用與不適用情境
 
 ### 觸發關鍵詞
 
-**經濟面：** 通膨、CPI、PPI、PCE、GDP、景氣、升息、降息、利率、Fed、就業、失業率、非農、衰退、軟著陸、硬著陸
+**經濟面：** 通膨、CPI、PPI、PCE、GDP、景氣、升息、降息、利率、Fed、就業、失業率、非農、衰退、軟著陸、硬著陸、預期差、Price-in
 
-**市場面：** 大盤走勢、S&P 500、加權指數、牛市、熊市、市場情緒、股債配置、資產配置
+**市場面：** 大盤走勢、S&P 500、加權指數、牛市、熊市、市場情緒、股債配置、資產配置、市場體制
 
-**資金流向：** 資金流、ETF 資金流、機構持倉、大戶動向、COT 報告、資產輪動、避險資產、風險資產
+**流動性/信用：** 流動性、淨流動性、TGA、RRP、準備金、M2、QT、SLOOS、信用利差、HY OAS、去槓桿
 
-**產業面：** 產業趨勢、產業週期、半導體、AI、電動車、綠能、產業輪動、類股表現
+**資金流：** 資金流、ETF 資金流、機構持倉、COT 報告、資產輪動、相對強弱、避險資產
 
-**風險面：** 地緣政治、中美關係、黑天鵝、系統性風險
+**製造與貿易：** ISM、PMI、新訂單、庫存、中國信用、社會融資、南韓出口、台灣外銷訂單、半導體循環
 
-**風險雷達（子模組）：** 風險雷達、風險掃描、宏觀風險檢查、流動性週期、壓力型去通膨、去槓桿、月報更新、季報更新、定期檢查
+**產業面：** 產業趨勢、產業週期、AI 資本支出、半導體、電動車、綠能、產業輪動
 
-### 不適用情境
+**風險面：** 地緣政治、中美關係、黑天鵝、系統性風險、風險雷達、風險掃描、月報更新、季報更新
 
-- 單一公司深度分析 → 使用 `equity-fundamental-analysis`
-- 具體技術進出場時機 → 使用 `technical-analysis`
-- 產業層面深度研究 → 優先考慮 `industry-research`
+### 不適用
 
----
-
-## 執行流程
-
-```
-第一階段：總體經濟分析（三大支柱）
-├── Step 1: 情境識別與分析範圍確定
-├── Step 2: 資料蒐集與驗證
-├── Step 3: 經濟數據深度解讀
-├── Step 4: 央行政策環境評估
-└── Step 5: 跨資產資金流追蹤分析 ⭐
-     ↓
-第二階段：市場研判
-├── Step 6: 市場週期位置判斷
-├── Step 7: 產業趨勢分析（如適用）
-└── Step 8: 投資策略建議
-     ↓
-[若觸發 Risk Radar 關鍵詞]
-└── Step 10: 宏觀風險雷達掃描（輸出月報/季報）
-     ↓
-Step 9: 產出報告
-```
+| 需求 | 改用模組 |
+|------|---------|
+| 單一公司完整基本面 | `equity-fundamental-analysis` |
+| 精確技術進出場 | `technical-analysis` |
+| 深度產業供應鏈研究 | `industry-research` |
+| 個股合理價與安全邊際 | `valuation-analysis` |
+| 倉位大小與停損 | `risk-management` |
 
 ---
 
-### Step 1: 情境識別與需求分析
+## 4. 執行總流程
 
-識別問題類型，確定分析重點：
+| Step | 名稱 | 目的 | 主要參考文件 |
+|:----:|------|------|------------|
+| 0 | 問題界定 | 地區、時間尺度、資產範圍 | — |
+| 1 | **Market Pricing** | 市場目前在交易什麼、已 Price-in 多少 | `fed-policy-framework.md` |
+| 2 | Data Integrity | 資料來源、時效與修正驗證 | `data-sources.md` |
+| 3 | Economic Causal Chain | 成長、就業、收入、消費 | `economic-indicators.md` |
+| 4 | Inflation + Fed Reaction | 通膨成因與 Fed 反應函數 | `fed-policy-framework.md` |
+| 5 | **Liquidity Cycle** | 五大流動性來源交叉驗證 | `liquidity-cycle.md` ⭐ |
+| 6 | **Credit Cycle** | 銀行放貸、違約、信用利差 | `credit-cycle.md` ⭐ |
+| 7 | Manufacturing + Trade | 訂單鏈與全球傳導 | `manufacturing-cycle.md`／`global-trade-transmission.md` ⭐ |
+| 8A | **Price Rotation** | 跨資產價格輪動與相對強弱 | `cross-asset-price-rotation.md` ⭐ |
+| 8B | **Actual Capital Flow** | ETF 申贖、COT、機構評級 | `cross-asset-fund-flow.md` |
+| 9 | Narrative vs Reality | 敘事、部位、資料、價格四層檢驗 | `narrative-vs-reality.md` ⭐ |
+| 10 | Regime Classification | 八大循環同步定位 | `industry-cycles.md` |
+| 11 | **Scenario & Risk Radar** | 三情境 + 12 項風險雷達（子模組） | `risk-radar-sop.md` |
+| 12 | Investment Implications | Macro Score、曝險與產業權重 | `analysis-report-template.md` |
+| 13 | Trigger Conditions | 確認、推翻與部位觸發條件 | — |
 
-- **總經環境評估** → 需要完整經濟數據 + 資金流分析
-- **特定指標解讀** → 聚焦該指標 + 相關連動指標
-- **資產配置建議** → 優先執行資金流追蹤模組
-- **產業趨勢分析** → 需要產業數據 + 總經背景
-- **投資策略建議** → 需要完整分析鏈
-
-確定分析範圍：
-- **地理：** 全球 / 美國 / 中國 / 台灣 / 歐洲
-- **時間：** 最新值 / 近 3 個月 / 近 1 年 / 近 5 年
-- **關注重點：** 成長 / 通膨 / 就業 / 利率 / 資金流向
-
-**1.3 分析檢查清單（按需勾選）**
-
-```
-□ 【經濟成長】GDP (Real GDP Growth, YoY/QoQ) / GDPNow 即時估計
-□ 【通膨指標】CPI、Core CPI、PPI、PCE（物價）、Core PCE、通膨預期(T5YIE, T10YIE)
-□ 【就業市場】Unemployment Rate、Nonfarm Payrolls、Wage Growth
-□ 【週度就業】Initial Jobless Claims（初領）、Continuing Jobless Claims（續領）⭐ 每週四
-□ 【消費動能】Real PCE Spending、Retail Sales（名目+實質）
-□ 【利率環境】Fed Funds Rate、2Y/10Y/30Y Treasury Yield、殖利率曲線(10Y-2Y, 10Y-3M)、實質利率(TIPS)
-□ 【信用利差】High Yield OAS、Investment Grade OAS
-□ 【領先指標】Conference Board LEI、ISM 製造業 PMI、ISM 服務業 PMI、ISM 新訂單 ⭐
-□ 【區域 PMI】費城聯儲製造業指數、紐約帝國州製造業指數、Chicago Fed CFNAI
-□ 【消費信心】Conference Board Consumer Confidence、U of Michigan Consumer Sentiment
-□ 【房市指標】Housing Starts、Building Permits、NAHB 指數、30Y 房貸利率
-□ 【貨幣供給】M2 Money Supply (YoY) ⭐ 流動性核心
-□ 【信貸狀況】Senior Loan Officer Survey (SLOOS)、C&I Loans、Consumer Credit、信用卡違約率
-□ 【市場流動性】Fed Total Assets、TGA（財政部現金餘額）、RRP（逆回購餘額）、Bank Reserves ⭐
-□ 【淨流動性】Net Liquidity = Fed Assets - TGA - RRP（自行計算）⭐
-□ 【銀行間壓力】FRA-OIS Spread、TED Spread ⭐ 危機預警
-□ 【市場估值】S&P 500 Forward P/E、Shiller CAPE、Equity Risk Premium (ERP)
-□ 【市場情緒】VIX、Put/Call Ratio、AAII 散戶情緒、NAAIM 機構曝險度
-□ 【資金流向】ETF Fund Flows、CFTC COT 大戶持倉、機構評級(OW/N/UW) ⭐
-□ 【亞洲指標】中國製造業 PMI（官方+財新）、台灣出口訂單、南韓出口、USD/CNY
-□ 【能源/商品】WTI/Brent 原油、天然氣、美國原油庫存（週三）、波羅的海乾散貨指數(BDI)
-□ 【美元流動性】DXY 美元指數、SOFR、EFFR
-□ 【政策動態】Fed Meeting Minutes、FOMC Statement、點陣圖利率路徑
-□ 【產業數據】（根據關注產業而定，參考 industry-research 模組）
-```
+> ⭐ = v3.0 新增或重構模組。
+> **Step 8A 與 8B 必須分開輸出，不可合併** —— 價格輪動不等於真實資金流。
 
 ---
 
-### Step 2: 資料蒐集與驗證
+## 5. Step 0｜問題界定
 
-**首選官方來源：**
-- FRED (fred.stlouisfed.org) — 聯準會經濟數據庫
-- BLS / BEA — 美國勞工與經濟分析局
-- 各國央行官網、統計局
+確認四項後才開始分析：
 
-**次選整合平台：**
-- Trading Economics — 全球數據整合
-- Investing.com — 經濟日曆
+- **地區：** 全球 / 美國 / 中國 / 台灣 / 歐洲 / 日本
+- **時間尺度：** 即時事件（1 日-2 週）/ 波段（1-3 月）/ 中期（3-12 月）/ 長期（1-5 年）
+- **決策範圍：** 市場環境 / 資產配置 / 產業輪動 / 事件解讀 / 風險偵測
+- **主要資產：** 股票、公債、信用債、黃金、商品、美元、比特幣、現金
 
-**資金流數據：**
-- 🔗 **全市場觀察表（Google 試算表）** — 跨資產/板塊/類股即時趨勢與輪動（Step 5 主要工具）
-  `https://docs.google.com/spreadsheets/d/1OMbg5nPRELu7cpkVrGR9CppMyUhjebpShk17n4wyhZA/edit?usp=sharing`
-- ETFdb.com、Morningstar Fund Flows — ETF 資金流查詢（補充驗證）
-- CFTC 官網 — COT 大戶持倉報告（每週五發布）
-- PIMCO、JP Morgan、BlackRock 季度報告 — 機構資產配置評級
-
-**閱讀內部參考文件（依需求載入）：**
-- `references/economic-indicators.md` — 指標定義與解讀標準
-- `references/fed-policy-framework.md` — Fed 政策決策邏輯
-- `references/cross-asset-fund-flow.md` — 跨資產資金流完整 SOP
-- `references/industry-cycles.md` — 產業景氣循環特性
-- `references/historical-scenarios.md` — 歷史情境比對資料庫
+未指定時，預設為：**美國經濟 + 全球風險資產 + 1-3 個月波段視角**。
 
 ---
 
-### Step 3: 經濟數據深度解讀
+## 6. Step 1｜Market Pricing（市場預期層）
 
-對每項指標進行三維分析：
-1. **絕對值** — 當前數值的歷史位置（高/中/低）
-2. **趨勢** — 方向變化（改善/惡化/持平）
-3. **超預期程度** — 相較市場共識的落差
+**在讀任何經濟數據前先回答：**
 
-跨指標交叉驗證：領先指標（PMI、LEI、消費者信心）→ 同步指標（GDP、工業生產）→ 落後指標（失業率）
+1. 市場正在交易哪個主要敘事？
+2. FedWatch / Fed Funds Futures 已 Price-in 多少次升降息？
+3. 2Y、10Y、實質利率在交易什麼成長與通膨組合？
+4. 信用利差是否確認 Risk-On？
+5. 美元、黃金、原油、比特幣是否產生背離？
+6. 市場交易的是未來 1-2 個月，還是 6-12 個月？
 
-詳細解讀框架請參考 `references/economic-indicators.md`
+### 預期差表（每逢重大數據必填）
 
----
+| 欄位 | 說明 |
+|------|------|
+| Previous | 原值 |
+| Revised Previous | 修正後原值 |
+| Consensus | 市場預期 |
+| Actual | 實際值 |
+| Surprise | Actual − Consensus |
+| Pre-pricing | 公布前價格已反映程度 |
+| Immediate Reaction | 公布後股/債/匯即時反應 |
+| Follow-through | 1-5 日是否延續 |
 
-### Step 4: 央行政策環境評估
+### Policy Expectation Gap
 
-**Fed 三步驟分析：**
-1. 確認當前政策立場（鴿派 / 中性 / 鷹派）
-2. 評估未來利率路徑（升息 / 暫停 / 降息）
-3. 分析政策傳導機制對各資產類別的影響
-
-同步評估財政政策（預算赤字規模、政府支出方向）對市場流動性的疊加影響。
-
-詳細框架請參考 `references/fed-policy-framework.md`
-
----
-
-### Step 5: 跨資產資金流追蹤分析
-
-**目標：** 觀察各類資產、板塊、類股的趨勢與輪動方向，識別資金正在流入/流出的資產類別。
-
----
-
-#### 5.1 全市場觀察表（主要工具）⭐
-
-**直接讀取以下 Google 試算表，取得即時全市場輪動數據：**
-
-🔗 **全市場觀察表：** `https://docs.google.com/spreadsheets/d/1OMbg5nPRELu7cpkVrGR9CppMyUhjebpShk17n4wyhZA/edit?usp=sharing`
-
-> 每次執行 Step 5 時，請直接透過上方連結讀取最新數據。
-
-**表格涵蓋資產類別：**
-
-| 類別 | 子類 | 主要 Ticker |
-|------|------|------------|
-| **股票** | 全球市場 | VT、ACWI、ACWX |
-| | 美股市場 | VTI、SPY、QQQ |
-| | 已開發市場 | EFA、EZU、EWJ、EWG、EWU 等 11 支 |
-| | 新興市場 | EEM、EWT（台灣）、EWY（韓國）、EWZ（巴西）等 14 支 |
-| | 中國市場 | MCHI、FXI、KWEB、ASHR |
-| | 房地產 | REET、VNQI、VNQ、REM、MBB |
-| | 高股息 | DVY、SCHD、IDV、AMLP、PFF |
-| | 優先收益 | JEPI、JEPQ、QQQI、DIVO、QYLD 等 |
-| **固定收益** | 廣泛市場 | BND、AGG、BNDX、TIP、VTIP |
-| | 國債 | TLT（長債）、IEF（中債）、SHY（短債）、SGOV、BIL |
-| | 公司債 | LQD、HYG、BINC、JAAA、JBBB |
-| | 新興市場債 | EMB、EMHY |
-| **商品** | — | GLD、SLV、USO、UNG、CPER、DBB、DBA、PDBC |
-| **比特幣** | — | IBIT |
-
-**欄位解讀指南：**
-
-| 欄位 | 含義 | 解讀方式 |
-|------|------|---------|
-| `1D% / 5D%` | 短期價格動能 | 識別近期急漲/急跌 |
-| `20D% / 60D%` | 中期價格動能 | 確認趨勢強度與持續性 |
-| `60-Day Trend` | 60 日趨勢方向 | Up/Down/Flat |
-| `20R / 60R / 120R` | 相對強弱排名（20/60/120 日）| 數字越小排名越前，資金偏好越高 |
-| `Rank` | 綜合排名 | 整體資金吸引力排序 |
-| `REL5/20/60/120` | 相對大盤表現 | 正值=跑贏市場，負值=跑輸市場 |
-| `From 2025-12-31` | YTD 年初至今報酬 | 年度資金輪動全貌 |
-
-**輪動判讀邏輯：**
-- **Rank 前段 + 60D% 持續正 + 60-Day Trend = Up** → 資金持續流入，強勢資產
-- **Rank 後段 + 60D% 持續負 + REL60 負值** → 資金流出，迴避
-- **20R 突然大幅上升（排名躍升）+ 1D/5D% 明顯正** → 資金開始輪入，觀察是否持續
-- **比較 EWT（台灣）vs EWY（韓國）vs QQQ** → 半導體/科技輪動方向
+比較 **Fed 聲明與點陣圖 vs Fed Funds Futures vs 2Y 殖利率**。
+若 Fed 與市場定價明顯不一致，列為重大波動來源，並寫入 Step 11 情境。
 
 ---
 
-#### 5.2 深度驗證（可選）
+## 7. Step 2｜資料來源與可信度
 
-若需進一步確認資金流方向，可補充以下四重驗證：
+**優先順序：** 官方原始資料 > 交易所與市場原始來源 > 整合平台
 
-1. **ETF 資金流** — ETFdb.com 或 Morningstar 查詢近 1 週/1 月淨申購/贖回金額
-2. **CFTC COT 大戶持倉** — 追蹤主要商品/指數期貨的大戶淨多單變化（每週五發布）
-3. **機構評級** — PIMCO/JP Morgan/BlackRock 的 OW/N/UW 資產配置評級
-4. **信用利差驗證** — HY OAS 收窄=風險偏好上升；擴大=避險情緒升溫
+整合平台（Trading Economics、Investing.com、MacroMicro、ETFdb、Morningstar）僅作輔助，
+與官方資料不符時**以官方為準**，並註明發布日期。
 
-**四重驗證結論範例：**
-```
-全市場觀察表：TLT Rank 前段 + 60D% 正 + REL60 正（債券跑贏）
-+ 債券 ETF 淨申購連續 2 週正值
-+ COT 大戶增持公債期貨淨多單
-+ 機構評級一致 Overweight 債券
-= 四重確認 → 高信度看多債券
+每項資料必須標示：發布日期、所屬期間、原值/修正值/終值、下次更新日。
+
+**重大修正警戒清單**（不可只引用 Headline）：非農就業、GDP、Retail Sales、Industrial Production、Payroll Benchmark Revisions、生產力與單位勞動成本。
+
+完整來源清單見 `references/data-sources.md`。
+
+---
+
+## 8. Step 3｜經濟因果鏈
+
+```text
+企業訂單與獲利 → 招聘與裁員 → 工資與家庭收入
+→ 消費與信貸使用 → 企業營收與庫存 → 生產與投資 → GDP
 ```
 
-完整 SOP 請參考 `references/cross-asset-fund-flow.md`
+> 有工作與收入，才有可持續消費；有訂單與融資，企業才擴產與僱用。
+
+**四大模組必看：**
+
+| 模組 | 核心指標 |
+|------|---------|
+| 成長 | Real GDP、GDPNow、Real Final Sales、Business Fixed Investment、Industrial Production、CFNAI、LEI |
+| 就業（依領先→落後） | Initial Claims → Continuing Claims → JOLTS Openings/Quits → ISM Employment → 非農 → 失業率 → 薪資成長 |
+| 消費 | Real PCE Spending、Retail Sales Control Group、Real Disposable Income、Consumer Credit、信用卡違約率、儲蓄率 |
+| 品質判別 | 健康降溫（招聘減少）vs 惡化降溫（大規模裁員 + 續領攀升 + 信貸緊縮） |
+
+> ❌ 禁止把 PCE Price Index 誤當作 PCE Spending。
+> ❌ GDP 必須拆解結構，不可只報總數。
+
+詳見 `references/economic-indicators.md`。
 
 ---
 
-### Step 6: 市場週期位置判斷
+## 9. Step 4｜通膨與 Fed 反應函數
 
-整合前述分析，綜合判斷：
+**通膨成因分類：** 需求拉動 / 成本推動 / 貨幣信用擴張 / 供給衝擊 / 預期自我強化 / 住房與服務黏性
 
-1. **經濟週期階段：** 復甦 → 擴張 → 高峰 → 衰退
-2. **市場情緒與估值：** S&P 500 P/E 歷史分位數、VIX 水準
-3. **風險偏好：** Risk-On（進攻）vs Risk-Off（防禦）
-4. **資金流驗證：** Step 5 資金流方向是否與週期判斷一致
+**核心資料：** CPI、Core CPI、PPI、PCE Price、Core PCE、Supercore Services、Shelter、薪資成長、單位勞動成本、T5YIE/T10YIE、密西根通膨預期、原油與運價
 
-若資金流與週期判斷不一致，降低倉位信心，等待信號趨於一致再行動。
+### Fed Reaction Function
 
----
+```text
+通膨 + 就業 + 金融穩定 + 成長 + 通膨預期 → Fed 政策立場
+```
 
-### Step 7: 產業趨勢分析（如適用）
+輸出必含：當前立場（鷹/中性/鴿）、下一步（升息/暫停/降息）、政策限制程度、市場定價差、對 2Y/10Y/美元/黃金/成長股與銀行股的傳導。
 
-基於週期位置，識別受益產業板塊。
-
-不同週期的產業偏好，詳見 `references/industry-cycles.md`。若需深度產業研究，啟動 `industry-research` 模組。
+詳見 `references/fed-policy-framework.md`。
 
 ---
 
-### Step 8: 投資策略建議
+## 10. Step 5｜流動性循環 ⭐
 
-基於「經濟指標 + 央行政策 + 資金流分析 + 週期判斷」，輸出：
+五大來源交叉驗證：**Fed Assets、TGA、ON RRP、Bank Reserves、M2**。
 
-- **資產配置比例**（股票 / 債券 / 現金 / 黃金）
-- **產業配置方向**（超配 / 標配 / 低配）
-- **動態調整觸發條件**（何時改變配置的條件）
+```text
+Liquidity Proxy = Fed Assets − TGA − ON RRP
+```
 
-輸出範例：
+> ⚠️ 此公式**僅為代理指標**，輸出時必須標示，不得視為市場流動性精確總量。
+> ⚠️ **RRP 下降不必然是利多**，須先判斷資金流向準備金或被財政部吸收。
+
+**輸出必含四項：** 方向、速度、主要驅動因子、對高 Beta / 長久期 / 信用市場的影響。
+
+完整判讀規則、五階段定義與觀察節奏見 `references/liquidity-cycle.md`。
+
+---
+
+## 11. Step 6｜信用循環 ⭐
+
+**信用通常比 GDP 更早反映惡化。**
+
+核心資料：SLOOS 放貸標準與貸款需求、C&I Loans、Consumer Credit、信用卡/車貸違約率、HY OAS、IG OAS、FRA-OIS、商業地產違約率。
+
+**最高優先警訊：** 股市創新高但 HY OAS 快速擴大 → 重大背離，**優先相信信用市場**。
+
+五階段（放寬 / 穩定 / 收緊 / 惡化 / 危機）、傳導鏈與量化門檻見 `references/credit-cycle.md`。
+
+---
+
+## 12. Step 7｜製造業與全球貿易 ⭐
+
+### 美國端
+
+```text
+New Orders → Production → Employment → Inventories → Supplier Deliveries → Prices
+```
+
+```text
+Manufacturing Impulse = New Orders − Inventories
+```
+
+> **PMI 看方向與變化率，不看 50 這個水位。** PMI < 50 但連續改善可能是復甦；> 50 但連續下滑可能是趨緩。
+
+服務業（ISM Services）佔美國 GDP 比重更高，需同步判讀。詳見 `references/manufacturing-cycle.md`。
+
+### 全球傳導鏈
+
+```text
+中國信用（Credit Impulse / TSF）→ 中國 PMI → 全球貿易
+→ 南韓出口與半導體出口 → 台灣外銷訂單 → 台灣電子暨光學 PMI → 半導體營收與資本支出
+```
+
+> ⚠️ AI 時代必須拆解出口的產品結構 —— 傳統電子與 AI 資本支出已出現脫鉤。
+
+詳見 `references/global-trade-transmission.md`。
+
+---
+
+## 13. Step 8A｜跨資產價格輪動 ⭐
+
+**主要工具：全市場觀察表（Google 試算表）**
+`https://docs.google.com/spreadsheets/d/1OMbg5nPRELu7cpkVrGR9CppMyUhjebpShk17n4wyhZA/edit?usp=sharing`
+
+觀察 1D/5D/20D/60D 報酬、Rank、REL、60-Day Trend、YTD。
+
+### ⚠️ 命名紀律
+
+此步驟的正確名稱是 **Price Rotation / Relative Strength**。
+Rank 前進、60D% 上升、REL60 轉正、Trend 轉 Up —— **都只是價格證據，不得直接稱為資金流入**。
+
+欄位解讀指南、100+ ETF 資產分類表、輪動判讀邏輯與核心觀察組見
+`references/cross-asset-price-rotation.md`。
+
+---
+
+## 14. Step 8B｜真實資金流
+
+用以下證據驗證 Step 8A 的價格輪動：
+ETF 淨申購/贖回、共同基金流量、CFTC COT、Dealer/Asset Manager 部位、NAAIM、13F、機構 OW/N/UW 評級。
+
+| 價格輪動 | 真實資金流 | 判讀 |
+|---|---|---|
+| 強 | 流入 | ✅ 高信度趨勢 |
+| 強 | 流出 | ⚠️ 軋空、供給不足或追價風險 |
+| 弱 | 流入 | ⚠️ 可能在吸收賣壓，等待轉折 |
+| 弱 | 流出 | 🔴 高信度弱勢 |
+
+完整 SOP（16 大資產類別、資金溫度分數、COT 判讀）見 `references/cross-asset-fund-flow.md`。
+
+---
+
+## 15. Step 9｜敘事與真實
+
+四層依序檢驗：**Dominant Narrative → Consensus Positioning → Data Reality → Market Confirmation**
+
+結論必須從五個標籤擇一：敘事與資料一致 / 敘事領先資料 / 價格領先資料 / 敘事過度延伸 / 敘事與信用市場背離。
+
+> ⚠️ **不得以陰謀論取代證據。** 每個對敘事的質疑都必須指出具體是哪項資料、信用指標或價格不支持，
+> 且結論必須可被未來資料證偽（寫入 Step 13）。
+
+詳見 `references/narrative-vs-reality.md`。
+
+---
+
+## 16. Step 10｜八大循環體制分類
+
+不可用單一景氣階段概括整個市場。八大循環須同步定位：
+
+| 循環 | 狀態選項 |
+|---|---|
+| Economic | 復甦 / 擴張 / 趨緩 / 衰退 |
+| Inflation | 上升 / 高檔 / 降溫 / 通縮 |
+| Monetary | 緊縮 / 暫停 / 寬鬆 |
+| Yield | 倒掛加深 / 陡峭化 / 平坦化 / 正常化 |
+| Liquidity | 修復 / 擴張 / 中性 / 收縮 / 去槓桿 |
+| Credit | 放寬 / 穩定 / 收緊 / 惡化 / 危機 |
+| Manufacturing | 去庫存 / 補庫存 / 擴張 / 過熱 |
+| Asset Rotation | Risk-On / Rotation / Defensive / Risk-Off |
+
+**另加：** Productivity / Capex Cycle、AI / Semiconductor Capex Cycle。
+
+**時間軸輸出：** Nowcast（現在）、1-3M（波段）、3-12M（中期），並標示市場主要在交易哪一層。
+
+---
+
+## 17. Step 11｜情境與 Risk Radar（子模組）
+
+### 17.1 三情境
+
+Base / Bull / Bear 各須含：機率、因果路徑、需觀察的資料、失效條件、受惠與受害資產。
+
+### 17.2 Risk Radar 固定掃描 12 項
+
+1. 健康去通膨 vs 壓力型去通膨
+2. 股市 vs 通膨預期背離
+3. 流動性週期定位
+4. 信用惡化
+5. 殖利率與期限溢酬衝擊
+6. 財政赤字與發債壓力
+7. 美元急升/急貶
+8. 銀行與商業地產
+9. 地緣政治與能源供應
+10. AI / 半導體 Capex vs Revenue
+11. 槓桿與衍生工具、擁擠交易
+12. 重大政策、選舉、關稅與行政命令
+
+**觸發時機：** 月度/季度例行掃描，或重大事件後臨時啟動（FOMC 意外、信用事件、黑天鵝）。
+
+**22 項指標清單、燈號規則與月報/季報標準輸出格式見 `references/risk-radar-sop.md`。**
+
+> Risk Radar 不提供個股建議，僅提供資產類別/產業層級方向指引。
+
+---
+
+## 18. Step 12｜投資決策輸出
+
+### 18.1 UC Macro Score（100 分）
+
+| 模組 | 權重 |
+|---|---:|
+| Growth / Consumption | 15 |
+| Inflation | 10 |
+| Fed / Rates | 15 |
+| Liquidity | 20 |
+| Credit | 15 |
+| Manufacturing / Global Trade | 10 |
+| Market Confirmation | 10 |
+| System Risk | 5 |
+| **Total** | **100** |
+
+每個模組依 Level、Trend、Rate of Change、Surprise、Revision、Cross-confirmation 評分。
+
+| 分數 | 判讀 |
+|---|---|
+| 80-100 | 強 Risk-On |
+| 65-79 | 偏多 |
+| 50-64 | 中性 / 輪動 |
+| 35-49 | 偏空 |
+| 0-34 | 強 Risk-Off |
+
+### 18.2 Confidence Score（100 分）
+
+衡量資料一致性、資料新鮮度、指標背離程度、市場是否確認、重大事件是否尚未公布。
+
+> ⚠️ **不得只給單一 Macro Score**，必須同時輸出 Confidence，避免假精確。
+
+### 18.3 曝險建議
+
+輸出股票曝險方向、高/低 Beta、債券久期、信用債、現金、黃金、商品、比特幣、產業超配/標配/低配。
+
+> ⚠️ 資產比例必須是**情境建議**（對應 Base/Bull/Bear），不得預設適用所有投資者。
+> 實際倉位大小與停損由 `risk-management` 模組決定。
+
+### 18.4 與 UC 選股流程的銜接
+
+總經分析完成後依序進入：趨勢產業（`industry-research`）→ 個股基本面（`equity-fundamental-analysis`）
+→ 估值（`valuation-analysis`）→ 情緒與籌碼（`market-sentiment-tracking`）→ 技術面（`technical-analysis`）
+→ 倉位與風控（`risk-management`）。
+
+若 SPY/QQQ 趨勢不支持、流動性與信用轉差、或重大事件風險過高 → **降低個股進場強度與槓桿**。
+
+---
+
+## 19. Step 13｜觸發條件
+
+每份報告必須列出三組：
+
+- **Confirming Triggers** — 哪些資料出現後可提高目前判斷的信心
+- **Invalidating Triggers** — 哪些資料會推翻目前結論
+- **Position Triggers** — 在什麼條件下提高/降低股票曝險、調整久期、增持現金或黃金、降低選擇權槓桿
+
+> 避免使用無根據的固定金額門檻，應以趨勢、歷史分位數與多重指標確認為準。
+
+---
+
+## 20. 指標分層（80+ 指標不得全部等權）
+
+### Tier 1｜核心決策指標（每次完整分析必更新）
+
+GDPNow、Real PCE / Retail Sales Control Group、Core PCE、Initial / Continuing Claims、非農、
+ISM New Orders、FedWatch / 2Y、10Y 實質利率、Fed Assets、TGA、ON RRP、Bank Reserves、
+M2 YoY、HY OAS、SLOOS、DXY、VIX、市場寬度
+
+### Tier 2｜驗證指標（Tier 1 轉折或矛盾時調用）
+
+LEI、CFNAI、JOLTS、消費者信心、IG OAS、房市、PPI、單位勞動成本、C&I Loans、區域聯儲調查
+
+### Tier 3｜診斷指標（出現異常才深入）
+
+CPI 細項、信用卡/車貸違約、商業地產、FRA-OIS、航運/BDI、各產業庫存、區域銀行壓力、特定國家政治風險
+
+完整定義、時效性與領先/落後屬性見 `references/economic-indicators-reference.md`。
+
+---
+
+## 21. 快速執行模式
+
+| 模式 | 執行範圍 | 適用 |
+|------|---------|------|
+| **每日日報** ⭐ | Step 1 + Step 12 摘要（指數收盤、US10Y/DXY/WTI、事件表） | 對應專案 `CLAUDE.md` 區塊一、二、六，**不跑完整 14 步** |
+| 每日快評 | Step 1 + Step 3/4 相關項 + Step 9 | 單一事件即時解讀 |
+| 週度更新 | Step 1、2、5、6、8A、8B + 重大事件日程 | Claims、Fed 資產、TGA/RRP、HY OAS、輪動 |
+| 月度深度 | Step 0-13 完整 + Risk Radar 月報 | 就業、CPI/PCE、ISM、M2、中國 PMI、台韓出口 |
+| 季度策略 | Step 0-13 完整 + GDP + SLOOS + 財報/Capex + 八大循環 + 三情境 | 中期資產配置 |
+
+---
+
+## 22. 標準輸出格式
 
 ```markdown
-## 資產配置建議（YYYY-MM-DD）
+# UC Macro Dashboard｜YYYY-MM-DD
 
-| 資產類別 | 目標比例 | 調整幅度 | 理由 |
-|---------|---------|---------|------|
-| 股票    | 40%     | -20%    | 資金流確認避險情緒 |
-| 債券    | 40%     | +15%    | 三重驗證顯示資金湧入 |
-| 黃金    | 10%     | +5%     | 避險需求強勁 |
-| 現金    | 10%     | 持平    | 保留流動性 |
+## 一句話結論
+市場主要交易 ______，總經處於 ______，流動性 ______，信用 ______。策略上 ______，但需防範 ______。
 
-### 動態調整觸發點
-增加股票倉位至 60%（需滿足以下條件之一）：
-- 股票 ETF 連續 2 週淨流入 > $5B
-- COT 大戶淨多單連續 3 週增加
-- 機構評級轉為 OW（3 家以上一致）
+## 1. Regime Dashboard（八大循環：狀態 / 趨勢 / 信心）
+## 2. Market Pricing（敘事、已 Price-in、Fed vs Market Gap、最擁擠交易）
+## 3. 核心因果鏈（資料 A → 傳導 B → 結果 C → 市場影響 D）
+## 4. 最新數據表（原值/修正 | 預期 | 實際 | 趨勢 | 解讀）
+## 5. 最大矛盾與背離
+## 6. Price Rotation vs Actual Flow（分列，不可合併）
+## 7. 三情境（機率 / 因果路徑 / 受惠資產 / 失效條件）
+## 8. UC Macro Score __/100｜Confidence __/100
+## 9. 投資含義（股票曝險、產業偏好、債券、黃金/商品、現金、槓桿）
+## 10. Trigger Conditions（Confirming / Invalidating / Position）
 ```
 
----
-
-### Step 10: Risk Radar 宏觀風險雷達掃描（子模組）
-
-**觸發條件（滿足任一即啟動）：**
-- 使用者明確要求「風險雷達」「風險掃描」「月報/季報更新」
-- 重大事件後臨時啟動（FOMC 意外決策、信用事件、黑天鵝）
-
-**四大週期判斷（詳細執行參考 `references/risk-radar-sop.md`）：**
-
-- **Step 10A：** 判斷「壓力型去通膨 vs 健康去通膨」（CPI + 實質零售銷售 + 信貸成長）
-- **Step 10B：** 檢查「資產價格 vs 通膨預期背離」（T5YIE vs S&P 500）
-- **Step 10C：** 定位「流動性週期」（修復期 / 擴張期 / 擴張末期 / 去槓桿期）
-- **Step 10D：** AI/半導體資本週期交叉驗證（Capex 指引 vs 營收成長）
-
-**標準輸出格式（月報/季報）：**
-
-```markdown
-## 宏觀風險雷達更新（YYYY-QY）
-
-### 1. 總體與流動性摘要（5-10 行）
-### 2. 風險雷達表（8-12 個關鍵指標 + 🟢🟡🔴 燈號）
-### 3. 週期判斷（修復/早期擴張/擴張末期/去槓桿）
-### 4. 資產配置與產業權重指引
-### 5. 風險提示（未來 3-12 個月關鍵觸發點）
-```
-
-> Risk Radar 不提供個股建議，僅提供資產類別/產業層級的方向指引。
+完整報告範本見 `references/analysis-report-template.md`。
 
 ---
 
-### Step 9: 產出報告
+## 23. 分析紀律（12 條）
 
-選擇報告格式：
-- **每日快評** — 單一事件即時解讀（1-2 頁）
-- **週度報告** — 整合資金流週報
-- **月度深度** — 完整分析鏈
-- **季度策略** — 中期資產配置方向
-
-標準報告結構請參考 `references/analysis-report-template.md`
-
----
-
-## 數據調用指南
-
-完整 80+ 項指標的定義、時效性與數據來源，請載入：
-`references/economic-indicators-reference.md`
-
-以下依分析目的列出應優先調用的指標群組：
-
-### 快速市場方向掃描（5 分鐘）
-調用：VIX、10Y 殖利率 + 實質利率（TIPS）、淨流動性（Fed Assets - TGA - RRP）、FRA-OIS / TED Spread（危機預警）
-
-### 通膨與 Fed 政策分析
-調用：CPI + Core CPI + PCE + **Core PCE**（Fed 偏好）、T5YIE 通膨預期、密西根通膨預期、PPI（領先通膨 1-2 個月）、TIPS 實質利率
-
-### 就業市場健康度
-調用：**初領 + 續領失業救濟金**（每週四，高頻領先）、非農就業 + 失業率（月度同步）、JOLTS 職位空缺 + 離職率（領先景氣轉折）、薪資成長（工資通膨傳導）
-
-### 景氣循環位置判斷
-調用：Conference Board LEI、**ISM 製造業 + 服務業 PMI**（新訂單子指標最重要）、GDPNow 即時估計（Atlanta Fed）、CFNAI（芝加哥聯儲活動指數）
-
-### 流動性環境與資金條件 ⭐
-調用：**M2 (YoY)**、**TGA + RRP → 計算淨流動性**、Fed 資產負債表規模（QT 追蹤）、SLOOS 銀行放貸標準、C&I 貸款成長、HY OAS + IG OAS（信用利差）
-
-### 信用壓力與系統風險預警
-調用：**FRA-OIS Spread + TED Spread**（銀行間壓力，危機早期信號）、HY OAS 高收益債利差、信用卡違約率、商業地產空置率
-
-### 資產配置方向
-調用：殖利率曲線（10Y-2Y 倒掛程度）、S&P 500 Forward P/E + Shiller CAPE + ERP、AAII 散戶情緒 + NAAIM 機構曝險度、ETF 資金流 + CFTC COT 大戶持倉
-
-### 亞洲 / 台灣聚焦
-調用：**台灣出口訂單**（領先半導體景氣 1-2 個月）、**南韓出口**（領先全球貿易）、中國官方 + 財新 PMI、USD/CNY 離岸匯率
-
-### 能源 / 商品通膨風險
-調用：WTI / Brent 原油 + **美國原油庫存**（每週三 EIA）、銅價（景氣溫度計）、BDI 波羅的海乾散貨指數
+1. 不用單一指標決定多空。
+2. 不混淆價格輪動與真實資金流。
+3. 不把 Net Liquidity 當作精確流動性總量。
+4. 不忽略前值修正。
+5. 不只看 Headline，必須看結構。
+6. 不只看絕對值，必須看方向與速度。
+7. 不把通膨數據自動解讀成利多/利空。
+8. 不把降息自動解讀成利多 —— 須先判斷降息成因。
+9. 不因官方資料或新聞敘事就跳過市場驗證。
+10. 不用陰謀論取代證據 —— 敘事分析必須由資料、信用與價格確認。
+11. 不提供無條件適用所有人的精確配置比例。
+12. 重大 FOMC、CPI、非農、GDP、財報或政策事件前，降低過度槓桿。
 
 ---
 
-## 參考資料
+## 24. 參考文件
 
-**核心框架（必讀）：**
-- `references/interpretation-framework.md` — 數據解讀與決策框架（核心方法論）
+**核心方法論**
+- `references/interpretation-framework.md` — 數據解讀與決策框架
 - `references/analysis-report-template.md` — 標準化報告範本
-- `references/cross-asset-fund-flow.md` — 跨資產資金流追蹤完整 SOP
-- `references/risk-radar-sop.md` — Risk Radar 宏觀風險雷達掃描 SOP
-
-**數據與指標：**
-- `references/economic-indicators-reference.md` — **完整數據指標總表**（10 大類、80+ 指標，含時效性/領先落後屬性）⭐
 - `references/data-sources.md` — 權威數據來源指引
-- `references/economic-indicators.md` — 經濟指標定義與解讀標準
-- `references/fed-policy-framework.md` — Fed 政策決策邏輯與解讀框架
 
-**產業與風險：**
+**循環模組（Step 5-9）** ⭐
+- `references/liquidity-cycle.md` — 流動性循環（Step 5）
+- `references/credit-cycle.md` — 信用循環（Step 6）
+- `references/manufacturing-cycle.md` — 製造業循環（Step 7 美國端）
+- `references/global-trade-transmission.md` — 全球製造與貿易傳導鏈（Step 7 全球端）
+- `references/cross-asset-price-rotation.md` — 跨資產價格輪動（Step 8A）
+- `references/cross-asset-fund-flow.md` — 真實資金流追蹤 SOP（Step 8B）
+- `references/narrative-vs-reality.md` — 敘事與真實檢驗（Step 9）
+
+**指標與政策**
+- `references/economic-indicators-reference.md` — 完整指標總表（10 大類、80+ 指標）
+- `references/economic-indicators.md` — 經濟指標定義與解讀標準
+- `references/fed-policy-framework.md` — Fed 政策決策邏輯與反應函數
+
+**產業與風險**
+- `references/risk-radar-sop.md` — Risk Radar 宏觀風險雷達掃描 SOP（Step 11）
 - `references/industry-cycles.md` — 各產業景氣循環特性與輪動策略
 - `references/geopolitical-risks.md` — 地緣政治風險評估清單
 - `references/historical-scenarios.md` — 歷史情境資料庫與類比分析
 
-**實用工具：**
-- 🔗 **全市場觀察表** — `https://docs.google.com/spreadsheets/d/1OMbg5nPRELu7cpkVrGR9CppMyUhjebpShk17n4wyhZA/edit?usp=sharing`（Step 5 跨資產輪動主要工具）
+**實用工具**
+- 🔗 **全市場觀察表** — `https://docs.google.com/spreadsheets/d/1OMbg5nPRELu7cpkVrGR9CppMyUhjebpShk17n4wyhZA/edit?usp=sharing`（Step 8A 主要工具）
 - `assets/investment-decision-checklist.md` — 投資決策檢查清單
 - `assets/2025_macro-economics-guide.pdf` — 總體經濟分析實戰指引
 
 ---
 
-## 版本歷史
+## 25. 版本歷史
 
-### v2.4.0 (2026-03-18) ⭐ NEW
+### v3.0.0 (2026-07-28) ⭐ NEW
 
-**重大更新：**
-- ✅ Step 5 整合「全市場觀察表」Google 試算表作為跨資產輪動主要工具
-- ✅ 新增欄位解讀指南（Rank、REL、60-Day Trend、20R/60R/120R）
-- ✅ Step 5 重構為 5.1 主工具（直接讀表）+ 5.2 深度驗證（補充四重確認）
-- ✅ Step 2 資金流數據來源新增試算表連結
-- ✅ 參考資料新增全市場觀察表入口
+**框架重構：**
+- ✅ 將框架由「指標蒐集」升級為「投資決策引擎」：市場預期 → 因果鏈 → 政策反應 → 市場驗證 → 投資決策
+- ✅ 流程由 Step 1-10 重編為 **Step 0-13**（Risk Radar 由 Step 10 → **Step 11**；資金流由 Step 5 → **Step 8A/8B**）
+- ✅ 新增 Market Pricing 與 Policy Expectation Gap（Step 1）
+- ✅ 新增五維資料變數：Level、Trend、Rate of Change、Surprise、Revision
+- ✅ 新增經濟因果鏈：企業訂單 → 就業 → 收入 → 消費 → 生產 → GDP
+- ✅ 單一景氣週期擴充為**八大循環**同步定位
+- ✅ Fed 分析升級為 Fed Reaction Function + Policy Expectation Gap
+
+**新增模組（含對應 references）：**
+- ✅ 重構流動性模組：Fed Assets / TGA / RRP / Bank Reserves / M2 五層交叉驗證，明確標示 Net Liquidity 僅為代理指標
+- ✅ 新增完整信用循環（SLOOS、HY/IG OAS、五階段、股信背離警訊）
+- ✅ 新增製造業訂單鏈與 Manufacturing Impulse（New Orders − Inventories）
+- ✅ 新增中國信用 → 中國 PMI → 南韓出口 → 台灣外銷訂單 → 半導體傳導鏈，補入 China Credit Impulse
+- ✅ 將「價格輪動」與「真實資金流」正式拆為 Step 8A / 8B，禁止混用命名
+- ✅ 新增 Narrative vs Reality 四層檢驗與反陰謀論紀律
+
+**決策輸出：**
+- ✅ 新增 UC Macro Score（100 分）與 Confidence Score 雙分數
+- ✅ 新增 Base / Bull / Bear 三情境
+- ✅ 新增 Confirming / Invalidating / Position 三組觸發條件
+- ✅ 新增 Tier 1/2/3 指標分層（取代原 24 項平面檢查清單）
+- ✅ 新增與 industry-research / equity-fundamental / valuation / sentiment / technical / risk-management 的銜接邏輯
+- ✅ 新增「每日日報模式」，對應專案 CLAUDE.md 區塊一、二、六（不跑完整流程）
+
+**結構調整：**
+- ✅ 依 `docs/skill-optimization.md` 原則，深度內容下放 references，SKILL.md 保留執行骨架
+- ✅ 保留 v2.4.0 全市場觀察表欄位解讀指南（移至 `references/cross-asset-price-rotation.md`）
+- ✅ 保留 v2.4.0 之 Risk Radar、官方數據來源與 80+ 指標能力
+
+### v2.4.0 (2026-03-18)
+- Step 5 整合全市場觀察表 Google 試算表；新增欄位解讀指南（Rank、REL、20R/60R/120R）
 
 ### v2.3.0 (2026-03-18)
-
-**重大更新：**
-- ✅ 新增「完整數據指標總表」章節（10 大類、80+ 指標）
-- ✅ 所有指標標註時效性（短期/中期/長期）與領先/同步/落後屬性
-- ✅ 新增初領/續領失業救濟金（Initial / Continuing Jobless Claims）
-- ✅ 新增 ISM 製造業 / 服務業 PMI 明確條目
-- ✅ 新增 M2 貨幣供給量（流動性核心指標）
-- ✅ 新增「流動性指標」獨立章節：TGA、RRP、Bank Reserves、SOFR、EFFR
-- ✅ 新增美元淨流動性公式（Fed Assets - TGA - RRP）
-- ✅ 新增 FRA-OIS Spread、TED Spread（金融壓力預警）
-- ✅ 新增人民幣匯率追蹤（USD/CNY 離岸 CNH）
-- ✅ 新增 PCE 消費支出量（與 PCE 物價分開列示）
-- ✅ 新增 GDPNow 即時估計（Atlanta Fed）
-- ✅ 新增房市指標（Housing Starts, NAHB, Case-Shiller, 房貸利率）
-- ✅ 更新 Step 1.3 分析檢查清單為完整版（24 項）
-- ✅ 建立「快速執行節奏建議」（每日/每週/每月/每季）
+- 新增完整數據指標總表（10 大類、80+ 指標）、流動性指標章節與淨流動性公式
 
 ### v2.2.0 (2026-02-19)
-
-**重大更新：**
-- ✅ 整合 `risk-radar` 作為本模組的子模組（Step 10）
-- ✅ 新增觸發關鍵詞：風險雷達、流動性週期、壓力型去通膨、月報/季報
-- ✅ 建立四大週期判斷邏輯（Step 10A-D）
-- ✅ 新增 Risk Radar 月報/季報標準輸出格式
+- 整合 risk-radar 為子模組，建立四大週期判斷與月報/季報格式
 
 ### v2.1.0 (2026-01-18)
-
-**重大更新：**
-- ✅ 新增「跨資產資金流追蹤分析」模組（Step 5）
-- ✅ 整合 ETF 資金流 + CFTC COT + 機構評級三重驗證機制
-- ✅ 新增 16 大資產類別追蹤體系
-- ✅ 建立資金溫度評分系統（-2 ~ +2）
+- 新增跨資產資金流追蹤模組、ETF/COT/機構評級三重驗證、16 大資產類別追蹤體系

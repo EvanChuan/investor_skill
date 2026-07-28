@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-01-16T13:24:22.206036",
+  "generated_at": "2026-07-28T16:52:15.651694",
   "algorithm": "sha384",
   "repository": "EvanChuan/investor_skill",
   "files": [
@@ -141,8 +141,8 @@
     },
     {
       "path": "skills/macro-market-analysis/SKILL.md",
-      "sha384": "223f41dff49e03b2541c9e111e53fe3c0bdd003d22b7516d300ac486e7c5b9132129f494a965b20dd6aa2e3c539bafff",
-      "size": 45710
+      "sha384": "b09920e9b46530e4c1848560a1fdd2ecaafadf66f0baee08f61449b65e220764e07fb9927c64a3248255cf4e8c052291",
+      "size": 26172
     },
     {
       "path": "skills/macro-market-analysis/assets/investment-decision-checklist.md",
@@ -155,9 +155,29 @@
       "size": 24649
     },
     {
+      "path": "skills/macro-market-analysis/references/credit-cycle.md",
+      "sha384": "72d19bde3e1f491c6950ea623a4109c1f563f76045676a409c447cf372c22ecb41c7d9a25f3153c6030fc962d1c15624",
+      "size": 5831
+    },
+    {
+      "path": "skills/macro-market-analysis/references/cross-asset-fund-flow.md",
+      "sha384": "f043bfdb2ad47033df0fecaa7a318b018cf72190558b046685a3a05be23725b0586b98fcde7ffe2231f449d05c92d1c9",
+      "size": 21320
+    },
+    {
+      "path": "skills/macro-market-analysis/references/cross-asset-price-rotation.md",
+      "sha384": "862ffb5d55568da62db5d60691bd72e40174fec44e63ebe3d8ee7da253b128c9a654caf5eb07c11adfa381724689dfb0",
+      "size": 7092
+    },
+    {
       "path": "skills/macro-market-analysis/references/data-sources.md",
       "sha384": "cd03808702152091779dd59b3765bcfd0164d61af718609e167c06b60c51733b8aaf48a3dc57c7b6cd4f10cc5a109d31",
       "size": 7690
+    },
+    {
+      "path": "skills/macro-market-analysis/references/economic-indicators-reference.md",
+      "sha384": "ad27b25b795bb8d7671fe0da0bb4d0dd967e0617ba933faf2d4e15752ef29716598e7eda81823a918c3f145637ba9dff",
+      "size": 11533
     },
     {
       "path": "skills/macro-market-analysis/references/economic-indicators.md",
@@ -175,6 +195,11 @@
       "size": 16265
     },
     {
+      "path": "skills/macro-market-analysis/references/global-trade-transmission.md",
+      "sha384": "b86aae9ada28c46c2703925901e131be6427d2288b98989812ebd7c27477100aa2323c7598e11f628ff3427fed108cdc",
+      "size": 6419
+    },
+    {
       "path": "skills/macro-market-analysis/references/historical-scenarios.md",
       "sha384": "17b93085ee67ff3da0662a2ab5f3c285bab8ae4228685bb969178f28a42c1a0ed63e62dc7f656a34d324ac8569f34b2f",
       "size": 12487
@@ -188,6 +213,31 @@
       "path": "skills/macro-market-analysis/references/interpretation-framework.md",
       "sha384": "713b1cebd5185e9740de52689de1f26308a081f7061a1e938ab0f3bdc67f3128fea35a98e9ae5b27c3488b64966e3040",
       "size": 35060
+    },
+    {
+      "path": "skills/macro-market-analysis/references/liquidity-cycle.md",
+      "sha384": "fee0c0f9367c4f8eff029e424e82a989292b73054819f38b193f692aa36ae5ce7e7160ba871d67311e1ac0b3b238682b",
+      "size": 5890
+    },
+    {
+      "path": "skills/macro-market-analysis/references/manufacturing-cycle.md",
+      "sha384": "1df3b95386662201f5f8d085c2fee41db34932797da1c68c29a672487872441ff6c9111da94e458676728249172c4ae4",
+      "size": 5954
+    },
+    {
+      "path": "skills/macro-market-analysis/references/narrative-vs-reality.md",
+      "sha384": "330e2617991fb12551850fa7eb6d4521c0b71b403786bac522b65545246f54d19fc6562b0c6ea111aa425b8d863287bb",
+      "size": 6623
+    },
+    {
+      "path": "skills/macro-market-analysis/references/risk-radar-sop.md",
+      "sha384": "ff1741df1e1a780e120a390f96a2e1c9d5af777646622eddc9527ce440d2be2fa264431910f5e1cc7f806aa3118fe162",
+      "size": 7183
+    },
+    {
+      "path": "skills/macro-market-analysis/risk-radar/SKILL.md",
+      "sha384": "e63fcada44fa61723b2e78534667f61223aab38bf33bad51fba950b42e883f7dec3db45a0b50a18c36529f3a9f7faa17",
+      "size": 8508
     },
     {
       "path": "skills/macro-market-analysis/scripts/README.md",

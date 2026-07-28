@@ -1,6 +1,6 @@
 # Risk Radar 宏觀風險雷達 — 定期掃描 SOP
 
-> 本文件為 `macro-market-analysis` 第一階段 Step 10 的執行參考，
+> 本文件為 `macro-market-analysis` 第一階段 Step 11（Scenario & Risk Radar）的執行參考，
 > 亦作為 `risk-radar/SKILL.md` 的完整指標清單。
 
 ---
@@ -187,7 +187,10 @@ AI 需求強勁 + 順利轉為營收與利潤
 
 ## 六、關聯文件
 
-- `../SKILL.md` — macro-market-analysis 主技能（Step 10 觸發點）
-- `../../risk-radar/SKILL.md` — Risk Radar 獨立文件
-- `cross-asset-fund-flow.md` — 跨資產資金流追蹤（可與 Risk Radar 搭配）
+- `../SKILL.md` — macro-market-analysis 主技能（Step 11 觸發點）
+- `../risk-radar/SKILL.md` — Risk Radar 獨立文件
+- `cross-asset-price-rotation.md` — 跨資產價格輪動（Step 8A）
+- `cross-asset-fund-flow.md` — 真實資金流追蹤（Step 8B，可與 Risk Radar 搭配）
+- `liquidity-cycle.md` — 流動性循環（Step 5，對應指標組 E）
+- `credit-cycle.md` — 信用循環（Step 6，對應指標組 B/G）
 - `economic-indicators.md` — 經濟指標完整解讀手冊

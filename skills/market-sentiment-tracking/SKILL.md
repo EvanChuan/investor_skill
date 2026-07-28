@@ -145,7 +145,7 @@ tags:
 
 **目標：** 追蹤資金在風險與避險資產間的快速轉換
 
-- **ETF 資金流** — 引用 `macro-market-analysis` Step 5 結果；觀察股票 ETF 大幅流出 + 債券/黃金流入
+- **ETF 資金流** — 引用 `macro-market-analysis` Step 8B（真實資金流）結果；觀察股票 ETF 大幅流出 + 債券/黃金流入
 - **黃金短線避險** — GLD ETF 單日流入 > $500M = 強烈避險需求；詳見 `references/market-indicators/gold-safe-haven-flow.md`
 - **DXY 美元指數** — 單日漲 > 1% 代表資金撤離風險資產；詳見 `references/market-indicators/dxy-risk-sentiment.md`
 - **國債殖利率** — 10 年期美債殖利率快速下降 = 避險需求（債券價格上漲）

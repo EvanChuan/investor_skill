@@ -388,8 +388,9 @@ python3 /home/evan/Desktop/investor_skill/scripts/download_watchlist.py
 
 ## 關聯技能模組
 
-- `skills/macro-market-analysis/SKILL.md` — 區塊一、二、六
-- `skills/macro-market-analysis/references/cross-asset-fund-flow.md` — 資金流向輔助
+- `skills/macro-market-analysis/SKILL.md` — 區塊一、二、六（v3.0.0：日報請走**日報模式** = Step 1 + Step 12 摘要，勿執行完整 Step 0-13）
+- `skills/macro-market-analysis/references/cross-asset-price-rotation.md` — 價格輪動與相對強弱（Step 8A）
+- `skills/macro-market-analysis/references/cross-asset-fund-flow.md` — 真實資金流輔助（Step 8B）
 - `skills/industry-research/SKILL.md` — 區塊三、五
 - `skills/market-sentiment-tracking/SKILL.md` — 區塊四、七
 - `skills/FRAMEWORK.md` — 整體投資框架參考

@@ -5,7 +5,7 @@ description: >
   【子模組】隸屬於 macro-market-analysis（第一階段總體經濟分析）。
   建立一套以「流動性週期＋壓力型去通膨＋AI 資本支出週期」為核心的宏觀風險雷達，
   協助投資人每月／每季透過固定指標檢查，調整整體槓桿與產業權重。
-  請透過 macro-market-analysis 的 Step 10 觸發本子模組，或直接載入本文件執行獨立掃描。
+  請透過 macro-market-analysis 的 Step 11（Scenario & Risk Radar）觸發本子模組，或直接載入本文件執行獨立掃描。
 tags:
   - macro
   - risk-management

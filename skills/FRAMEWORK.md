@@ -99,7 +99,7 @@ Q: 我想了解現在該不該進場？市場風險高不高？
 └─> 使用 macro-market-analysis（第一階段：總體經濟分析）
 
 Q: 我想做月度/季度定期風險掃描，更新宏觀風險雷達？
-└─> 使用 macro-market-analysis Step 10（risk-radar 子模組）
+└─> 使用 macro-market-analysis Step 11（risk-radar 子模組）
 
 Q: 我想知道現在該佈局哪個產業？
 └─> 使用 industry-research（第二階段：產業研究）
@@ -144,13 +144,14 @@ Q: 我想建立完整的投資組合策略？
 
 **模組：** `macro-market-analysis/SKILL.md`
 
-**子模組：** `macro-market-analysis/risk-radar/SKILL.md`（月度/季度定期風險掃描，整合於第一階段 Step 10）
+**子模組：** `macro-market-analysis/risk-radar/SKILL.md`（月度/季度定期風險掃描，整合於第一階段 Step 11）
 
 | 使用情境 | 使用工具 |
 |---------|---------|
-| 即時總經分析、事件解讀 | macro-market-analysis（Step 1-9） |
-| 月度/季度定期風險掃描 | macro-market-analysis Step 10（引用 risk-radar） |
-| 重大事件後緊急風險評估 | macro-market-analysis Step 10（引用 risk-radar） |
+| 每日日報（區塊一/二/六） | macro-market-analysis 日報模式（Step 1 + Step 12 摘要） |
+| 即時總經分析、事件解讀 | macro-market-analysis（Step 0-13） |
+| 月度/季度定期風險掃描 | macro-market-analysis Step 11（引用 risk-radar） |
+| 重大事件後緊急風險評估 | macro-market-analysis Step 11（引用 risk-radar） |
 
 ---
 

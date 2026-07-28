@@ -141,7 +141,7 @@ tags:
 | 8A | **Price Rotation** | 跨資產價格輪動與相對強弱 | `cross-asset-price-rotation.md` ⭐ |
 | 8B | **Actual Capital Flow** | ETF 申贖、COT、機構評級 | `cross-asset-fund-flow.md` |
 | 9 | Narrative vs Reality | 敘事、部位、資料、價格四層檢驗 | `narrative-vs-reality.md` ⭐ |
-| 10 | Regime Classification | 八大循環同步定位 | `industry-cycles.md` |
+| 10 | Regime Classification | 八大循環同步定位 | `policy-regime-classification.md`／`industry-cycles.md` |
 | 11 | **Scenario & Risk Radar** | 三情境 + 12 項風險雷達（子模組） | `risk-radar-sop.md` |
 | 12 | Investment Implications | Macro Score、曝險與產業權重 | `analysis-report-template.md` |
 | 13 | Trigger Conditions | 確認、推翻與部位觸發條件 | — |
@@ -376,6 +376,9 @@ ETF 淨申購/贖回、共同基金流量、CFTC COT、Dealer/Asset Manager 部�
 
 **時間軸輸出：** Nowcast（現在）、1-3M（波段）、3-12M（中期），並標示市場主要在交易哪一層。
 
+> Monetary 與 Liquidity 兩個循環的定位，需搭配 `references/policy-regime-classification.md`
+> 判斷「誰在主導資金成本」（央行獨立性、財政與貨幣互動），而非只看升降息方向。
+
 ---
 
 ## 17. Step 11｜情境與 Risk Radar（子模組）
@@ -561,6 +564,7 @@ CPI 細項、信用卡/車貸違約、商業地產、FRA-OIS、航運/BDI、各�
 - `references/economic-indicators-reference.md` — 完整指標總表（10 大類、80+ 指標）
 - `references/economic-indicators.md` — 經濟指標定義與解讀標準
 - `references/fed-policy-framework.md` — Fed 政策決策邏輯與反應函數
+- `references/policy-regime-classification.md` — 政策 Regime 分類與市場含義（Step 4／Step 10）
 
 **產業與風險**
 - `references/risk-radar-sop.md` — Risk Radar 宏觀風險雷達掃描 SOP（Step 11）

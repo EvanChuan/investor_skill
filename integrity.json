@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-07-28T16:52:15.651694",
+  "generated_at": "2026-07-28T17:09:07.782589",
   "algorithm": "sha384",
   "repository": "EvanChuan/investor_skill",
   "files": [
@@ -141,8 +141,8 @@
     },
     {
       "path": "skills/macro-market-analysis/SKILL.md",
-      "sha384": "b09920e9b46530e4c1848560a1fdd2ecaafadf66f0baee08f61449b65e220764e07fb9927c64a3248255cf4e8c052291",
-      "size": 26172
+      "sha384": "8df100e96df490b38b99b5c682c9d6c6074f8de23917ded9f0020313ea7f5fb34d0153c873a9a8cb6759109d666bf1de",
+      "size": 26539
     },
     {
       "path": "skills/macro-market-analysis/assets/investment-decision-checklist.md",
@@ -228,6 +228,11 @@
       "path": "skills/macro-market-analysis/references/narrative-vs-reality.md",
       "sha384": "330e2617991fb12551850fa7eb6d4521c0b71b403786bac522b65545246f54d19fc6562b0c6ea111aa425b8d863287bb",
       "size": 6623
+    },
+    {
+      "path": "skills/macro-market-analysis/references/policy-regime-classification.md",
+      "sha384": "10e18eed96891c80957ac258b0633d5c3f0668ec9810e4d524ea3f34a3f0ba1efee01265023fa61f21a745137b91f7cc",
+      "size": 10214
     },
     {
       "path": "skills/macro-market-analysis/references/risk-radar-sop.md",

@@ -1,7 +1,7 @@
 ---
 name: macro-market-analysis
 description: >
-  UC 總體經濟市場趨勢分析與投資決策引擎。以「市場交易預期 → 總經因果鏈 → 八大循環 → 政策反應函數 →
+  總體經濟市場趨勢分析與投資決策引擎。以「市場交易預期 → 總經因果鏈 → 八大循環 → 政策反應函數 →
   流動性與信用 → 製造業與全球貿易傳導 → 跨資產價格輪動 → 真實資金流 → 敘事與市場驗證」為核心，
   將總經資料轉化為市場環境評級、資產曝險、產業權重、風險條件與部位調整觸發點。
   整合 Risk Radar 宏觀風險雷達子模組（Step 11），支援每日快評、週報、月報、季報與重大事件後掃描。
@@ -12,7 +12,7 @@ description: >
   資金正在流向哪些資產類別？股票債券現金黃金如何配置？哪些產業值得佈局？
   中國信用與台韓出口對半導體的傳導？AI/半導體資本支出週期是否過熱？地緣政治風險評估？
   需要月報或季報形式的宏觀風險掃描？
-  支援 Tier 1/2/3 指標分層（80+ 指標）、UC Macro Score 與 Confidence Score 雙分數輸出。
+  支援 Tier 1/2/3 指標分層（80+ 指標）、Macro Score 與 Confidence Score 雙分數輸出。
   Step 8A 跨資產價格輪動直接讀取全市場觀察 Google 試算表（100+ ETF 的趨勢、相對強弱排名與輪動訊號）。
 version: 3.0.0
 author: Evan
@@ -32,7 +32,7 @@ tags:
   - risk-radar
 ---
 
-# UC 總體經濟市場分析與投資決策引擎
+# 總體經濟市場分析與投資決策引擎
 ## Macro Market Analysis v3.0
 
 ---
@@ -412,7 +412,7 @@ Base / Bull / Bear 各須含：機率、因果路徑、需觀察的資料、失�
 
 ## 18. Step 12｜投資決策輸出
 
-### 18.1 UC Macro Score（100 分）
+### 18.1 Macro Score（100 分）
 
 | 模組 | 權重 |
 |---|---:|
@@ -449,7 +449,7 @@ Base / Bull / Bear 各須含：機率、因果路徑、需觀察的資料、失�
 > ⚠️ 資產比例必須是**情境建議**（對應 Base/Bull/Bear），不得預設適用所有投資者。
 > 實際倉位大小與停損由 `risk-management` 模組決定。
 
-### 18.4 與 UC 選股流程的銜接
+### 18.4 與選股流程的銜接
 
 總經分析完成後依序進入：趨勢產業（`industry-research`）→ 個股基本面（`equity-fundamental-analysis`）
 → 估值（`valuation-analysis`）→ 情緒與籌碼（`market-sentiment-tracking`）→ 技術面（`technical-analysis`）
@@ -506,7 +506,7 @@ CPI 細項、信用卡/車貸違約、商業地產、FRA-OIS、航運/BDI、各�
 ## 22. 標準輸出格式
 
 ```markdown
-# UC Macro Dashboard｜YYYY-MM-DD
+# Macro Dashboard｜YYYY-MM-DD
 
 ## 一句話結論
 市場主要交易 ______，總經處於 ______，流動性 ______，信用 ______。策略上 ______，但需防範 ______。
@@ -518,7 +518,7 @@ CPI 細項、信用卡/車貸違約、商業地產、FRA-OIS、航運/BDI、各�
 ## 5. 最大矛盾與背離
 ## 6. Price Rotation vs Actual Flow（分列，不可合併）
 ## 7. 三情境（機率 / 因果路徑 / 受惠資產 / 失效條件）
-## 8. UC Macro Score __/100｜Confidence __/100
+## 8. Macro Score __/100｜Confidence __/100
 ## 9. 投資含義（股票曝險、產業偏好、債券、黃金/商品、現金、槓桿）
 ## 10. Trigger Conditions（Confirming / Invalidating / Position）
 ```
@@ -601,7 +601,7 @@ CPI 細項、信用卡/車貸違約、商業地產、FRA-OIS、航運/BDI、各�
 - ✅ 新增 Narrative vs Reality 四層檢驗與反陰謀論紀律
 
 **決策輸出：**
-- ✅ 新增 UC Macro Score（100 分）與 Confidence Score 雙分數
+- ✅ 新增 Macro Score（100 分）與 Confidence Score 雙分數
 - ✅ 新增 Base / Bull / Bear 三情境
 - ✅ 新增 Confirming / Invalidating / Position 三組觸發條件
 - ✅ 新增 Tier 1/2/3 指標分層（取代原 24 項平面檢查清單）

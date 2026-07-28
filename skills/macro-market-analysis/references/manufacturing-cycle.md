@@ -127,7 +127,7 @@ Manufacturing Impulse = New Orders − Inventories
 - **Employment：** XX.X — [對非農的預示]
 - **Prices Paid：** XX.X — [對 PPI 的預示]
 - **ISM 服務業：** XX.X — 與製造業 [一致／背離]
-- **結論：** 製造業循環為 [支撐／中性／拖累]，UC Macro Score 製造業模組評分 XX/10
+- **結論：** 製造業循環為 [支撐／中性／拖累]，Macro Score 製造業模組評分 XX/10
 - **受惠產業：** [依階段對應的產業，參考 industry-cycles.md]
 ```
 

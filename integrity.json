@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-07-28T17:09:07.782589",
+  "generated_at": "2026-07-28T17:45:44.490157",
   "algorithm": "sha384",
   "repository": "EvanChuan/investor_skill",
   "files": [
@@ -141,8 +141,8 @@
     },
     {
       "path": "skills/macro-market-analysis/SKILL.md",
-      "sha384": "8df100e96df490b38b99b5c682c9d6c6074f8de23917ded9f0020313ea7f5fb34d0153c873a9a8cb6759109d666bf1de",
-      "size": 26539
+      "sha384": "96c3c56fbeffa2a05c68353dbb0f193875d2cb977e0f34ea4c3074bce894234eec00990f1c2edd72bdfde109b369360c",
+      "size": 26514
     },
     {
       "path": "skills/macro-market-analysis/assets/investment-decision-checklist.md",
@@ -156,8 +156,8 @@
     },
     {
       "path": "skills/macro-market-analysis/references/credit-cycle.md",
-      "sha384": "72d19bde3e1f491c6950ea623a4109c1f563f76045676a409c447cf372c22ecb41c7d9a25f3153c6030fc962d1c15624",
-      "size": 5831
+      "sha384": "6f6eb111c8b6f8b2e60dfeea109abbb173f75d6ab5f5593a39ac9f548468a4fae0b0e7b90ced6642afc751fc48ec4e7c",
+      "size": 5828
     },
     {
       "path": "skills/macro-market-analysis/references/cross-asset-fund-flow.md",
@@ -216,13 +216,13 @@
     },
     {
       "path": "skills/macro-market-analysis/references/liquidity-cycle.md",
-      "sha384": "fee0c0f9367c4f8eff029e424e82a989292b73054819f38b193f692aa36ae5ce7e7160ba871d67311e1ac0b3b238682b",
-      "size": 5890
+      "sha384": "4fa8a211b77d3382b77669d6b54b25f27a703af7290da4a5c787132f311c7296ebdf216e9d56b2b624bca7e5c9b9123f",
+      "size": 5887
     },
     {
       "path": "skills/macro-market-analysis/references/manufacturing-cycle.md",
-      "sha384": "1df3b95386662201f5f8d085c2fee41db34932797da1c68c29a672487872441ff6c9111da94e458676728249172c4ae4",
-      "size": 5954
+      "sha384": "2879c5e6e534aeabbe9b818c661c194cd9f7fdb956b910db1d2eaa3d3289fa256b5728e208c7899b8b8affb063323724",
+      "size": 5951
     },
     {
       "path": "skills/macro-market-analysis/references/narrative-vs-reality.md",
